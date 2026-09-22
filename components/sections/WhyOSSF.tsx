@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { cn } from "@/lib/utils/cn";
 import { differentiators } from "@/lib/data/differentiators";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
@@ -24,13 +25,21 @@ export function WhyOSSF({ showAll = false }: { showAll?: boolean }) {
         ) : null}
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-1 border-t border-surface-border sm:grid-cols-2">
         {items.map((item, index) => (
-          <RevealOnScroll key={item.title} delay={index * 40}>
-            <div className="flex gap-3.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent-50">
-                <item.icon className="h-4 w-4 text-accent-600" aria-hidden="true" />
-              </div>
+          <RevealOnScroll
+            key={item.title}
+            delay={index * 30}
+            className={cn(
+              "border-b border-surface-border py-5",
+              index % 2 === 0 ? "sm:pr-8" : "sm:border-l sm:border-surface-border sm:pl-8"
+            )}
+          >
+            <div className="flex items-start gap-4">
+              <span className="pt-0.5 font-mono text-xs text-navy-200">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
               <div>
                 <h3 className="text-sm font-semibold text-navy-950">
                   {item.title}

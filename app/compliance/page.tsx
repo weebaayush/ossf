@@ -31,20 +31,24 @@ export default function CompliancePage() {
           description="Registration numbers below are as filed with the respective authorities. Full certificate copies are available to clients on request."
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 divide-y divide-surface-border border-y border-surface-border">
           {complianceItems.map((item, index) => (
-            <RevealOnScroll key={item.title} delay={(index % 6) * 50}>
-              <div className="flex h-full flex-col gap-3 rounded-xl border border-surface-border bg-white p-6">
-                <item.icon className="h-6 w-6 text-accent-500" aria-hidden="true" />
-                <h2 className="text-sm font-semibold text-navy-950">
-                  {item.title}
-                </h2>
-                <p className="text-sm leading-relaxed text-ink-muted">
-                  {item.description}
-                </p>
-                <p className="mt-auto pt-2 font-mono text-xs tracking-tight text-accent-600">
+            <RevealOnScroll key={item.title} delay={(index % 6) * 40}>
+              <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:gap-8">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-surface-subtle">
+                  <item.icon className="h-5 w-5 text-accent-600" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-sm font-semibold text-navy-950">
+                    {item.title}
+                  </h2>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-muted">
+                    {item.description}
+                  </p>
+                </div>
+                <span className="inline-block w-fit shrink-0 rounded-md bg-surface-subtle px-3 py-1.5 font-mono text-xs tracking-tight text-navy-700">
                   {item.value}
-                </p>
+                </span>
               </div>
             </RevealOnScroll>
           ))}

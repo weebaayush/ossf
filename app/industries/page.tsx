@@ -23,19 +23,27 @@ export default function IndustriesPage() {
       />
 
       <Section tone="light">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="divide-y divide-surface-border border-y border-surface-border">
           {industries.map((industry, index) => (
-            <RevealOnScroll key={industry.slug} delay={(index % 6) * 50}>
-              <div className="h-full rounded-xl border border-surface-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-card">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-navy-950">
-                  <industry.icon className="h-5 w-5 text-accent-500" aria-hidden="true" />
+            <RevealOnScroll key={industry.slug} delay={(index % 6) * 40}>
+              <div className="group flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:gap-8">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-navy-950 transition-colors duration-300 group-hover:bg-accent-500">
+                  <industry.icon
+                    className="h-5 w-5 text-accent-500 transition-colors duration-300 group-hover:text-white"
+                    aria-hidden="true"
+                  />
                 </div>
-                <h2 className="mt-5 text-base font-semibold text-navy-950">
-                  {industry.title}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  {industry.description}
-                </p>
+                <div className="flex-1">
+                  <h2 className="text-base font-semibold text-navy-950">
+                    {industry.title}
+                  </h2>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-muted sm:max-w-2xl">
+                    {industry.description}
+                  </p>
+                </div>
+                <span className="hidden shrink-0 font-mono text-xs text-navy-200 sm:block">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
             </RevealOnScroll>
           ))}

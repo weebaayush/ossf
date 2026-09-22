@@ -21,6 +21,8 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Security & facility management services"
         description="Detailed service categories covering the full scope of OSSF's operational offering — deployed and tailored to each client site."
+        image
+        imageLabel="Personnel deployment / site coverage"
       />
 
       {services.map((service, index) => (

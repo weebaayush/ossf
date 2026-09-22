@@ -31,17 +31,16 @@ export default function ClientsPage() {
           className="mx-auto"
         />
 
-        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {clientNames.map((client, index) => (
-            <RevealOnScroll key={client.name} delay={(index % 8) * 30}>
-              <div className="flex h-full min-h-[88px] items-center justify-center rounded-lg border border-surface-border bg-white px-4 text-center transition-colors hover:border-navy-400/40">
-                <span className="text-sm font-semibold text-navy-800">
-                  {client.name}
-                </span>
-              </div>
-            </RevealOnScroll>
+        <RevealOnScroll className="mx-auto mt-12 flex max-w-5xl flex-wrap items-baseline justify-center gap-x-10 gap-y-6 border-y border-surface-border py-12">
+          {clientNames.map((client) => (
+            <span
+              key={client.name}
+              className="font-display text-xl font-semibold text-navy-300 transition-colors hover:text-navy-950 sm:text-2xl"
+            >
+              {client.name}
+            </span>
           ))}
-        </div>
+        </RevealOnScroll>
 
         <p className="mx-auto mt-10 max-w-xl text-center text-sm leading-relaxed text-ink-muted">
           {clientShowcaseNote}

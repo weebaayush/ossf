@@ -14,16 +14,14 @@ export function ClientsTeaser() {
         align="center"
       />
 
-      <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {clientNames.slice(0, 8).map((client) => (
-          <div
+      <div className="mx-auto mt-12 flex max-w-4xl flex-wrap items-baseline justify-center gap-x-8 gap-y-5 border-y border-surface-border py-10">
+        {clientNames.slice(0, 14).map((client) => (
+          <span
             key={client.name}
-            className="flex aspect-[3/2] items-center justify-center rounded-lg border border-surface-border bg-surface-subtle px-4 text-center"
+            className="font-display text-lg font-semibold text-navy-300 transition-colors hover:text-navy-950 sm:text-xl"
           >
-            <span className="text-sm font-semibold text-navy-700">
-              {client.name}
-            </span>
-          </div>
+            {client.name}
+          </span>
         ))}
       </div>
 

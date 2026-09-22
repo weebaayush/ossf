@@ -26,6 +26,8 @@ export default function AboutPage() {
         eyebrow="About Us · Established 2017"
         title="A security and facility management partner built on discipline"
         description="Om Shiv Security Force (OSSF) supports organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat and Daman with trained personnel, structured supervision and accountable service delivery."
+        image
+        imageLabel="OSSF leadership / operations"
       />
 
       <Section tone="light">

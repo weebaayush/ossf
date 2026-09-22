@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
       <Section tone="light">
         <div className="mx-auto max-w-2xl space-y-6 text-sm leading-relaxed text-ink-muted">
           <p>
-            [CLIENT CONFIRMATION REQUIRED] — This page is a placeholder. OSSF's
+            [CLIENT CONFIRMATION REQUIRED] — This page is a placeholder. OSSF&apos;s
             actual privacy policy — covering what information is collected
             through the website (such as the Request a Quote form), how it is
             used, stored and who it may be shared with — should be reviewed
