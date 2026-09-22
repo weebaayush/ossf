@@ -64,14 +64,17 @@ export function Footer() {
               <li className="flex gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
                 <span>
-                  {siteConfig.address.line1}
+                  {siteConfig.address.line1}, {siteConfig.address.line2}
                   <br />
-                  {siteConfig.address.locality}, {siteConfig.address.region}
+                  {siteConfig.address.locality}, {siteConfig.address.region}{" "}
+                  {siteConfig.address.postalCode}
                 </span>
               </li>
               <li className="flex gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-                <span>{siteConfig.phone}</span>
+                <span>
+                  {siteConfig.phone} / {siteConfig.phoneSecondary}
+                </span>
               </li>
               <li className="flex gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />

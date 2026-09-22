@@ -1,8 +1,8 @@
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { clientLogoSlots } from "@/lib/data/clients";
-import { ArrowRight, Building2 } from "lucide-react";
+import { clientNames } from "@/lib/data/clients";
+import { ArrowRight } from "lucide-react";
 
 export function ClientsTeaser() {
   return (
@@ -10,18 +10,19 @@ export function ClientsTeaser() {
       <SectionHeading
         eyebrow="Trusted By"
         title="A growing base of client relationships"
-        description="OSSF supports 100+ client relationships across sectors. A curated, client-approved selection is shown here as approvals come through."
+        description="OSSF supports 100+ client relationships across sectors, including the organizations below."
         align="center"
       />
 
-      <div className="mt-12 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
-        {clientLogoSlots.slice(0, 6).map((_, index) => (
+      <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {clientNames.slice(0, 8).map((client) => (
           <div
-            key={index}
-            className="flex aspect-[3/2] items-center justify-center rounded-lg border border-dashed border-surface-border bg-surface-subtle text-ink-soft"
-            aria-hidden="true"
+            key={client.name}
+            className="flex aspect-[3/2] items-center justify-center rounded-lg border border-surface-border bg-surface-subtle px-4 text-center"
           >
-            <Building2 className="h-5 w-5" />
+            <span className="text-sm font-semibold text-navy-700">
+              {client.name}
+            </span>
           </div>
         ))}
       </div>

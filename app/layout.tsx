@@ -56,11 +56,16 @@ const organizationJsonLd = {
   alternateName: siteConfig.shortName,
   url: siteConfig.url,
   description: siteConfig.description,
+  foundingDate: String(siteConfig.foundingYear),
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
   areaServed: siteConfig.serviceAreas,
   address: {
     "@type": "PostalAddress",
+    streetAddress: `${siteConfig.address.line1}, ${siteConfig.address.line2}`,
     addressLocality: siteConfig.address.locality,
     addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
     addressCountry: siteConfig.address.country,
   },
 };

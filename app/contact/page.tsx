@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/utils/site-config";
 import { buildMetadata } from "@/lib/utils/seo";
 
+const fullAddress = `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
+const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`;
+const mapsDirectionsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
@@ -36,8 +40,10 @@ export default function ContactPage() {
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
                   {siteConfig.address.line1}
                   <br />
-                  {siteConfig.address.locality}, {siteConfig.address.region},{" "}
-                  {siteConfig.address.country}
+                  {siteConfig.address.line2}
+                  <br />
+                  {siteConfig.address.locality}, {siteConfig.address.region}{" "}
+                  {siteConfig.address.postalCode}, India
                 </p>
               </div>
             </div>
@@ -49,7 +55,13 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-sm font-semibold text-navy-950">Phone</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                  {siteConfig.phone}
+                  <a href={`tel:${siteConfig.phone}`} className="hover:text-accent-600">
+                    {siteConfig.phone}
+                  </a>
+                  {" / "}
+                  <a href={`tel:${siteConfig.phoneSecondary}`} className="hover:text-accent-600">
+                    {siteConfig.phoneSecondary}
+                  </a>
                 </p>
               </div>
             </div>
@@ -61,7 +73,9 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-sm font-semibold text-navy-950">Email</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                  {siteConfig.email}
+                  <a href={`mailto:${siteConfig.email}`} className="hover:text-accent-600">
+                    {siteConfig.email}
+                  </a>
                 </p>
               </div>
             </div>
@@ -86,14 +100,23 @@ export default function ContactPage() {
             </Button>
           </div>
 
-          <div className="flex min-h-[360px] flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-surface-border bg-surface-subtle text-center text-ink-soft">
-            <MapPin className="h-6 w-6" aria-hidden="true" />
-            <p className="text-xs font-medium uppercase tracking-wide">
-              Google Maps embed placeholder
-            </p>
-            <p className="max-w-[220px] text-xs text-ink-soft">
-              [CLIENT CONFIRMATION REQUIRED — registered office pin/address]
-            </p>
+          <div className="flex min-h-[360px] flex-col overflow-hidden rounded-xl border border-surface-border">
+            <iframe
+              title="OSSF registered office location"
+              src={mapsEmbedSrc}
+              className="h-full min-h-[320px] w-full flex-1 border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <a
+              href={mapsDirectionsHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 bg-surface-subtle py-3 text-xs font-semibold text-navy-950 hover:text-accent-600"
+            >
+              Get Directions
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </Section>

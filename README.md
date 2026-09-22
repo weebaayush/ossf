@@ -33,25 +33,41 @@ lib/
 public/images/        Placeholder image slots (see below)
 ```
 
-## Content that needs client confirmation
+## Content status
 
-Several facts in the source company material are incomplete or contradictory. These are marked
-`[CLIENT CONFIRMATION REQUIRED]` directly in the UI (and as `// TODO(client):` comments in the
-data files) rather than guessed:
+Real business content was supplied via the client's Company Profile (confirmed 20-09-2026) and is
+now wired into the site:
 
-- **Founding year** — company material states both "established 2017" and "Trusted Since 2002".
-  Neither is used until the client confirms which is correct.
-- **Client names / logos** — the company profile references 100+ clients, but no approved public
-  list of names/logos was supplied. The `/clients` page and homepage teaser use placeholder slots.
-- **Registration / license numbers** — PSARA, GST, UDYAM, PF/EPF, ESIC, Professional Tax and
-  Shops & Establishment are listed as compliance *categories* only; no numbers are published
-  until the client explicitly approves showing them.
-- **Business hours** — office hours are shown as a placeholder on the Contact page.
-- **Google Maps embed** — the Contact page has a placeholder map slot; needs the real address/pin.
-- **Phone / email / registered office address** — placeholder values pulled from the reference
-  brief are marked clearly; replace with the verified values in `lib/utils/site-config.ts`.
+- **Founding year**: confirmed as **2017** (the "Trusted Since 2002" / "10 years" phrasing
+  elsewhere in the source material was a typo, per the client) — set in `lib/utils/site-config.ts`.
+- **Registered office, phone, email**: real values from the company profile, in
+  `lib/utils/site-config.ts`. The Contact page now embeds a real Google Maps view of the address
+  (no API key needed — uses the public `maps?q=...&output=embed` endpoint).
+- **Compliance registrations**: real PSARA licence, GSTIN, UDYAM, PF/EPF, ESIC, Professional Tax,
+  Shops & Establishment and PAN numbers are shown on `/compliance` and the homepage compliance
+  section — see `lib/data/compliance.ts`.
+- **Clients**: the company profile's own "client showcase" pages (Lodha, Runwal Realty, KIMS
+  Hospitals, etc. — presented as external-facing collateral) are shown as a text-based client wall
+  on `/clients` and the homepage teaser — see `lib/data/clients.ts`. The company profile also lists
+  100+ individual residential societies/buildings with addresses; that granular list is **not**
+  published on the public site (it reads as a security-sensitive disclosure of which buildings use
+  which vendor, and wasn't itself presented as public collateral) — it's referenced generically
+  ("100+ client relationships") with a note that references are available on request, matching the
+  company profile's own line.
+- **Service categories & guard duties**: expanded from the profile's "Duties of Our Security
+  Guards" section into the Security Services / Electronic Surveillance / Facility Support capability
+  lists on `/services`.
 
-Search the codebase for `CLIENT CONFIRMATION REQUIRED` to find every instance.
+**Still outstanding** — not in the supplied company profile, so still marked
+`[CLIENT CONFIRMATION REQUIRED]` in the UI:
+
+- **Office/enquiry business hours** (the profile confirms 24×365 *security operations*, but not a
+  reception/enquiry desk window) — Contact page and `lib/utils/site-config.ts`.
+- **Real photography** — the site still uses labelled placeholder image slots (see Images below).
+- **Logo image files** for the clients shown on `/clients` — currently rendered as text badges
+  since only flattened screenshots (not vector/transparent logo files) were supplied.
+
+Search the codebase for `CLIENT CONFIRMATION REQUIRED` to find every remaining instance.
 
 ## Images
 

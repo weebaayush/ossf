@@ -23,9 +23,9 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Us"
+        eyebrow="About Us · Established 2017"
         title="A security and facility management partner built on discipline"
-        description="Om Shiv Security Force (OSSF) supports organizations across Maharashtra with trained personnel, structured supervision and accountable service delivery."
+        description="Om Shiv Security Force (OSSF) supports organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat and Daman with trained personnel, structured supervision and accountable service delivery."
       />
 
       <Section tone="light">
@@ -34,12 +34,15 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Who We Are"
               title="Security and facility management, delivered with discipline"
-              description="OSSF provides professional security and facility management services to industrial units, corporate offices, residential complexes, commercial establishments, hotels, construction sites, educational institutions, hospitals, warehouses, shopping complexes and government organizations."
+              description="Established in 2017, OSSF is a professionally managed security services organization providing security and facility management services to industrial units, corporate offices, residential complexes, commercial establishments, hotels, construction sites, educational institutions, hospitals, warehouses, shopping complexes and government organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat, Daman and surrounding regions."
             />
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">
-              Our approach centers on trained, police-verified personnel,
-              structured supervision and clear reporting — so clients get
-              consistent, dependable coverage rather than unmanaged headcount.
+              Our strength lies in our experienced workforce, including
+              personnel from the retired defence services alongside highly
+              trained security professionals. Every team member is carefully
+              selected, professionally trained, and committed to maintaining
+              the highest standards of discipline, integrity and
+              professionalism.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={100}>

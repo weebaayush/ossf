@@ -27,11 +27,13 @@ export const services: Service[] = [
     description:
       "Uniformed security personnel deployed to protect people, premises and operations — covering guarding, patrolling, access control and day-to-day site discipline under documented reporting.",
     capabilities: [
-      "Security personnel deployment",
-      "Patrolling",
-      "Access control",
-      "Crowd management",
-      "Emergency response",
+      "Protection of life and property",
+      "Prevention of theft, fire, vandalism and trespassing",
+      "Visitor entry and exit management",
+      "Employee and vehicle access control",
+      "Regular patrolling of premises",
+      "Emergency response and coordination with Police, Fire Brigade and emergency services",
+      "Crowd management during events",
       "Daily occurrence and shift handover reporting",
     ],
   },
@@ -44,8 +46,12 @@ export const services: Service[] = [
     description:
       "Advisory support on electronic surveillance — including CCTV and alarm monitoring — so technology and trained personnel work together as one coordinated security layer.",
     capabilities: [
-      "CCTV monitoring coordination",
-      "Alarm monitoring coordination",
+      "CCTV monitoring",
+      "Alarm system monitoring",
+      "Visitor register maintenance",
+      "Security register maintenance",
+      "Checking doors, windows and electrical systems",
+      "Monitoring fire safety equipment",
       "Surveillance planning consultation",
     ],
   },
@@ -71,7 +77,11 @@ export const services: Service[] = [
       "Facility-related support that keeps day-to-day operations running smoothly.",
     description:
       "Facility support services designed to work alongside security operations, helping client premises run smoothly under a single point of accountability.",
-    capabilities: ["Facility support services", "Office management support"],
+    capabilities: [
+      "Facility support services",
+      "Material inward and outward movement control",
+      "Reporting suspicious activities",
+    ],
   },
   {
     slug: "office-management-support",

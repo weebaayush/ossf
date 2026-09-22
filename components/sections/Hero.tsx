@@ -14,15 +14,15 @@ export function Hero() {
 
       <Container className="relative z-10 pb-20 pt-40 sm:pb-24">
         <Badge tone="dark" className="mb-6">
-          Professional Security &amp; Facility Management
+          PSARA Licensed · Established 2017
         </Badge>
         <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-          Protecting people, property and business operations.
+          We protect what matters most.
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
           OSSF delivers trained, disciplined security and facility management
-          professionals for organizations across Maharashtra — built on
-          verification, supervision and dependable service delivery.
+          professionals — including ex-servicemen — for 100+ organizations
+          across Maharashtra, Mumbai, Thane, Goa, Gujarat and Daman.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <Button href="/request-a-quote" size="lg">

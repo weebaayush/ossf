@@ -12,6 +12,7 @@ import {
   ClipboardCheck,
   ShieldCheck,
   Settings2,
+  Medal,
 } from "lucide-react";
 
 export type Differentiator = {
@@ -31,6 +32,11 @@ export const differentiators: Differentiator[] = [
     icon: GraduationCap,
     title: "Professionally Trained",
     description: "Personnel are trained for the operational demands of each site.",
+  },
+  {
+    icon: Medal,
+    title: "Ex-Servicemen Personnel",
+    description: "Our workforce includes personnel from the retired defence services.",
   },
   {
     icon: UserCheck,

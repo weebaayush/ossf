@@ -21,14 +21,14 @@ export default function CompliancePage() {
       <PageHero
         eyebrow="Compliance"
         title="Statutory compliance & licensing"
-        description="A private security agency's compliance posture is foundational to how it can legally operate. Here's the framework OSSF operates under."
+        description="A private security agency's compliance posture is foundational to how it can legally operate. Here's the framework OSSF operates under, as provided in our company registration documentation."
       />
 
       <Section tone="light">
         <SectionHeading
           eyebrow="Framework"
-          title="Compliance categories"
-          description="Registration numbers and certificates are available to clients on request and are not published here until explicitly approved as public website content."
+          title="Registrations & licences"
+          description="Registration numbers below are as filed with the respective authorities. Full certificate copies are available to clients on request."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -42,6 +42,9 @@ export default function CompliancePage() {
                 <p className="text-sm leading-relaxed text-ink-muted">
                   {item.description}
                 </p>
+                <p className="mt-auto pt-2 font-mono text-xs tracking-tight text-accent-600">
+                  {item.value}
+                </p>
               </div>
             </RevealOnScroll>
           ))}
@@ -50,9 +53,13 @@ export default function CompliancePage() {
         <div className="mt-10 flex items-start gap-3 rounded-xl border border-accent-100 bg-accent-50 p-5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" aria-hidden="true" />
           <p className="text-sm leading-relaxed text-accent-800">
-            [CLIENT CONFIRMATION REQUIRED] — Registration/license numbers and
-            certificate copies will be added here once approved for public
-            display.
+            Scanned certificate copies are not published on the website but
+            are available to prospective and existing clients on request —
+            contact us via the details on our{" "}
+            <a href="/contact" className="font-semibold underline">
+              Contact page
+            </a>
+            .
           </p>
         </div>
       </Section>

@@ -16,13 +16,16 @@ export function ComplianceSection() {
       />
 
       <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {complianceItems.map((item, index) => (
+        {complianceItems.slice(0, 8).map((item, index) => (
           <RevealOnScroll key={item.title} delay={index * 40}>
             <div className="flex h-full flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-5">
               <item.icon className="h-5 w-5 text-accent-500" aria-hidden="true" />
               <h3 className="text-sm font-semibold text-white">{item.title}</h3>
               <p className="text-xs leading-relaxed text-white/55">
                 {item.description}
+              </p>
+              <p className="mt-auto pt-1 font-mono text-[11px] tracking-tight text-accent-400">
+                {item.value}
               </p>
             </div>
           </RevealOnScroll>
