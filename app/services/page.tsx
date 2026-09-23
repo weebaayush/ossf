@@ -6,11 +6,12 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { services } from "@/lib/data/services";
 import { buildMetadata } from "@/lib/utils/seo";
+import { imageSlots } from "@/lib/data/images";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Services",
+  title: "Security & Facility Management Services",
   description:
-    "OSSF service overview: security services, electronic surveillance consultation, security consulting, facility support, office management support and supervision & inspections.",
+    "Security guard services, electronic surveillance consultation, security consulting and risk assessment, facility support, office management support and supervision — deployed by OSSF across Thane, Mumbai and Maharashtra.",
   path: "/services",
 });
 
@@ -21,8 +22,7 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Security & facility management services"
         description="Detailed service categories covering the full scope of OSSF's operational offering — deployed and tailored to each client site."
-        image
-        imageLabel="Personnel deployment / site coverage"
+        image={imageSlots.servicesHero}
       />
 
       {services.map((service, index) => (
@@ -63,7 +63,7 @@ export default function ServicesPage() {
         </Section>
       ))}
 
-      <FinalCTA />
+      <FinalCTA secondary={{ href: "/industries", label: "See the industries we serve" }} />
     </>
   );
 }

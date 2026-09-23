@@ -26,16 +26,24 @@ export const siteConfig = {
   email: "info@omshivsecurityforce.in",
 
   // Company profile confirms 24x365 security operations; a separate office
-  // enquiry/reception window was not specified.
-  businessHours:
-    "Security operations: 24 Hours × 365 Days. Office enquiries: [CLIENT CONFIRMATION REQUIRED]",
+  // enquiry/reception window was not specified. `officeEnquiries` stays null
+  // until the client confirms it — the UI then shows a visible pending marker
+  // (see components/ui/PendingConfirmation.tsx) instead of guessing.
+  businessHours: {
+    operations: "24 Hours × 365 Days",
+    officeEnquiries: null as string | null,
+  },
 
   // Confirmed by client (20-09-2026): established 2017. The "Trusted Since 2002" /
   // "10 Years" phrasing elsewhere in the source material was a typo and is not used.
   foundingYear: 2017,
-  foundingYearConfirmed: true,
 
   serviceAreas: ["Thane", "Mumbai", "Navi Mumbai", "Maharashtra", "Goa", "Gujarat", "Daman"],
 } as const;
 
 export const CLIENT_CONFIRM = "[CLIENT CONFIRMATION REQUIRED]";
+
+/** Dialable tel: href for a 10-digit Indian mobile number from siteConfig. */
+export function telHref(phone: string): string {
+  return `tel:+91${phone.replace(/\D/g, "").slice(-10)}`;
+}

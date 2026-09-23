@@ -4,18 +4,22 @@ import { Container } from "@/components/ui/Container";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Badge } from "@/components/ui/Badge";
 import { siteConfig } from "@/lib/utils/site-config";
+import { imageSlots } from "@/lib/data/images";
 
 const atAGlance = [
   { label: "Founded", value: String(siteConfig.foundingYear) },
   { label: "Licence", value: "PSARA" },
-  { label: "Coverage", value: `${siteConfig.serviceAreas.length} States & Regions` },
+  { label: "Head Office", value: siteConfig.address.locality },
+  { label: "Operations", value: "24 × 365" },
 ];
 
 export function Hero() {
   return (
     <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-navy-950">
-      {/* Background: swap for real photography at /images/hero/ (see PlaceholderImage usage) */}
-      <PlaceholderImage label="Hero image — OSSF site photography" fill rounded={false} />
+      {/* Background photography slot — configured in lib/data/images.ts. */}
+      <PlaceholderImage {...imageSlots.homeHero} fill rounded={false} priority />
+      {/* Navy tint keeps the headline legible over any photograph. */}
+      <div className="absolute inset-0 bg-navy-950/50" aria-hidden="true" />
       <div className="absolute inset-0 bg-hero-gradient" aria-hidden="true" />
       <div className="absolute inset-0 bg-navy-radial" aria-hidden="true" />
 

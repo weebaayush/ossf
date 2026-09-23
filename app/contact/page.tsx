@@ -3,7 +3,8 @@ import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/lib/utils/site-config";
+import { siteConfig, telHref } from "@/lib/utils/site-config";
+import { PendingConfirmation } from "@/components/ui/PendingConfirmation";
 import { buildMetadata } from "@/lib/utils/seo";
 
 const fullAddress = `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
@@ -13,7 +14,7 @@ const mapsDirectionsHref = `https://www.google.com/maps/search/?api=1&query=${en
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact Om Shiv Security Force (OSSF) for security and facility management enquiries across Thane, Mumbai and Maharashtra.",
+    "Contact Om Shiv Security Force (OSSF), Thane West — phone, email and office address for security guard and facility management enquiries across Thane, Mumbai and Maharashtra.",
   path: "/contact",
 });
 
@@ -55,11 +56,11 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-sm font-semibold text-navy-950">Phone</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                  <a href={`tel:${siteConfig.phone}`} className="hover:text-accent-600">
+                  <a href={telHref(siteConfig.phone)} className="hover:text-accent-600">
                     {siteConfig.phone}
                   </a>
                   {" / "}
-                  <a href={`tel:${siteConfig.phoneSecondary}`} className="hover:text-accent-600">
+                  <a href={telHref(siteConfig.phoneSecondary)} className="hover:text-accent-600">
                     {siteConfig.phoneSecondary}
                   </a>
                 </p>
@@ -73,7 +74,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-sm font-semibold text-navy-950">Email</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                  <a href={`mailto:${siteConfig.email}`} className="hover:text-accent-600">
+                  <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-accent-600">
                     {siteConfig.email}
                   </a>
                 </p>
@@ -86,10 +87,13 @@ export default function ContactPage() {
               </div>
               <div>
                 <h2 className="text-sm font-semibold text-navy-950">
-                  Business Hours
+                  Hours
                 </h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                  {siteConfig.businessHours}
+                  Security operations: {siteConfig.businessHours.operations}
+                  <br />
+                  Office enquiries:{" "}
+                  {siteConfig.businessHours.officeEnquiries ?? <PendingConfirmation />}
                 </p>
               </div>
             </div>
@@ -102,7 +106,7 @@ export default function ContactPage() {
 
           <div className="flex min-h-[360px] flex-col overflow-hidden rounded-xl border border-surface-border">
             <iframe
-              title="OSSF registered office location"
+              title="Map showing the OSSF registered office in Thane West"
               src={mapsEmbedSrc}
               className="h-full min-h-[320px] w-full flex-1 border-0"
               loading="lazy"
@@ -115,6 +119,7 @@ export default function ContactPage() {
               className="flex items-center justify-center gap-1.5 bg-surface-subtle py-3 text-xs font-semibold text-navy-950 hover:text-accent-600"
             >
               Get Directions
+              <span className="sr-only">(opens Google Maps in a new tab)</span>
               <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           </div>

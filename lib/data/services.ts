@@ -110,7 +110,3 @@ export const services: Service[] = [
     ],
   },
 ];
-
-export function getServiceBySlug(slug: string) {
-  return services.find((service) => service.slug === slug);
-}

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ShieldCheck, Phone, Mail, MapPin } from "lucide-react";
-import { primaryNav } from "@/lib/data/nav";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
+import { footerNav } from "@/lib/data/nav";
 import { services } from "@/lib/data/services";
-import { siteConfig } from "@/lib/utils/site-config";
+import { siteConfig, telHref } from "@/lib/utils/site-config";
 import { Container } from "@/components/ui/Container";
 
 export function Footer() {
@@ -13,39 +14,37 @@ export function Footer() {
       <Container className="py-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link href="/" className="flex items-center gap-2.5 text-white">
-              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent-500">
-                <ShieldCheck className="h-5 w-5 text-white" aria-hidden="true" />
-              </span>
-              <span className="text-sm font-bold tracking-wide">OSSF</span>
+            <Link
+              href="/"
+              className="flex w-fit items-center gap-2.5 text-white"
+              aria-label="OSSF — Om Shiv Security Force home"
+            >
+              <Logo variant="footer" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
-              {siteConfig.description}
+              {siteConfig.name} — PSARA-licensed security and facility
+              management services, established {siteConfig.foundingYear} in
+              Thane.
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Navigation</h3>
+            <h2 className="text-sm font-semibold text-white">Company</h2>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {primaryNav.map((link) => (
+              {footerNav.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="link-underline hover:text-white">
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/compliance" className="link-underline hover:text-white">
-                  Compliance
-                </Link>
-              </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Services</h3>
+            <h2 className="text-sm font-semibold text-white">Services</h2>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {services.slice(0, 6).map((service) => (
+              {services.map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/services#${service.slug}`}
@@ -59,7 +58,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Contact</h3>
+            <h2 className="text-sm font-semibold text-white">Contact</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
@@ -73,33 +72,41 @@ export function Footer() {
               <li className="flex gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
                 <span>
-                  {siteConfig.phone} / {siteConfig.phoneSecondary}
+                  <a href={telHref(siteConfig.phone)} className="hover:text-white">
+                    {siteConfig.phone}
+                  </a>
+                  {" / "}
+                  <a href={telHref(siteConfig.phoneSecondary)} className="hover:text-white">
+                    {siteConfig.phoneSecondary}
+                  </a>
                 </span>
               </li>
               <li className="flex gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-                <span>{siteConfig.email}</span>
+                <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-white">
+                  {siteConfig.email}
+                </a>
               </li>
             </ul>
             <Link
               href="/request-a-quote"
-              className="link-underline mt-4 inline-block text-sm font-semibold text-white"
+              className="link-underline mt-5 inline-block text-sm font-semibold text-white"
             >
-              Request a Quote →
+              Request a Quote <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} Om Shiv Security Force. All rights reserved.
+            © {year} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="hover:text-white">
               Privacy Policy
             </Link>
             <Link href="/terms-of-service" className="hover:text-white">
-              Terms of Service
+              Terms &amp; Conditions
             </Link>
           </div>
         </div>

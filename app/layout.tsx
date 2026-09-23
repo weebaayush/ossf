@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/lib/utils/site-config";
+import { ogImage } from "@/lib/utils/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,15 +26,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Security Services in Thane",
-    "Security Agency in Thane",
-    "Security Guards in Thane",
-    "Facility Management Services in Thane",
-    "Corporate Security Services",
-    "Industrial Security Services",
-    "Housekeeping and Facility Support Services",
-  ],
   openGraph: {
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
@@ -41,12 +33,21 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "en_IN",
     type: "website",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [ogImage.url],
   },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#05090F",
 };
 
 const organizationJsonLd = {
@@ -57,7 +58,7 @@ const organizationJsonLd = {
   url: siteConfig.url,
   description: siteConfig.description,
   foundingDate: String(siteConfig.foundingYear),
-  telephone: siteConfig.phone,
+  telephone: `+91${siteConfig.phone}`,
   email: siteConfig.email,
   areaServed: siteConfig.serviceAreas,
   address: {
@@ -83,8 +84,20 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <noscript>
+          {/* Scroll-reveal content must stay visible when JavaScript is off. */}
+          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-navy-950 focus:shadow-lifted"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -26,7 +26,7 @@ export const differentiators: Differentiator[] = [
   {
     icon: BadgeCheck,
     title: "Police Verified",
-    description: "Every deployed personnel undergoes police verification.",
+    description: "All deployed personnel undergo police verification.",
   },
   {
     icon: GraduationCap,

@@ -6,6 +6,7 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { services } from "@/lib/data/services";
+import { imageSlots } from "@/lib/data/images";
 
 export function ServicesGrid() {
   const [flagship, ...rest] = services;
@@ -28,10 +29,10 @@ export function ServicesGrid() {
         <RevealOnScroll>
           <Link
             href={`/services#${flagship.slug}`}
-            className="group grid h-full grid-cols-1 overflow-hidden rounded-xl border border-surface-border bg-white shadow-soft transition-shadow duration-300 hover:shadow-card sm:grid-rows-[220px_1fr]"
+            className="group grid h-full grid-cols-1 overflow-hidden rounded-xl border border-surface-border bg-white shadow-soft transition-shadow duration-300 hover:shadow-card sm:grid-rows-[minmax(220px,1fr)_auto]"
           >
             <PlaceholderImage
-              label="Security personnel on deployment"
+              {...imageSlots.homeFlagshipService}
               rounded={false}
               className="border-0"
               ratio="aspect-[16/9] sm:aspect-auto sm:h-full"

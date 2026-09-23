@@ -5,6 +5,13 @@
 // Google Sheets webhook). Every other component only ever imports `submitQuote`
 // from here, so switching providers later means editing this one file.
 
+/**
+ * Flip to `true` once `submitQuote` below actually delivers enquiries.
+ * While `false`, the form says plainly that online submission isn't connected
+ * and hands the visitor a pre-filled email instead of implying it was sent.
+ */
+export const QUOTE_SUBMISSION_CONNECTED = false;
+
 export type QuoteFormPayload = {
   name: string;
   company: string;
@@ -16,7 +23,10 @@ export type QuoteFormPayload = {
 };
 
 export type SubmitQuoteResult =
-  | { ok: true }
+  // `delivered` tells the UI whether the enquiry actually reached OSSF.
+  // While no provider is connected it is `false`, and the form tells the
+  // visitor to send the details by email/phone instead of claiming success.
+  | { ok: true; delivered: boolean }
   | { ok: false; error: string };
 
 export async function submitQuote(
@@ -29,14 +39,15 @@ export async function submitQuote(
   //     body: JSON.stringify(payload),
   //   });
   //   if (!res.ok) return { ok: false, error: "Submission failed. Please try again." };
-  //   return { ok: true };
+  //   return { ok: true, delivered: true };
 
   if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line no-console
     console.log("[submitQuote] payload (no backend wired yet):", payload);
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 600));
+  await new Promise((resolve) => setTimeout(resolve, 400));
 
-  return { ok: true };
+  // Nothing was sent anywhere — be explicit so the UI stays truthful.
+  return { ok: true, delivered: false };
 }

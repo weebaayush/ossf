@@ -3,13 +3,14 @@ import { Phone, Mail, Clock } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/ui/Section";
 import { RequestQuoteForm } from "@/components/forms/RequestQuoteForm";
-import { siteConfig } from "@/lib/utils/site-config";
+import { siteConfig, telHref } from "@/lib/utils/site-config";
+import { PendingConfirmation } from "@/components/ui/PendingConfirmation";
 import { buildMetadata } from "@/lib/utils/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Request a Quote",
   description:
-    "Request a tailored security or facility management proposal from OSSF for your site.",
+    "Request a tailored security guard or facility management proposal from OSSF for your site in Thane, Mumbai, Maharashtra or surrounding regions.",
   path: "/request-a-quote",
 });
 
@@ -31,20 +32,35 @@ export default function RequestQuotePage() {
               <h2 className="text-sm font-semibold text-navy-950">
                 Prefer to talk directly?
               </h2>
-              <div className="mt-4 space-y-3 text-sm text-ink-muted">
-                <div className="flex items-center gap-2.5">
-                  <Phone className="h-4 w-4 text-accent-500" aria-hidden="true" />
-                  {siteConfig.phone}
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Mail className="h-4 w-4 text-accent-500" aria-hidden="true" />
-                  {siteConfig.email}
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Clock className="h-4 w-4 text-accent-500" aria-hidden="true" />
-                  {siteConfig.businessHours}
-                </div>
-              </div>
+              <ul className="mt-4 space-y-3 text-sm text-ink-muted">
+                <li className="flex items-start gap-2.5">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+                  <span>
+                    <a href={telHref(siteConfig.phone)} className="hover:text-accent-600">
+                      {siteConfig.phone}
+                    </a>
+                    {" / "}
+                    <a href={telHref(siteConfig.phoneSecondary)} className="hover:text-accent-600">
+                      {siteConfig.phoneSecondary}
+                    </a>
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+                  <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-accent-600">
+                    {siteConfig.email}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+                  <span>
+                    Security operations: {siteConfig.businessHours.operations}
+                    <br />
+                    Office enquiries:{" "}
+                    {siteConfig.businessHours.officeEnquiries ?? <PendingConfirmation />}
+                  </span>
+                </li>
+              </ul>
             </div>
 
             <div className="rounded-xl border border-surface-border bg-white p-6">
@@ -52,9 +68,18 @@ export default function RequestQuotePage() {
                 What happens next
               </h2>
               <ol className="mt-4 space-y-3 text-sm text-ink-muted">
-                <li>1. We review your requirement and site details.</li>
-                <li>2. A short assessment call to confirm scope, if needed.</li>
-                <li>3. You receive a tailored proposal and deployment plan.</li>
+                {[
+                  "We review your requirement and site details.",
+                  "A short assessment call to confirm scope, if needed.",
+                  "You receive a tailored proposal and deployment plan.",
+                ].map((step, index) => (
+                  <li key={step} className="flex gap-3">
+                    <span className="font-display font-bold text-navy-400" aria-hidden="true">
+                      {index + 1}.
+                    </span>
+                    {step}
+                  </li>
+                ))}
               </ol>
             </div>
           </div>

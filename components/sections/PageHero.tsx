@@ -2,19 +2,19 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { cn } from "@/lib/utils/cn";
+import type { ImageSlot } from "@/lib/data/images";
 
 export function PageHero({
   eyebrow,
   title,
   description,
-  image = false,
-  imageLabel,
+  image,
 }: {
   eyebrow: string;
   title: string;
   description?: string;
-  image?: boolean;
-  imageLabel?: string;
+  /** Photography slot shown beside the heading on large screens. */
+  image?: ImageSlot;
 }) {
   const heading = (
     <>
@@ -44,9 +44,11 @@ export function PageHero({
             <div>{heading}</div>
             <div className="hidden lg:block">
               <PlaceholderImage
-                label={imageLabel ?? "OSSF photography"}
+                {...image}
                 ratio="aspect-[4/3]"
                 className="border-white/10"
+                priority
+                sizes="40vw"
               />
             </div>
           </div>

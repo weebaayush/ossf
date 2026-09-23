@@ -59,10 +59,17 @@ now wired into the site:
   lists on `/services`.
 
 **Still outstanding** — not in the supplied company profile, so still marked
-`[CLIENT CONFIRMATION REQUIRED]` in the UI:
+`[CLIENT CONFIRMATION REQUIRED]` in the UI (rendered by `components/ui/PendingConfirmation.tsx`):
 
 - **Office/enquiry business hours** (the profile confirms 24×365 *security operations*, but not a
-  reception/enquiry desk window) — Contact page and `lib/utils/site-config.ts`.
+  reception/enquiry desk window) — set `businessHours.officeEnquiries` in `lib/utils/site-config.ts`.
+- **Privacy Policy and Terms & Conditions** — basic drafts are written (describing the site as currently
+  built: the quote form is not connected to any provider). They are not lawyer-reviewed and await OSSF's
+  approval, so they stay `noindex` and out of the sitemap (remove them from `noIndexRoutes` in
+  `lib/utils/seo.ts` once approved). Update the Privacy Policy when a form/email provider is connected.
+- **Official logo** — see the Logo section below.
+- **Production domain** — `siteConfig.url` (`https://omshivsecurityforce.in`) drives canonical URLs,
+  the sitemap and Open Graph URLs; confirm it matches the domain the site will be deployed on.
 - **Real photography** — the site still uses labelled placeholder image slots (see Images below).
 - **Logo image files** for the clients shown on `/clients` — currently rendered as text badges
   since only flattened screenshots (not vector/transparent logo files) were supplied.
@@ -71,21 +78,40 @@ Search the codebase for `CLIENT CONFIRMATION REQUIRED` to find every remaining i
 
 ## Images
 
-No real OSSF photography was supplied, so `public/images/` contains a small placeholder SVG system
-(`placeholder.tsx` component + labelled folders per section: hero, services, industries, clients,
-about). Replace the referenced paths with real photography when it's available — the `<PlaceholderImage>`
-component and `next/image` usage are structured so a drop-in swap doesn't require touching layout code.
+No OSSF photography has been supplied yet. Every photography slot is registered in `lib/data/images.ts`
+and rendered by `components/ui/PlaceholderImage.tsx`. The slots currently use **licensed Unsplash stock
+photographs as background/atmosphere only** (loaded via `next/image`; `images.unsplash.com` is allowed in
+`next.config.mjs`). They do not depict OSSF staff, clients or sites and must never be captioned as such.
+Source, photographer and licence for each photo: `docs/image-sources.md`. To use approved OSSF photography,
+drop files in `public/images/<folder>/` and update the slot's `src`/`alt`/`credit` — see `public/images/README.md`.
+
+## Logo
+
+The official OSSF logo has not been supplied yet; the site shows an interim text mark (red tile + "OSSF").
+When the official logo arrives, replace:
+
+| What | File | How |
+| --- | --- | --- |
+| Header + footer logo | `components/ui/Logo.tsx` | Add the file to `public/brand/` and set `OFFICIAL_LOGO` (src, width, height) |
+| Favicon | `app/icon.svg` | Replace with the official mark (square, SVG or PNG — rename to `icon.png` if PNG) |
+| Apple touch icon | `app/apple-icon.png` | 180×180 PNG of the mark on a solid background |
+| Social share image | `public/images/og-image.png` (source: `og-image.svg`) | 1200×630 PNG including the official logo |
 
 ## Request a Quote form
 
 The form in `components/forms/RequestQuoteForm.tsx` posts through `lib/utils/submit-quote.ts`, a small
-abstraction that currently logs the payload and simulates a network call. Wire it to your chosen
-provider (e.g. an email API route, Formspree, Resend) by editing that one file — no other component
-needs to change.
+abstraction that currently **does not send anything** (it returns `delivered: false`). While
+`QUOTE_SUBMISSION_CONNECTED` is `false`, the form says so plainly and, after validation, gives the
+visitor a pre-filled email to send to the OSSF address (plus the phone number) instead of claiming the
+request was received. To go live: implement the provider call in `submitQuote` (return
+`{ ok: true, delivered: true }` on success) and set `QUOTE_SUBMISSION_CONNECTED = true` — no other
+component needs to change.
 
-## Notes
+## SEO
 
-This project was authored file-by-file in an environment without npm registry access, so `npm install`
-was not run by the author. Package versions in `package.json` are pinned to stable releases current as
-of the Next.js 14.x line. After `npm install`, run `npm run lint` and `npm run build`; if either surfaces
-an error, it's most likely a small typo rather than a structural issue — report it back for a quick fix.
+- Per-page titles, descriptions, canonical URLs, Open Graph and Twitter metadata via
+  `buildMetadata()` in `lib/utils/seo.ts`; site-wide defaults and LocalBusiness JSON-LD in
+  `app/layout.tsx`.
+- `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`.
+- Icons: `app/icon.svg` (favicon) and `app/apple-icon.png`; share image `public/images/og-image.png`.
+

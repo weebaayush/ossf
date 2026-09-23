@@ -9,11 +9,13 @@ import { ComplianceSection } from "@/components/sections/ComplianceSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { differentiators } from "@/lib/data/differentiators";
 import { buildMetadata } from "@/lib/utils/seo";
+import { siteConfig } from "@/lib/utils/site-config";
+import { imageSlots } from "@/lib/data/images";
 
 export const metadata: Metadata = buildMetadata({
   title: "About OSSF",
   description:
-    "Om Shiv Security Force (OSSF) provides security and facility management services built on trained personnel, structured supervision and statutory compliance.",
+    "Established in 2017 in Thane, Om Shiv Security Force (OSSF) provides security and facility management services built on trained personnel, structured supervision and statutory compliance.",
   path: "/about",
 });
 
@@ -23,11 +25,10 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Us · Established 2017"
+        eyebrow={`About Us · Established ${siteConfig.foundingYear}`}
         title="A security and facility management partner built on discipline"
         description="Om Shiv Security Force (OSSF) supports organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat and Daman with trained personnel, structured supervision and accountable service delivery."
-        image
-        imageLabel="OSSF leadership / operations"
+        image={imageSlots.aboutHero}
       />
 
       <Section tone="light">
@@ -48,7 +49,7 @@ export default function AboutPage() {
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={100}>
-            <PlaceholderImage label="OSSF operations / control room" ratio="aspect-[5/4]" />
+            <PlaceholderImage {...imageSlots.aboutOperations} ratio="aspect-[5/4]" />
           </RevealOnScroll>
         </div>
       </Section>
@@ -117,7 +118,7 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Workforce Philosophy"
               title="People are the foundation of every deployment"
-              description="Every OSSF personnel is expected to meet the same operational standard, regardless of site or sector."
+              description="All OSSF personnel are held to the same operational standard, regardless of site or sector."
             />
           </RevealOnScroll>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -142,7 +143,7 @@ export default function AboutPage() {
 
       <HowWeWork />
       <ComplianceSection />
-      <FinalCTA />
+      <FinalCTA secondary={{ href: "/services", label: "Explore our services" }} />
     </>
   );
 }

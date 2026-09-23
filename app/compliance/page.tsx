@@ -6,10 +6,11 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { complianceItems } from "@/lib/data/compliance";
 import { buildMetadata } from "@/lib/utils/seo";
+import Link from "next/link";
 import { Info } from "lucide-react";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Compliance",
+  title: "Compliance & Licensing",
   description:
     "OSSF operates under statutory compliance frameworks including PSARA licensing, GST, UDYAM, PF/EPF, ESIC, Professional Tax and Shops & Establishment registration.",
   path: "/compliance",
@@ -21,7 +22,7 @@ export default function CompliancePage() {
       <PageHero
         eyebrow="Compliance"
         title="Statutory compliance & licensing"
-        description="A private security agency's compliance posture is foundational to how it can legally operate. Here's the framework OSSF operates under, as provided in our company registration documentation."
+        description="The registrations and licences OSSF holds to operate as a private security agency in India, as listed in our company registration documentation."
       />
 
       <Section tone="light">
@@ -39,9 +40,9 @@ export default function CompliancePage() {
                   <item.icon className="h-5 w-5 text-accent-600" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-sm font-semibold text-navy-950">
+                  <h3 className="text-sm font-semibold text-navy-950">
                     {item.title}
-                  </h2>
+                  </h3>
                   <p className="mt-1 text-sm leading-relaxed text-ink-muted">
                     {item.description}
                   </p>
@@ -60,15 +61,15 @@ export default function CompliancePage() {
             Scanned certificate copies are not published on the website but
             are available to prospective and existing clients on request —
             contact us via the details on our{" "}
-            <a href="/contact" className="font-semibold underline">
+            <Link href="/contact" className="font-semibold underline">
               Contact page
-            </a>
+            </Link>
             .
           </p>
         </div>
       </Section>
 
-      <FinalCTA />
+      <FinalCTA secondary={{ href: "/contact", label: "Request certificate copies" }} />
     </>
   );
 }

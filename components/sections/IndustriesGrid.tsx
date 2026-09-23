@@ -20,7 +20,7 @@ export function IndustriesGrid() {
         tone="light"
       />
 
-      <div className="mt-12 grid grid-cols-2 gap-4 [grid-auto-flow:dense] sm:grid-cols-4 sm:auto-rows-[136px]">
+      <div className="mt-12 grid grid-cols-2 gap-4 [grid-auto-flow:dense] lg:grid-cols-4 lg:auto-rows-[minmax(136px,auto)]">
         {industries.map((industry, index) => {
           const isFeature = index === featureIndex;
           const isWide = wideIndices.has(index);
@@ -30,8 +30,8 @@ export function IndustriesGrid() {
               key={industry.slug}
               delay={index * 40}
               className={cn(
-                isFeature && "sm:col-span-2 sm:row-span-2",
-                isWide && "col-span-2 sm:row-span-1"
+                isFeature && "lg:col-span-2 lg:row-span-2",
+                isWide && "col-span-2"
               )}
             >
               <div

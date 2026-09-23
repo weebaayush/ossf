@@ -16,5 +16,4 @@ export const primaryNav: NavLink[] = [
 export const footerNav: NavLink[] = [
   ...primaryNav,
   { label: "Compliance", href: "/compliance" },
-  { label: "Request a Quote", href: "/request-a-quote" },
 ];

@@ -1,7 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { clientNames } from "@/lib/data/clients";
+import { ClientLogoWall } from "@/components/sections/ClientLogoWall";
 import { ArrowRight } from "lucide-react";
 
 export function ClientsTeaser() {
@@ -14,16 +14,7 @@ export function ClientsTeaser() {
         align="center"
       />
 
-      <div className="mx-auto mt-12 flex max-w-4xl flex-wrap items-baseline justify-center gap-x-8 gap-y-5 border-y border-surface-border py-10">
-        {clientNames.slice(0, 14).map((client) => (
-          <span
-            key={client.name}
-            className="font-display text-lg font-semibold text-navy-300 transition-colors hover:text-navy-950 sm:text-xl"
-          >
-            {client.name}
-          </span>
-        ))}
-      </div>
+      <ClientLogoWall limit={8} className="mt-12" />
 
       <div className="mt-10 flex justify-center">
         <Button href="/clients" variant="secondary">

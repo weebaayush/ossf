@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/utils/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Why OSSF",
   description:
-    "Verified operational differentiators: police-verified, professionally trained personnel, statutory compliance, 24x7 support, supervision and immediate manpower replacement.",
+    "Why organizations choose OSSF: police-verified, professionally trained security personnel, ex-servicemen in the workforce, 24×365 operations, regular supervision and customized deployment.",
   path: "/why-ossf",
 });
 
@@ -17,12 +17,12 @@ export default function WhyOSSFPage() {
     <>
       <PageHero
         eyebrow="Why OSSF"
-        title="Operational differentiators, not marketing claims"
-        description="What clients can expect from OSSF on every deployment — grounded in how the company actually operates."
+        title="The standards behind every deployment"
+        description="What clients can expect from OSSF personnel and supervision on every site, as set out in our company profile."
       />
       <WhyOSSF showAll />
       <HowWeWork />
-      <FinalCTA />
+      <FinalCTA secondary={{ href: "/compliance", label: "View our compliance & licensing" }} />
     </>
   );
 }

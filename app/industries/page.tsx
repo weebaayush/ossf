@@ -7,9 +7,9 @@ import { industries } from "@/lib/data/industries";
 import { buildMetadata } from "@/lib/utils/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Industries",
+  title: "Industries We Serve",
   description:
-    "OSSF supports industrial units, corporate offices, residential complexes, hotels, hospitals, warehouses, educational institutions, shopping complexes and government organizations.",
+    "Industrial, corporate, residential and institutional security from OSSF — serving industrial units, corporate offices, residential complexes, hotels, hospitals, warehouses, schools, shopping complexes and government organizations.",
   path: "/industries",
 });
 
@@ -50,7 +50,7 @@ export default function IndustriesPage() {
         </div>
       </Section>
 
-      <FinalCTA />
+      <FinalCTA secondary={{ href: "/why-ossf", label: "Why organizations choose OSSF" }} />
     </>
   );
 }

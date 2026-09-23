@@ -1,10 +1,11 @@
-# Image placeholders
+# Images
 
-No real OSSF photography was supplied, so the site currently renders labelled
-placeholder boxes (see `components/ui/PlaceholderImage.tsx`) instead of actual
-photos. This keeps layout, aspect ratios and responsive behaviour final while
-making it obvious, in the UI itself, exactly which slots still need real
-images.
+No OSSF photography has been supplied yet. The photo slots currently use
+**licensed Unsplash stock photographs as background/atmosphere only** — they do
+not show OSSF staff, clients or sites. Sources, photographers and licence
+details for every photo are in `docs/image-sources.md` (and the `credit` field
+of each slot in `lib/data/images.ts`). A slot with no `src` falls back to a
+labelled placeholder panel (`components/ui/PlaceholderImage.tsx`).
 
 Suggested folders for real photography, once available:
 
@@ -17,20 +18,18 @@ Suggested folders for real photography, once available:
 - `clients/` — approved client logos only, once explicitly cleared for
   public display
 
-To swap a placeholder for a real photo, replace the `<PlaceholderImage />`
-usage with `next/image`, e.g.:
+Every photography slot is listed in `lib/data/images.ts`. To replace a
+stock photo with a real, client-approved OSSF photo:
 
-```tsx
-import Image from "next/image";
+1. Add the file to the matching folder here, e.g. `hero/site-01.jpg`.
+2. In `lib/data/images.ts`, set that slot's `src` (e.g. `"/images/hero/site-01.jpg"`)
+   and update its `alt` (describe what the photo actually shows) and `credit`.
 
-<Image
-  src="/images/hero/site-01.jpg"
-  alt="OSSF security personnel on patrol at a client site"
-  fill
-  className="object-cover"
-  priority
-/>
-```
+`PlaceholderImage` then renders the photo through `next/image` in the same
+frame (same aspect ratio and cropping) — no layout or component changes.
+Only use photos the client has approved; do not use stock photos presented
+as OSSF personnel.
 
-`og-image.svg` is a simple generated placeholder for social share previews —
-replace with a real branded 1200×630 image when available.
+`og-image.png` (1200×630) is the social share image used by every page; it is
+rendered from `og-image.svg`. Replace the PNG with a branded, photo-based
+version when available (keep the same file name and size).

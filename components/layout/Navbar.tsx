@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
 import { primaryNav } from "@/lib/data/nav";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
@@ -12,6 +13,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -25,13 +27,24 @@ export function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
 
   const solid = scrolled || open;
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
@@ -48,33 +61,24 @@ export function Navbar() {
           className="flex items-center gap-2.5 text-white"
           aria-label="OSSF — Om Shiv Security Force home"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent-500">
-            <ShieldCheck className="h-5 w-5 text-white" aria-hidden="true" />
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="text-sm font-bold tracking-wide">OSSF</span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-[0.14em] text-white/60 sm:block">
-              Om Shiv Security Force
-            </span>
-          </span>
+          <Logo variant="nav" />
         </Link>
 
         <nav
-          className="hidden items-center gap-8 lg:flex"
+          className="hidden items-center gap-5 lg:flex xl:gap-8"
           aria-label="Primary navigation"
         >
           {primaryNav.map((link) => {
-            const isActive =
-              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "link-underline text-sm font-medium transition-colors",
-                  isActive ? "text-white" : "text-white/75 hover:text-white"
+                  "link-underline whitespace-nowrap text-sm font-medium transition-colors",
+                  active ? "text-white after:w-full" : "text-white/75 hover:text-white"
                 )}
-                aria-current={isActive ? "page" : undefined}
+                aria-current={active ? "page" : undefined}
               >
                 {link.label}
               </Link>
@@ -83,34 +87,53 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href="/request-a-quote" size="md">
+          <Button href="/request-a-quote" size="md" className="whitespace-nowrap">
             Request a Quote
           </Button>
         </div>
 
         <button
+          ref={toggleRef}
           type="button"
           onClick={() => setOpen((v) => !v)}
+          aria-controls="mobile-menu"
           className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? (
+            <X className="h-6 w-6" aria-hidden="true" />
+          ) : (
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          )}
         </button>
       </div>
 
       {open ? (
-        <div className="border-t border-white/10 bg-navy-950 px-5 pb-6 pt-2 lg:hidden">
+        <div
+          id="mobile-menu"
+          className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-white/10 bg-navy-950 px-5 pb-6 pt-2 sm:px-8 lg:hidden"
+        >
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
-            {primaryNav.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-md px-2 py-3 text-base font-medium text-white/85 hover:bg-white/5 hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {primaryNav.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "flex items-center rounded-md border-l-2 px-3 py-3 text-base font-medium hover:bg-white/5 hover:text-white",
+                    active
+                      ? "border-accent-500 bg-white/[0.04] text-white"
+                      : "border-transparent text-white/80"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
           <Button href="/request-a-quote" className="mt-4 w-full">
             Request a Quote

@@ -12,8 +12,8 @@ export function ComplianceSection() {
         <div>
           <SectionHeading
             eyebrow="Compliance"
-            title="Operating under statutory compliance"
-            description="OSSF maintains registration and compliance across the frameworks that govern private security operations in India — verifiable, not incidental."
+            title="Licensed and statutorily compliant"
+            description="OSSF holds the licence and registrations required to operate as a private security agency in India. Registration numbers are listed on our compliance page."
             tone="light"
           />
           <Button href="/compliance" variant="outline-light" className="mt-8">

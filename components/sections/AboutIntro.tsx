@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { imageSlots } from "@/lib/data/images";
 
 const points = [
   "Police-verified, professionally trained personnel",
@@ -17,7 +18,7 @@ export function AboutIntro() {
     <Section tone="light">
       <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
         <RevealOnScroll>
-          <PlaceholderImage label="OSSF team on-site" ratio="aspect-[5/4]" />
+          <PlaceholderImage {...imageSlots.homeAbout} ratio="aspect-[5/4]" />
         </RevealOnScroll>
         <RevealOnScroll delay={100}>
           <SectionHeading
