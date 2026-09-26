@@ -42,16 +42,25 @@ export function LegalDocument({
           </p>
           <p className="mt-3 text-sm">
             Phone:{" "}
-            <a href={telHref(siteConfig.phone)} className="font-medium text-navy-950 hover:text-accent-600">
+            <a
+              href={telHref(siteConfig.phone)}
+              className="font-medium text-navy-950 hover:text-accent-600"
+            >
               {siteConfig.phone}
             </a>
             {" / "}
-            <a href={telHref(siteConfig.phoneSecondary)} className="font-medium text-navy-950 hover:text-accent-600">
+            <a
+              href={telHref(siteConfig.phoneSecondary)}
+              className="font-medium text-navy-950 hover:text-accent-600"
+            >
               {siteConfig.phoneSecondary}
             </a>
             <br />
             Email:{" "}
-            <a href={`mailto:${siteConfig.email}`} className="break-all font-medium text-navy-950 hover:text-accent-600">
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="break-all font-medium text-navy-950 hover:text-accent-600"
+            >
               {siteConfig.email}
             </a>
           </p>

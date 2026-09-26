@@ -23,9 +23,7 @@ export function PageHero({
         {title}
       </h1>
       {description ? (
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
-          {description}
-        </p>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">{description}</p>
       ) : null}
     </>
   );

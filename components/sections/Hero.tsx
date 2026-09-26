@@ -33,10 +33,9 @@ export function Hero() {
               Security and facility management, run with operational discipline.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-              Om Shiv Security Force deploys trained, police-verified
-              personnel — including ex-servicemen — across industrial,
-              corporate, residential and institutional sites in Maharashtra,
-              Mumbai, Thane, Goa, Gujarat and Daman.
+              Om Shiv Security Force deploys trained, police-verified personnel — including
+              ex-servicemen — across industrial, corporate, residential and institutional sites in
+              Maharashtra, Mumbai, Thane, Goa, Gujarat and Daman.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Button href="/request-a-quote" size="lg">
@@ -56,7 +55,10 @@ export function Hero() {
             </span>
             <dl className="mt-5 divide-y divide-white/10">
               {atAGlance.map((item) => (
-                <div key={item.label} className="flex items-baseline justify-between py-3.5 first:pt-0 last:pb-0">
+                <div
+                  key={item.label}
+                  className="flex items-baseline justify-between py-3.5 first:pt-0 last:pb-0"
+                >
                   <dt className="text-sm text-white/60">{item.label}</dt>
                   <dd className="text-lg font-semibold text-white">{item.value}</dd>
                 </div>

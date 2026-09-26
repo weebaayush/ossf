@@ -26,7 +26,12 @@
 //    OSSF should check it. Clients whose sector isn't evident from the
 //    profile are under "Commercial & Others".
 
-export type ClientCategory = "real-estate" | "healthcare" | "education" | "industrial" | "commercial";
+export type ClientCategory =
+  | "real-estate"
+  | "healthcare"
+  | "education"
+  | "industrial"
+  | "commercial";
 
 export const clientCategories: { id: ClientCategory; label: string }[] = [
   { id: "real-estate", label: "Real Estate & Builders" },
@@ -51,39 +56,123 @@ export type Client = {
 
 /** Display order: company-profile showcase order, logo clients first. */
 export const clients: Client[] = [
-  { name: "Lodha", category: "real-estate", logo: { src: "/images/clients/lodha.svg", width: 299, height: 47 } },
-  { name: "Kalpataru", category: "real-estate", logo: { src: "/images/clients/kalpataru.svg", width: 455, height: 90 } },
-  { name: "KIMS Hospitals", category: "healthcare", logo: { src: "/images/clients/kims-hospitals.webp", width: 280, height: 120 } },
-  { name: "Runwal Realty", category: "real-estate", logo: { src: "/images/clients/runwal-realty.svg", width: 101, height: 131 } },
-  { name: "Marathon Realty Advisors", category: "real-estate", logo: { src: "/images/clients/marathon-realty-advisors.webp", width: 280, height: 131 } },
-  { name: "B and R Bridge & Roof Co. (India) Ltd.", category: "industrial", logo: { src: "/images/clients/b-and-r-bridge-roof.webp", width: 120, height: 150 } },
-  { name: "Puraniks", category: "real-estate", logo: { src: "/images/clients/puraniks.webp", width: 280, height: 54 } },
-  { name: "Roma Builders & Promoters", category: "real-estate", logo: { src: "/images/clients/roma-builders.webp", width: 137, height: 140 } },
-  { name: "Sudhir", category: "industrial", logo: { src: "/images/clients/sudhir.webp", width: 346, height: 76 } },
+  {
+    name: "Lodha",
+    category: "real-estate",
+    logo: { src: "/images/clients/lodha.svg", width: 299, height: 47 },
+  },
+  {
+    name: "Kalpataru",
+    category: "real-estate",
+    logo: { src: "/images/clients/kalpataru.svg", width: 455, height: 90 },
+  },
+  {
+    name: "KIMS Hospitals",
+    category: "healthcare",
+    logo: { src: "/images/clients/kims-hospitals.webp", width: 280, height: 120 },
+  },
+  {
+    name: "Runwal Realty",
+    category: "real-estate",
+    logo: { src: "/images/clients/runwal-realty.svg", width: 101, height: 131 },
+  },
+  {
+    name: "Marathon Realty Advisors",
+    category: "real-estate",
+    logo: { src: "/images/clients/marathon-realty-advisors.webp", width: 280, height: 131 },
+  },
+  {
+    name: "B and R Bridge & Roof Co. (India) Ltd.",
+    category: "industrial",
+    logo: { src: "/images/clients/b-and-r-bridge-roof.webp", width: 120, height: 150 },
+  },
+  {
+    name: "Puraniks",
+    category: "real-estate",
+    logo: { src: "/images/clients/puraniks.webp", width: 280, height: 54 },
+  },
+  {
+    name: "Roma Builders & Promoters",
+    category: "real-estate",
+    logo: { src: "/images/clients/roma-builders.webp", width: 137, height: 140 },
+  },
+  {
+    name: "Sudhir",
+    category: "industrial",
+    logo: { src: "/images/clients/sudhir.webp", width: 346, height: 76 },
+  },
   // Not in the company profile's logo pages — logo taken from the official
   // site of the organisation with this name. CLIENT CONFIRMATION REQUIRED:
   // OSSF to confirm it is the same client.
-  { name: "The Blue Roof Club", category: "commercial", logo: { src: "/images/clients/the-blue-roof-club.webp", width: 203, height: 140 } },
-  { name: "New Horizon School", category: "education", logo: { src: "/images/clients/new-horizon-school.webp", width: 142, height: 140 } },
+  {
+    name: "The Blue Roof Club",
+    category: "commercial",
+    logo: { src: "/images/clients/the-blue-roof-club.webp", width: 203, height: 140 },
+  },
+  {
+    name: "New Horizon School",
+    category: "education",
+    logo: { src: "/images/clients/new-horizon-school.webp", width: 142, height: 140 },
+  },
   // Logo source URLs for the four clients below were supplied by the site
   // owner (26-09-2026); see docs/image-sources.md. The Systematic logo is
   // white, so it sits on a navy tile. "Ehta" in the company profile is a
   // typo for Ekta.
-  { name: "Systematic Group of Companies", category: "commercial", logo: { src: "/images/clients/systematic-group.webp", width: 236, height: 78 } },
-  { name: "Woodstock School", category: "education", logo: { src: "/images/clients/woodstock-school.webp", width: 141, height: 141 } },
-  { name: "LA Homes Estates", category: "real-estate", logo: { src: "/images/clients/la-homes-estates.webp", width: 426, height: 141 } },
-  { name: "Ekta Realtors Builders & Developers", category: "real-estate", logo: { src: "/images/clients/ekta-world.webp", width: 412, height: 133 } },
+  {
+    name: "Systematic Group of Companies",
+    category: "commercial",
+    logo: { src: "/images/clients/systematic-group.webp", width: 236, height: 78 },
+  },
+  {
+    name: "Woodstock School",
+    category: "education",
+    logo: { src: "/images/clients/woodstock-school.webp", width: 141, height: 141 },
+  },
+  {
+    name: "LA Homes Estates",
+    category: "real-estate",
+    logo: { src: "/images/clients/la-homes-estates.webp", width: 426, height: 141 },
+  },
+  {
+    name: "Ekta Realtors Builders & Developers",
+    category: "real-estate",
+    logo: { src: "/images/clients/ekta-world.webp", width: 412, height: 133 },
+  },
   // No official website/logo file could be found for the clients below, so
   // their logos are taken from the OSSF company profile's client-showcase
   // page (cleaned up and enlarged 2x). They are lower resolution than the
   // official logos above. CLIENT CONFIRMATION REQUIRED: replace each with the
   // client's original logo file (SVG / high-res PNG) when OSSF obtains it.
-  { name: "Sharma Realty", category: "real-estate", logo: { src: "/images/clients/sharma-realty.webp", width: 290, height: 182 } },
-  { name: "Sairaj Builders And Developers", category: "real-estate", logo: { src: "/images/clients/sairaj-builders.webp", width: 376, height: 338 } },
-  { name: "Sai Balaji Enterprises", category: "commercial", logo: { src: "/images/clients/sai-balaji-enterprises.webp", width: 372, height: 338 } },
-  { name: "Shree Balaji Properties and Builders", category: "real-estate", logo: { src: "/images/clients/shree-balaji-properties.webp", width: 286, height: 206 } },
-  { name: "Kaya Enterprises", category: "commercial", logo: { src: "/images/clients/kaya-enterprises.webp", width: 416, height: 348 } },
-  { name: "Gaurav Promoters and Builder", category: "real-estate", logo: { src: "/images/clients/gaurav-promoters.webp", width: 342, height: 344 } },
+  {
+    name: "Sharma Realty",
+    category: "real-estate",
+    logo: { src: "/images/clients/sharma-realty.webp", width: 290, height: 182 },
+  },
+  {
+    name: "Sairaj Builders And Developers",
+    category: "real-estate",
+    logo: { src: "/images/clients/sairaj-builders.webp", width: 376, height: 338 },
+  },
+  {
+    name: "Sai Balaji Enterprises",
+    category: "commercial",
+    logo: { src: "/images/clients/sai-balaji-enterprises.webp", width: 372, height: 338 },
+  },
+  {
+    name: "Shree Balaji Properties and Builders",
+    category: "real-estate",
+    logo: { src: "/images/clients/shree-balaji-properties.webp", width: 286, height: 206 },
+  },
+  {
+    name: "Kaya Enterprises",
+    category: "commercial",
+    logo: { src: "/images/clients/kaya-enterprises.webp", width: 416, height: 348 },
+  },
+  {
+    name: "Gaurav Promoters and Builder",
+    category: "real-estate",
+    logo: { src: "/images/clients/gaurav-promoters.webp", width: 342, height: 344 },
+  },
   // No official logo file could be verified for the clients below, so they
   // appear as name cards. Add `logo` once OSSF obtains the original files.
   { name: "Waldorf", category: "commercial" },
@@ -92,8 +181,8 @@ export const clients: Client[] = [
 ];
 
 /** Clients that have a logo, in display order (used by the homepage teaser). */
-export const logoClients = clients.filter(
-  (client): client is Client & { logo: ClientLogo } => Boolean(client.logo)
+export const logoClients = clients.filter((client): client is Client & { logo: ClientLogo } =>
+  Boolean(client.logo)
 );
 
 export const clientShowcaseNote =

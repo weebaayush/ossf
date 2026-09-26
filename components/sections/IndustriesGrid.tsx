@@ -29,10 +29,7 @@ export function IndustriesGrid() {
             <RevealOnScroll
               key={industry.slug}
               delay={index * 40}
-              className={cn(
-                isFeature && "lg:col-span-2 lg:row-span-2",
-                isWide && "col-span-2"
-              )}
+              className={cn(isFeature && "lg:col-span-2 lg:row-span-2", isWide && "col-span-2")}
             >
               <div
                 className={cn(
@@ -42,10 +39,7 @@ export function IndustriesGrid() {
               >
                 <div className={cn(isWide && "sm:flex sm:items-center sm:gap-4")}>
                   <industry.icon
-                    className={cn(
-                      "text-accent-500",
-                      isFeature ? "h-7 w-7" : "h-5 w-5"
-                    )}
+                    className={cn("text-accent-500", isFeature ? "h-7 w-7" : "h-5 w-5")}
                     aria-hidden="true"
                   />
                   <h3

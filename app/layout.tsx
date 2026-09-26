@@ -71,11 +71,7 @@ const organizationJsonLd = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body className="flex min-h-screen flex-col font-sans">
@@ -95,7 +91,11 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Navbar />
-        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className="flex-1 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+        >
           {children}
         </main>
         <Footer />

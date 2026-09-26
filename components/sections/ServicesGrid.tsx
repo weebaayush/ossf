@@ -41,12 +41,8 @@ export function ServicesGrid() {
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-600">
                 Core Offering
               </span>
-              <h3 className="mt-2 text-xl font-semibold text-navy-950">
-                {flagship.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                {flagship.description}
-              </p>
+              <h3 className="mt-2 text-xl font-semibold text-navy-950">{flagship.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{flagship.description}</p>
               <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 transition-transform group-hover:translate-x-0.5">
                 Learn more
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -66,9 +62,7 @@ export function ServicesGrid() {
                   {String(index + 2).padStart(2, "0")}
                 </span>
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold text-navy-950">
-                    {service.title}
-                  </h3>
+                  <h3 className="text-base font-semibold text-navy-950">{service.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
                     {service.shortDescription}
                   </p>

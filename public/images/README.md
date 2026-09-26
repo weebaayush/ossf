@@ -15,8 +15,8 @@ Suggested folders for real photography, once available:
   section
 - `services/` — supporting imagery per service category (optional)
 - `industries/` — supporting imagery per sector (optional)
-- `clients/` — approved client logos only, once explicitly cleared for
-  public display
+- `clients/` — client logos shown on `/clients` (sources in
+  `docs/image-sources.md`)
 
 Every photography slot is listed in `lib/data/images.ts`. To replace a
 stock photo with a real, client-approved OSSF photo:
@@ -30,6 +30,6 @@ frame (same aspect ratio and cropping) — no layout or component changes.
 Only use photos the client has approved; do not use stock photos presented
 as OSSF personnel.
 
-`og-image.png` (1200×630) is the social share image used by every page; it is
-rendered from `og-image.svg`. Replace the PNG with a branded, photo-based
-version when available (keep the same file name and size).
+`og-image.png` (1200×630) is the social share image used by every page (the
+official logo on the brand blue). To change it, replace the PNG and keep the
+same file name and size.

@@ -11,7 +11,7 @@ import {
 import { siteConfig, telHref } from "@/lib/utils/site-config";
 import { cn } from "@/lib/utils/cn";
 
-type Status = "idle" | "submitting" | "sent" | "not-sent" | "error";
+type Status = "idle" | "submitting" | "sent" | "email-ready" | "error";
 type FieldName = keyof QuoteFormPayload;
 type FieldErrors = Partial<Record<FieldName, string>>;
 
@@ -49,7 +49,11 @@ function validate(form: QuoteFormPayload): FieldErrors {
   const phoneDigits = form.phone.replace(/\D/g, "");
   if (!form.phone.trim()) {
     errors.phone = "Please enter a contact number.";
-  } else if (!/^[+\d][\d\s()-]*$/.test(form.phone.trim()) || phoneDigits.length < 10 || phoneDigits.length > 13) {
+  } else if (
+    !/^[+\d][\d\s()-]*$/.test(form.phone.trim()) ||
+    phoneDigits.length < 10 ||
+    phoneDigits.length > 13
+  ) {
     errors.phone = "Please enter a valid phone number (at least 10 digits).";
   }
 
@@ -139,7 +143,7 @@ export function RequestQuoteForm() {
   const inFlight = useRef(false);
 
   useEffect(() => {
-    if (status === "sent" || status === "not-sent") {
+    if (status === "sent" || status === "email-ready") {
       resultHeadingRef.current?.focus();
     }
   }, [status]);
@@ -156,7 +160,10 @@ export function RequestQuoteForm() {
   }
 
   function fieldProps(key: FieldName, hint?: boolean) {
-    const describedBy = [errors[key] ? `${key}-error` : null, hint && !errors[key] ? `${key}-hint` : null]
+    const describedBy = [
+      errors[key] ? `${key}-error` : null,
+      hint && !errors[key] ? `${key}-hint` : null,
+    ]
       .filter(Boolean)
       .join(" ");
     return {
@@ -188,8 +195,6 @@ export function RequestQuoteForm() {
       return;
     }
 
-    inFlight.current = true;
-    setStatus("submitting");
     const payload: QuoteFormPayload = {
       ...form,
       name: form.name.trim(),
@@ -200,6 +205,18 @@ export function RequestQuoteForm() {
       message: form.message.trim(),
     };
 
+    // Email mode: open the visitor's email app with the request filled in,
+    // addressed to OSSF. The visitor sends it from there.
+    if (!QUOTE_SUBMISSION_CONNECTED) {
+      setSubmitted(payload);
+      setStatus("email-ready");
+      window.location.href = buildMailto(payload);
+      return;
+    }
+
+    inFlight.current = true;
+    setStatus("submitting");
+
     try {
       const result = await submitQuote(payload);
       if (!result.ok) {
@@ -209,9 +226,10 @@ export function RequestQuoteForm() {
         setForm(initialForm);
         setStatus("sent");
       } else {
-        // Not delivered: keep what the visitor typed so nothing is lost.
+        // Provider did not deliver it: fall back to email with the details kept.
         setSubmitted(payload);
-        setStatus("not-sent");
+        setStatus("email-ready");
+        window.location.href = buildMailto(payload);
       }
     } catch {
       setStatus("error");
@@ -224,14 +242,21 @@ export function RequestQuoteForm() {
 
   if (status === "sent" && submitted) {
     return (
-      <div className="flex flex-col items-center rounded-xl border border-surface-border bg-white p-10 text-center" role="status">
+      <div
+        className="flex flex-col items-center rounded-xl border border-surface-border bg-white p-10 text-center"
+        role="status"
+      >
         <CheckCircle2 className="h-10 w-10 text-accent-500" aria-hidden="true" />
-        <h2 ref={resultHeadingRef} tabIndex={-1} className="mt-4 text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+        <h2
+          ref={resultHeadingRef}
+          tabIndex={-1}
+          className="mt-4 text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+        >
           Request sent
         </h2>
         <p className="mt-2 max-w-sm text-sm text-ink-muted">
-          Thank you, {submitted.name}. Our team will review your requirement and
-          contact you at {submitted.email} or {submitted.phone}.
+          Thank you, {submitted.name}. Our team will review your requirement and contact you at{" "}
+          {submitted.email} or {submitted.phone}.
         </p>
         <button
           type="button"
@@ -244,17 +269,30 @@ export function RequestQuoteForm() {
     );
   }
 
-  if (status === "not-sent" && submitted) {
+  if (status === "email-ready" && submitted) {
     return (
       <div className="rounded-xl border border-surface-border bg-white p-6 sm:p-8" role="status">
-        <h2 ref={resultHeadingRef} tabIndex={-1} className="text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
-          One more step: send your request by email
+        <h2
+          ref={resultHeadingRef}
+          tabIndex={-1}
+          className="text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+        >
+          Your request is ready — just press Send
         </h2>
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-muted">
-          Online form submission isn&apos;t connected on this website yet, so
-          your details have <strong className="font-semibold text-navy-950">not</strong>{" "}
-          been sent. We&apos;ve prepared an email with everything you entered —
-          send it to {siteConfig.email}, or call us directly.
+          We&apos;ve opened your email app with your request addressed to {siteConfig.email}. Press{" "}
+          <strong className="font-semibold text-navy-950">Send</strong> there and our team will get
+          back to you.
+        </p>
+        <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-muted">
+          Email app didn&apos;t open? Use the button below, email us at{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="font-medium text-navy-950 underline hover:text-accent-600"
+          >
+            {siteConfig.email}
+          </a>
+          , or call us.
         </p>
 
         <dl className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 rounded-lg bg-surface-subtle p-5 text-sm sm:grid-cols-2">
@@ -277,7 +315,7 @@ export function RequestQuoteForm() {
             className="inline-flex items-center justify-center gap-2 rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-600"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
-            Email this request
+            Open email again
           </a>
           <a
             href={telHref(siteConfig.phone)}
@@ -323,28 +361,56 @@ export function RequestQuoteForm() {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field id="name" label="Name" required error={errors.name}>
-          <input {...fieldProps("name")} type="text" autoComplete="name" required
-            onChange={(e) => updateField("name", e.target.value)} />
+          <input
+            {...fieldProps("name")}
+            type="text"
+            autoComplete="name"
+            required
+            onChange={(e) => updateField("name", e.target.value)}
+          />
         </Field>
 
         <Field id="company" label="Company / Society" required error={errors.company}>
-          <input {...fieldProps("company")} type="text" autoComplete="organization" required
-            onChange={(e) => updateField("company", e.target.value)} />
+          <input
+            {...fieldProps("company")}
+            type="text"
+            autoComplete="organization"
+            required
+            onChange={(e) => updateField("company", e.target.value)}
+          />
         </Field>
 
         <Field id="phone" label="Phone" required error={errors.phone}>
-          <input {...fieldProps("phone")} type="tel" inputMode="tel" autoComplete="tel" required
-            onChange={(e) => updateField("phone", e.target.value)} />
+          <input
+            {...fieldProps("phone")}
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            required
+            onChange={(e) => updateField("phone", e.target.value)}
+          />
         </Field>
 
         <Field id="email" label="Email" required error={errors.email}>
-          <input {...fieldProps("email")} type="email" autoComplete="email" required
-            onChange={(e) => updateField("email", e.target.value)} />
+          <input
+            {...fieldProps("email")}
+            type="email"
+            autoComplete="email"
+            required
+            onChange={(e) => updateField("email", e.target.value)}
+          />
         </Field>
 
-        <Field id="serviceRequired" label="Service Required" required error={errors.serviceRequired}>
+        <Field
+          id="serviceRequired"
+          label="Service Required"
+          required
+          error={errors.serviceRequired}
+        >
           <div className="relative">
-            <select {...fieldProps("serviceRequired")} required
+            <select
+              {...fieldProps("serviceRequired")}
+              required
               onChange={(e) => updateField("serviceRequired", e.target.value)}
               className={cn(fieldProps("serviceRequired").className, "appearance-none pr-10")}
             >
@@ -363,15 +429,33 @@ export function RequestQuoteForm() {
           </div>
         </Field>
 
-        <Field id="location" label="Site Location" required error={errors.location} hint="City or site address">
-          <input {...fieldProps("location", true)} type="text" autoComplete="address-level2" required
-            onChange={(e) => updateField("location", e.target.value)} />
+        <Field
+          id="location"
+          label="Site Location"
+          required
+          error={errors.location}
+          hint="City or site address"
+        >
+          <input
+            {...fieldProps("location", true)}
+            type="text"
+            autoComplete="address-level2"
+            required
+            onChange={(e) => updateField("location", e.target.value)}
+          />
         </Field>
       </div>
 
       <div className="mt-5">
-        <Field id="message" label="Requirement details" hint="Number of personnel, shift pattern, site type, start date — anything that helps us scope the proposal.">
-          <textarea {...fieldProps("message", true)} rows={5} maxLength={2000}
+        <Field
+          id="message"
+          label="Requirement details"
+          hint="Number of personnel, shift pattern, site type, start date — anything that helps us scope the proposal."
+        >
+          <textarea
+            {...fieldProps("message", true)}
+            rows={5}
+            maxLength={2000}
             onChange={(e) => updateField("message", e.target.value)}
             className={cn(fieldProps("message").className, "resize-y")}
           />
@@ -379,7 +463,10 @@ export function RequestQuoteForm() {
       </div>
 
       {status === "error" ? (
-        <div role="alert" className="mt-5 flex items-start gap-2.5 rounded-md border border-accent-100 bg-accent-50 px-4 py-3 text-sm text-accent-700">
+        <div
+          role="alert"
+          className="mt-5 flex items-start gap-2.5 rounded-md border border-accent-100 bg-accent-50 px-4 py-3 text-sm text-accent-700"
+        >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           <span>
             We couldn&apos;t submit your request. Please try again, or email{" "}
@@ -399,24 +486,36 @@ export function RequestQuoteForm() {
         >
           {submitting ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-              {QUOTE_SUBMISSION_CONNECTED ? "Submitting…" : "Checking…"}
+              <Loader2
+                className="h-4 w-4 animate-spin motion-reduce:animate-none"
+                aria-hidden="true"
+              />
+              Submitting…
             </>
           ) : QUOTE_SUBMISSION_CONNECTED ? (
             "Submit Request"
           ) : (
-            "Continue to Send"
+            <>
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              Email this request
+            </>
           )}
         </button>
         <p className="text-xs text-ink-soft sm:text-right">
-          <span className="text-accent-600" aria-hidden="true">*</span> Required fields
+          <span className="text-accent-600" aria-hidden="true">
+            *
+          </span>{" "}
+          Required fields
         </p>
       </div>
 
-      <p id="quote-form-note" className="mt-4 border-t border-surface-border pt-4 text-xs leading-relaxed text-ink-soft">
+      <p
+        id="quote-form-note"
+        className="mt-4 border-t border-surface-border pt-4 text-xs leading-relaxed text-ink-soft"
+      >
         {QUOTE_SUBMISSION_CONNECTED
           ? "We use your details only to respond to this enquiry."
-          : `Online submission is being set up. After you continue, we'll prepare an email with your details for you to send to ${siteConfig.email}. We use your details only to respond to this enquiry.`}
+          : `This opens your email app with your details filled in, ready to send to ${siteConfig.email}. We use your details only to respond to this enquiry.`}
       </p>
     </form>
   );

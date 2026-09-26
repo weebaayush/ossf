@@ -40,12 +40,10 @@ export default function AboutPage() {
               description="Established in 2017, OSSF is a professionally managed security services organization providing security and facility management services to industrial units, corporate offices, residential complexes, commercial establishments, hotels, construction sites, educational institutions, hospitals, warehouses, shopping complexes and government organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat, Daman and surrounding regions."
             />
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">
-              Our strength lies in our experienced workforce, including
-              personnel from the retired defence services alongside highly
-              trained security professionals. Every team member is carefully
-              selected, professionally trained, and committed to maintaining
-              the highest standards of discipline, integrity and
-              professionalism.
+              Our strength lies in our experienced workforce, including personnel from the retired
+              defence services alongside highly trained security professionals. Every team member is
+              carefully selected, professionally trained, and committed to maintaining the highest
+              standards of discipline, integrity and professionalism.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={100}>
@@ -65,47 +63,37 @@ export default function AboutPage() {
         <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
           <RevealOnScroll>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">
-                Security Operations
-              </h3>
+              <h3 className="text-sm font-semibold text-navy-950">Security Operations</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Personnel deployment, patrolling, access control, crowd
-                management and emergency response — backed by daily occurrence
-                and shift handover reporting.
+                Personnel deployment, patrolling, access control, crowd management and emergency
+                response — backed by daily occurrence and shift handover reporting.
               </p>
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={60}>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">
-                Consulting & Assessment
-              </h3>
+              <h3 className="text-sm font-semibold text-navy-950">Consulting & Assessment</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Security consulting, electronic surveillance consultation and
-                risk assessment services to shape the right deployment plan.
+                Security consulting, electronic surveillance consultation and risk assessment
+                services to shape the right deployment plan.
               </p>
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={120}>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">
-                Facility Support
-              </h3>
+              <h3 className="text-sm font-semibold text-navy-950">Facility Support</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Facility support services and office management support that
-                work alongside on-site security teams.
+                Facility support services and office management support that work alongside on-site
+                security teams.
               </p>
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={180}>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">
-                Supervision & Quality Control
-              </h3>
+              <h3 className="text-sm font-semibold text-navy-950">Supervision & Quality Control</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Regular supervision, surprise inspections, night audits and
-                vigilance checks, with immediate manpower replacement when
-                required.
+                Regular supervision, surprise inspections, night audits and vigilance checks, with
+                immediate manpower replacement when required.
               </p>
             </div>
           </RevealOnScroll>
@@ -125,11 +113,12 @@ export default function AboutPage() {
             {workforcePrinciples.map((item, index) => (
               <RevealOnScroll key={item.title} delay={index * 50}>
                 <div className="flex gap-3">
-                  <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+                  <item.icon
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent-500"
+                    aria-hidden="true"
+                  />
                   <div>
-                    <h3 className="text-sm font-semibold text-navy-950">
-                      {item.title}
-                    </h3>
+                    <h3 className="text-sm font-semibold text-navy-950">{item.title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                       {item.description}
                     </p>

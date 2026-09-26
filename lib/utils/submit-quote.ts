@@ -6,9 +6,11 @@
 // from here, so switching providers later means editing this one file.
 
 /**
- * Flip to `true` once `submitQuote` below actually delivers enquiries.
- * While `false`, the form says plainly that online submission isn't connected
- * and hands the visitor a pre-filled email instead of implying it was sent.
+ * `false` (current): the form works by email — "Email this request" opens the
+ * visitor's email app with the request filled in, addressed to OSSF, and the
+ * visitor presses Send. Nothing is sent by the website itself.
+ * `true`: the form posts through `submitQuote` below. Flip this only once
+ * `submitQuote` actually delivers enquiries (and update the Privacy Policy).
  */
 export const QUOTE_SUBMISSION_CONNECTED = false;
 
@@ -23,15 +25,11 @@ export type QuoteFormPayload = {
 };
 
 export type SubmitQuoteResult =
-  // `delivered` tells the UI whether the enquiry actually reached OSSF.
-  // While no provider is connected it is `false`, and the form tells the
-  // visitor to send the details by email/phone instead of claiming success.
-  | { ok: true; delivered: boolean }
-  | { ok: false; error: string };
+  // `delivered` tells the UI whether the enquiry actually reached OSSF. If it
+  // is `false`, the form falls back to the email flow instead of claiming success.
+  { ok: true; delivered: boolean } | { ok: false; error: string };
 
-export async function submitQuote(
-  payload: QuoteFormPayload
-): Promise<SubmitQuoteResult> {
+export async function submitQuote(payload: QuoteFormPayload): Promise<SubmitQuoteResult> {
   // TODO(client/dev): replace this stub with a real submission call, e.g.:
   //   const res = await fetch("/api/request-quote", {
   //     method: "POST",

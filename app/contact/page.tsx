@@ -34,9 +34,7 @@ export default function ContactPage() {
                 <MapPin className="h-5 w-5 text-accent-500" aria-hidden="true" />
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-navy-950">
-                  Registered Office
-                </h2>
+                <h2 className="text-sm font-semibold text-navy-950">Registered Office</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
                   {siteConfig.address.line1}
                   <br />
@@ -73,7 +71,10 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-sm font-semibold text-navy-950">Email</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                  <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-accent-600">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="break-all hover:text-accent-600"
+                  >
                     {siteConfig.email}
                   </a>
                 </p>
@@ -85,14 +86,11 @@ export default function ContactPage() {
                 <Clock className="h-5 w-5 text-accent-500" aria-hidden="true" />
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-navy-950">
-                  Hours
-                </h2>
+                <h2 className="text-sm font-semibold text-navy-950">Hours</h2>
                 <p className="mt-1 text-sm leading-relaxed text-ink-muted">
                   Security operations: {siteConfig.businessHours.operations}
                   <br />
-                  Office enquiries:{" "}
-                  {siteConfig.businessHours.officeEnquiries}
+                  Office enquiries: {siteConfig.businessHours.officeEnquiries}
                 </p>
               </div>
             </div>

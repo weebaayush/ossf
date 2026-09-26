@@ -29,7 +29,10 @@ export function AboutIntro() {
           <ul className="mt-7 space-y-3">
             {points.map((point) => (
               <li key={point} className="flex items-start gap-2.5 text-sm text-ink-muted">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+                <CheckCircle2
+                  className="mt-0.5 h-4 w-4 shrink-0 text-accent-500"
+                  aria-hidden="true"
+                />
                 {point}
               </li>
             ))}

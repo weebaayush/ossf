@@ -68,7 +68,10 @@ export function ClientDirectory() {
         {filter === "all" ? "" : ` in ${activeLabel}`}.
       </p>
 
-      <ul id="client-grid" className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+      <ul
+        id="client-grid"
+        className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4"
+      >
         {visible.map((client) => (
           <li
             key={client.name}

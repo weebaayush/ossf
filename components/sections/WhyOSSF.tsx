@@ -41,12 +41,8 @@ export function WhyOSSF({ showAll = false }: { showAll?: boolean }) {
               </span>
               <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
               <div>
-                <h3 className="text-sm font-semibold text-navy-950">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-xs leading-relaxed text-ink-muted">
-                  {item.description}
-                </p>
+                <h3 className="text-sm font-semibold text-navy-950">{item.title}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-ink-muted">{item.description}</p>
               </div>
             </div>
           </RevealOnScroll>

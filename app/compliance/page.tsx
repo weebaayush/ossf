@@ -40,12 +40,8 @@ export default function CompliancePage() {
                   <item.icon className="h-5 w-5 text-accent-600" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-sm font-semibold text-navy-950">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                    {item.description}
-                  </p>
+                  <h3 className="text-sm font-semibold text-navy-950">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-muted">{item.description}</p>
                 </div>
                 <span className="inline-block w-fit shrink-0 rounded-md bg-surface-subtle px-3 py-1.5 font-mono text-xs tracking-tight text-navy-700">
                   {item.value}
@@ -58,9 +54,8 @@ export default function CompliancePage() {
         <div className="mt-10 flex items-start gap-3 rounded-xl border border-accent-100 bg-accent-50 p-5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" aria-hidden="true" />
           <p className="text-sm leading-relaxed text-accent-800">
-            Scanned certificate copies are not published on the website but
-            are available to prospective and existing clients on request —
-            contact us via the details on our{" "}
+            Scanned certificate copies are not published on the website but are available to
+            prospective and existing clients on request — contact us via the details on our{" "}
             <Link href="/contact" className="font-semibold underline">
               Contact page
             </Link>

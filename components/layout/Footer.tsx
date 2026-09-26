@@ -22,9 +22,8 @@ export function Footer() {
               <Logo variant="footer" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
-              {siteConfig.name} — PSARA-licensed security and facility
-              management services, established {siteConfig.foundingYear} in
-              Thane.
+              {siteConfig.name} — PSARA-licensed security and facility management services,
+              established {siteConfig.foundingYear} in Thane.
             </p>
           </div>
 

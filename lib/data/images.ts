@@ -43,7 +43,8 @@ export type ImageSlot = {
   credit?: ImageCredit;
 };
 
-const UNSPLASH_LICENSE = "Unsplash License (free commercial use, no attribution required) — https://unsplash.com/license";
+const UNSPLASH_LICENSE =
+  "Unsplash License (free commercial use, no attribution required) — https://unsplash.com/license";
 
 export const imageSlots = {
   // Full-bleed background behind the homepage headline — decorative.
@@ -53,7 +54,8 @@ export const imageSlots = {
     alt: "",
     credit: {
       source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/modern-dark-office-building-with-many-windows-JUdN1-BssnY",
+      pageUrl:
+        "https://unsplash.com/photos/modern-dark-office-building-with-many-windows-JUdN1-BssnY",
       photographer: "Mariia Filonenko",
       photographerUrl: "https://unsplash.com/@fsmari",
       license: UNSPLASH_LICENSE,
@@ -65,7 +67,8 @@ export const imageSlots = {
     alt: "Dimly lit modern office corridor with a polished floor and glass doors",
     credit: {
       source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/dark-modern-hallway-with-reflective-floor-and-windows-G8EdTmFZ138",
+      pageUrl:
+        "https://unsplash.com/photos/dark-modern-hallway-with-reflective-floor-and-windows-G8EdTmFZ138",
       photographer: "Igor Saikin",
       photographerUrl: "https://unsplash.com/@alteredpoint",
       license: UNSPLASH_LICENSE,
@@ -79,7 +82,8 @@ export const imageSlots = {
     objectPosition: "50% 30%",
     credit: {
       source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/a-man-standing-on-a-sidewalk-in-front-of-a-building-wQ4Ae4uxfvM",
+      pageUrl:
+        "https://unsplash.com/photos/a-man-standing-on-a-sidewalk-in-front-of-a-building-wQ4Ae4uxfvM",
       photographer: "Ben Wicks",
       photographerUrl: "https://unsplash.com/@profwicks",
       license: UNSPLASH_LICENSE,
@@ -92,7 +96,8 @@ export const imageSlots = {
     alt: "Fenced industrial facility and entrance gate lit by a street lamp at night",
     credit: {
       source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/a-street-at-night-with-a-fence-and-a-building-in-the-background-nhxNv2xfatw",
+      pageUrl:
+        "https://unsplash.com/photos/a-street-at-night-with-a-fence-and-a-building-in-the-background-nhxNv2xfatw",
       photographer: "Patrick von der Wehd",
       photographerUrl: "https://unsplash.com/@patrick_von_der_wehd",
       license: UNSPLASH_LICENSE,

@@ -1,80 +1,119 @@
 # OSSF — Om Shiv Security Force Website
 
-Corporate marketing / lead-generation website for Om Shiv Security Force (OSSF), built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
+Corporate website for Om Shiv Security Force (OSSF), a PSARA-licensed security and facility management
+company in Thane (est. 2017). Built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
 
-## Getting started
+- **Live site:** https://omshivsecurityforce.in
+- **Hosting:** Netlify (free plan), deployed automatically from this GitHub repo
+- **Domain:** GoDaddy · **Email:** Zoho Mail (`info@`, `accounts@` + staff mailboxes)
+
+## Pages
+
+| Route | Page |
+| --- | --- |
+| `/` | Home |
+| `/about` | About OSSF |
+| `/services` | Security, surveillance and facility services |
+| `/industries` | Sectors served |
+| `/why-ossf` | Why choose OSSF |
+| `/clients` | Filterable client logo grid |
+| `/compliance` | Licences and registrations |
+| `/contact` | Address, phones, email, hours, map |
+| `/request-a-quote` | Quote request form |
+| `/terms-of-service`, `/privacy-policy` | Legal pages (awaiting OSSF approval, `noindex`) |
+
+## Run locally
+
+Requires Node.js 18.17 or newer.
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
+npm run build    # production build (run before every push)
+npm run start    # serve the production build
+npm run lint
 ```
 
-Open http://localhost:3000.
-
-## Build
-
-```bash
-npm run build
-npm run start
-```
+Code style: Prettier settings are in `.prettierrc` (print width 100). Use the VS Code Prettier
+extension with "format on save".
 
 ## Project structure
 
 ```
-app/                Route segments (App Router). One folder per page.
+app/                  One folder per page (App Router), plus sitemap.ts, robots.ts, icons
 components/
-  layout/            Navbar, Footer
-  sections/          Homepage & page section blocks (Hero, ServicesGrid, ...)
-  ui/                 Small reusable primitives (Button, Card, Container, Section, Badge)
+  layout/             Navbar, Footer
+  sections/           Page sections (Hero, ServicesGrid, ClientDirectory, ...)
+  ui/                 Small building blocks (Button, Container, Section, Badge, Logo, ...)
   forms/              Request-a-quote form
 lib/
-  data/               Static content: services, industries, nav, compliance, differentiators, clients
-  utils/              cn() class helper, submitQuote() abstraction, site constants, SEO helpers
-public/images/        Placeholder image slots (see below)
+  data/               Site content: services, industries, nav, compliance, clients, images
+  utils/              Company facts (site-config.ts), SEO helpers, quote submission, cn()
+public/brand/         Official OSSF logo files
+public/images/        Client logos, social share image, folders for future photography
+docs/                 Image and logo sources and licences
 ```
+
+## Common updates
+
+| To change | Edit |
+| --- | --- |
+| Phone, email, address, office hours, service areas | `lib/utils/site-config.ts` |
+| Services / industries / "Why OSSF" text | `lib/data/services.ts`, `industries.ts`, `differentiators.ts` |
+| Licence and registration numbers | `lib/data/compliance.ts` |
+| Add or remove a client | `lib/data/clients.ts` (logo file goes in `public/images/clients/`; record its source in `docs/image-sources.md`) |
+| A photo | `lib/data/images.ts` (see `public/images/README.md`) |
+| Header / footer logo | `components/ui/Logo.tsx` + files in `public/brand/` |
+
+## Deployment
+
+Every push to the `main` branch on GitHub triggers a new Netlify build and deploy. Netlify detects
+Next.js automatically (build command `npm run build`), so no extra configuration is needed. If a
+build fails, the site keeps serving the last good version — check the deploy log in Netlify.
+
+DNS lives at **GoDaddy** (the domain's nameservers were not moved):
+
+| Type | Name | Value | Purpose |
+| --- | --- | --- | --- |
+| A | `@` | `75.2.60.5` | Website (Netlify) |
+| CNAME | `www` | `<site-name>.netlify.app` | Website (Netlify) |
+| MX / TXT | as set by Zoho | — | Email (Zoho Mail) — **do not change** |
+
+`omshivsecurityforce.in` is the primary domain; `www` redirects to it. HTTPS certificates are issued
+and renewed by Netlify automatically.
+
+**Accounts:** GitHub, Netlify, GoDaddy and Zoho are all registered to OSSF (`info@omshivsecurityforce.in`).
+Logins are held by the OSSF owner — never commit passwords or keys to this repo.
 
 ## Content status
 
-Real business content was supplied via the client's Company Profile (confirmed 20-09-2026) and is
-now wired into the site:
+All business content comes from the client's Company Profile (confirmed 20-09-2026) or was
+confirmed by the client since. Company facts live in `lib/utils/site-config.ts`:
 
-- **Founding year**: confirmed as **2017** (the "Trusted Since 2002" / "10 years" phrasing
-  elsewhere in the source material was a typo, per the client) — set in `lib/utils/site-config.ts`.
-- **Registered office, phone, email**: real values from the company profile, in
-  `lib/utils/site-config.ts`. The Contact page now embeds a real Google Maps view of the address
-  (no API key needed — uses the public `maps?q=...&output=embed` endpoint).
-- **Compliance registrations**: real PSARA licence, GSTIN, UDYAM, PF/EPF, ESIC, Professional Tax,
-  Shops & Establishment and PAN numbers are shown on `/compliance` and the homepage compliance
-  section — see `lib/data/compliance.ts`.
-- **Clients**: the company profile's own "client showcase" pages (Lodha, Runwal Realty, KIMS
-  Hospitals, etc. — presented as external-facing collateral) are shown as a text-based client wall
-  on `/clients` and the homepage teaser — see `lib/data/clients.ts`. The company profile also lists
-  100+ individual residential societies/buildings with addresses; that granular list is **not**
-  published on the public site (it reads as a security-sensitive disclosure of which buildings use
-  which vendor, and wasn't itself presented as public collateral) — it's referenced generically
-  ("100+ client relationships") with a note that references are available on request, matching the
-  company profile's own line.
-- **Service categories & guard duties**: expanded from the profile's "Duties of Our Security
-  Guards" section into the Security Services / Electronic Surveillance / Facility Support capability
-  lists on `/services`.
+- **Founding year** 2017 (the "Trusted Since 2002" / "10 years" phrasing in the source material was
+  a typo, per the client).
+- **Office address, phones, email** (`info@omshivsecurityforce.in`) and **domain**
+  (`https://omshivsecurityforce.in`, which drives canonical URLs, the sitemap and Open Graph URLs).
+- **Hours**: security operations 24×365; office enquiries 10:00 AM – 6:00 PM, Monday to Saturday
+  (confirmed 26-09-2026 as "6 days a week"; the days are assumed).
+- **Compliance registrations** (PSARA, GSTIN, UDYAM, PF/EPF, ESIC, etc.) on `/compliance`, from
+  `lib/data/compliance.ts`.
+- **Clients** on `/clients` and the homepage teaser, from `lib/data/clients.ts`. Logo sources are in
+  `docs/image-sources.md`. The profile's list of 100+ individual residential societies is deliberately
+  **not** published (it would disclose which buildings use which security vendor); the site says
+  references are available on request instead.
 
-**Still outstanding** — not in the supplied company profile, so still marked
-`[CLIENT CONFIRMATION REQUIRED]` in the UI (rendered by `components/ui/PendingConfirmation.tsx`):
+Awaiting OSSF approval before launch:
 
-- **Office/enquiry business hours** (the profile confirms 24×365 *security operations*, but not a
-  reception/enquiry desk window) — set `businessHours.officeEnquiries` in `lib/utils/site-config.ts`.
-- **Privacy Policy and Terms & Conditions** — basic drafts are written (describing the site as currently
-  built: the quote form is not connected to any provider). They are not lawyer-reviewed and await OSSF's
-  approval, so they stay `noindex` and out of the sitemap (remove them from `noIndexRoutes` in
-  `lib/utils/seo.ts` once approved). Update the Privacy Policy when a form/email provider is connected.
-- **Official logo** — see the Logo section below.
-- **Production domain** — `siteConfig.url` (`https://omshivsecurityforce.in`) drives canonical URLs,
-  the sitemap and Open Graph URLs; confirm it matches the domain the site will be deployed on.
-- **Real photography** — the site still uses labelled placeholder image slots (see Images below).
-- **Logo image files** for the clients shown on `/clients` — currently rendered as text badges
-  since only flattened screenshots (not vector/transparent logo files) were supplied.
+- **Client logos**: OSSF should confirm each client is happy to be shown (see the notes in
+  `lib/data/clients.ts`).
+- **Privacy Policy and Terms of Service**: drafted, not lawyer-reviewed. They stay `noindex` and out
+  of the sitemap until approved; then remove them from `noIndexRoutes` in `lib/utils/seo.ts`. Update
+  the Privacy Policy if a form provider is connected.
 
-Search the codebase for `CLIENT CONFIRMATION REQUIRED` to find every remaining instance.
+If a new fact is missing later, render `<PendingConfirmation />` (`components/ui/PendingConfirmation.tsx`)
+in its place rather than guessing, and mark the code `CLIENT CONFIRMATION REQUIRED`; searching for that
+phrase lists every open item. There are none at the moment.
 
 ## Images
 
@@ -104,7 +143,7 @@ Where it is used:
 | Header (mark + name) and footer (stacked logo) | `components/ui/Logo.tsx` |
 | Favicon | `app/icon.svg` (the mark, embedded as PNG) |
 | Apple touch icon | `app/apple-icon.png` (mark on brand blue, 180×180) |
-| Social share image | `public/images/og-image.png` (stacked logo on brand blue, 1200×630). `og-image.svg` is the old interim source and is no longer used. |
+| Social share image | `public/images/og-image.png` (stacked logo on brand blue, 1200×630) |
 
 The source file is only 500px, so the header logo is slightly soft on high-density screens. For the
 sharpest result, re-export the mark and name from the design file at 2–3× size (or as SVG) with a
@@ -112,13 +151,15 @@ transparent background, replace the files above, and update the sizes in `Logo.t
 
 ## Request a Quote form
 
-The form in `components/forms/RequestQuoteForm.tsx` posts through `lib/utils/submit-quote.ts`, a small
-abstraction that currently **does not send anything** (it returns `delivered: false`). While
-`QUOTE_SUBMISSION_CONNECTED` is `false`, the form says so plainly and, after validation, gives the
-visitor a pre-filled email to send to the OSSF address (plus the phone number) instead of claiming the
-request was received. To go live: implement the provider call in `submitQuote` (return
-`{ ok: true, delivered: true }` on success) and set `QUOTE_SUBMISSION_CONNECTED = true` — no other
-component needs to change.
+The form (`components/forms/RequestQuoteForm.tsx`) works by email: after checking the fields,
+**Email this request** opens the visitor's email app with the request filled in and addressed to
+`info@omshivsecurityforce.in`; the visitor presses Send. A confirmation panel then shows a summary,
+an "Open email again" button, the phone number and an "Edit details" link. The website itself stores
+and sends nothing.
+
+To switch to online submission later (e.g. Formspree, Resend or an API route), implement the call in
+`submitQuote` in `lib/utils/submit-quote.ts` (return `{ ok: true, delivered: true }` on success), set
+`QUOTE_SUBMISSION_CONNECTED = true`, and update the Privacy Policy — no other component needs to change.
 
 ## SEO
 

@@ -1,12 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  ShieldCheck,
-  Radio,
-  ClipboardList,
-  Building2,
-  Users,
-  FileSearch,
-} from "lucide-react";
+import { ShieldCheck, Radio, ClipboardList, Building2, Users, FileSearch } from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -59,22 +52,16 @@ export const services: Service[] = [
     slug: "security-consulting",
     icon: FileSearch,
     title: "Security Consulting & Risk Assessment",
-    shortDescription:
-      "Site-specific risk assessment and security planning for your operations.",
+    shortDescription: "Site-specific risk assessment and security planning for your operations.",
     description:
       "Consultation and risk assessment services to help organizations understand exposure and design a security approach appropriate to their site, sector and operating hours.",
-    capabilities: [
-      "Risk assessment services",
-      "Security consulting",
-      "Site-specific planning",
-    ],
+    capabilities: ["Risk assessment services", "Security consulting", "Site-specific planning"],
   },
   {
     slug: "facility-support-services",
     icon: Building2,
     title: "Facility Support Services",
-    shortDescription:
-      "Facility-related support that keeps day-to-day operations running smoothly.",
+    shortDescription: "Facility-related support that keeps day-to-day operations running smoothly.",
     description:
       "Facility support services designed to work alongside security operations, helping client premises run smoothly under a single point of accountability.",
     capabilities: [

@@ -13,7 +13,4 @@ export const primaryNav: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const footerNav: NavLink[] = [
-  ...primaryNav,
-  { label: "Compliance", href: "/compliance" },
-];
+export const footerNav: NavLink[] = [...primaryNav, { label: "Compliance", href: "/compliance" }];

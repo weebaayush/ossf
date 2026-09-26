@@ -60,8 +60,7 @@ export const industries: Industry[] = [
     slug: "construction-sites",
     icon: HardHat,
     title: "Construction Sites",
-    description:
-      "Site security and access control across active construction and project sites.",
+    description: "Site security and access control across active construction and project sites.",
   },
   {
     slug: "educational-institutions",
@@ -81,8 +80,7 @@ export const industries: Industry[] = [
     slug: "warehouses",
     icon: Warehouse,
     title: "Warehouses",
-    description:
-      "Access control and patrolling for warehousing and logistics facilities.",
+    description: "Access control and patrolling for warehousing and logistics facilities.",
   },
   {
     slug: "shopping-complexes",

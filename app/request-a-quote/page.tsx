@@ -28,9 +28,7 @@ export default function RequestQuotePage() {
 
           <div className="space-y-6">
             <div className="rounded-xl border border-surface-border bg-surface-subtle p-6">
-              <h2 className="text-sm font-semibold text-navy-950">
-                Prefer to talk directly?
-              </h2>
+              <h2 className="text-sm font-semibold text-navy-950">Prefer to talk directly?</h2>
               <ul className="mt-4 space-y-3 text-sm text-ink-muted">
                 <li className="flex items-start gap-2.5">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
@@ -46,7 +44,10 @@ export default function RequestQuotePage() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-                  <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-accent-600">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="break-all hover:text-accent-600"
+                  >
                     {siteConfig.email}
                   </a>
                 </li>
@@ -55,17 +56,14 @@ export default function RequestQuotePage() {
                   <span>
                     Security operations: {siteConfig.businessHours.operations}
                     <br />
-                    Office enquiries:{" "}
-                    {siteConfig.businessHours.officeEnquiries}
+                    Office enquiries: {siteConfig.businessHours.officeEnquiries}
                   </span>
                 </li>
               </ul>
             </div>
 
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h2 className="text-sm font-semibold text-navy-950">
-                What happens next
-              </h2>
+              <h2 className="text-sm font-semibold text-navy-950">What happens next</h2>
               <ol className="mt-4 space-y-3 text-sm text-ink-muted">
                 {[
                   "We review your requirement and site details.",

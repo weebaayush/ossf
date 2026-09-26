@@ -41,9 +41,7 @@ export default function ServicesPage() {
                 <h2 className="mt-5 text-2xl font-semibold text-navy-950 sm:text-3xl">
                   {service.title}
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                  {service.description}
-                </p>
+                <p className="mt-4 text-sm leading-relaxed text-ink-muted">{service.description}</p>
               </div>
               <div className="rounded-xl border border-surface-border bg-white p-6">
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
@@ -51,8 +49,14 @@ export default function ServicesPage() {
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {service.capabilities.map((capability) => (
-                    <li key={capability} className="flex items-start gap-2.5 text-sm text-ink-muted">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+                    <li
+                      key={capability}
+                      className="flex items-start gap-2.5 text-sm text-ink-muted"
+                    >
+                      <CheckCircle2
+                        className="mt-0.5 h-4 w-4 shrink-0 text-accent-500"
+                        aria-hidden="true"
+                      />
                       {capability}
                     </li>
                   ))}

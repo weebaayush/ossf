@@ -20,8 +20,8 @@ export function FinalCTA({
               Looking for reliable security or facility management support?
             </h2>
             <p className="mt-3 text-sm text-white/65">
-              Tell us about your site and requirements — we&apos;ll respond with a
-              tailored proposal.
+              Tell us about your site and requirements — we&apos;ll respond with a tailored
+              proposal.
             </p>
             {secondary ? (
               <Link

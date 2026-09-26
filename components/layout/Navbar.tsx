@@ -43,8 +43,7 @@ export function Navbar() {
   }, [open]);
 
   const solid = scrolled || open;
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
     <header
@@ -64,10 +63,7 @@ export function Navbar() {
           <Logo variant="nav" />
         </Link>
 
-        <nav
-          className="hidden items-center gap-5 lg:flex xl:gap-8"
-          aria-label="Primary navigation"
-        >
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-8" aria-label="Primary navigation">
           {primaryNav.map((link) => {
             const active = isActive(link.href);
             return (

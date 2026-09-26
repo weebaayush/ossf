@@ -92,10 +92,6 @@ storefront, not a logo), Vee Gee & Associates, Venus Nirvana. To add a logo, ask
 (SVG or high-resolution PNG), put it in `public/images/clients/` and add a
 `logo` field in `lib/data/clients.ts`.
 
-**Unused files:** the `*.png` files in `public/images/clients/` are the raw
-crops from the company profile. The site uses the cleaned `.webp` versions
-instead, so the `.png` files can be deleted.
-
 **Trademarks and permission:** these logos are the trademarks of their
 respective owners and are shown only to identify organisations OSSF provides
 services to. Before launch, OSSF should confirm each client is comfortable with

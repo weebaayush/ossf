@@ -27,12 +27,8 @@ export function HowWeWork() {
                 <span className="mt-4 block font-display text-4xl font-bold text-navy-100 lg:mt-5">
                   {step.number}
                 </span>
-                <h3 className="mt-3 text-base font-semibold text-navy-950">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  {step.description}
-                </p>
+                <h3 className="mt-3 text-base font-semibold text-navy-950">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.description}</p>
               </div>
             </RevealOnScroll>
           ))}
