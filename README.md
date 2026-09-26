@@ -87,15 +87,28 @@ drop files in `public/images/<folder>/` and update the slot's `src`/`alt`/`credi
 
 ## Logo
 
-The official OSSF logo has not been supplied yet; the site shows an interim text mark (red tile + "OSSF").
-When the official logo arrives, replace:
+The official OSSF logo (approved by the client, 26-09-2026) is in `public/brand/`:
 
-| What | File | How |
-| --- | --- | --- |
-| Header + footer logo | `components/ui/Logo.tsx` | Add the file to `public/brand/` and set `OFFICIAL_LOGO` (src, width, height) |
-| Favicon | `app/icon.svg` | Replace with the official mark (square, SVG or PNG — rename to `icon.png` if PNG) |
-| Apple touch icon | `app/apple-icon.png` | 180×180 PNG of the mark on a solid background |
-| Social share image | `public/images/og-image.png` (source: `og-image.svg`) | 1200×630 PNG including the official logo |
+| File | What |
+| --- | --- |
+| `ossf-logo-original.png` | The supplied file, 500×500 on the brand blue (`#3E5F79`) |
+| `ossf-mark.png` | The square mark, transparent background |
+| `ossf-wordmark.png` | "OM SHIV / SECURITY FORCE", transparent background |
+| `ossf-logo-stacked.png` | Mark + name + tagline, transparent background |
+
+The transparent files were cut from the original with only the blue background removed (no redrawing).
+Where it is used:
+
+| What | File |
+| --- | --- |
+| Header (mark + name) and footer (stacked logo) | `components/ui/Logo.tsx` |
+| Favicon | `app/icon.svg` (the mark, embedded as PNG) |
+| Apple touch icon | `app/apple-icon.png` (mark on brand blue, 180×180) |
+| Social share image | `public/images/og-image.png` (stacked logo on brand blue, 1200×630). `og-image.svg` is the old interim source and is no longer used. |
+
+The source file is only 500px, so the header logo is slightly soft on high-density screens. For the
+sharpest result, re-export the mark and name from the design file at 2–3× size (or as SVG) with a
+transparent background, replace the files above, and update the sizes in `Logo.tsx`.
 
 ## Request a Quote form
 

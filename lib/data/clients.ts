@@ -65,6 +65,14 @@ export const clients: Client[] = [
   // OSSF to confirm it is the same client.
   { name: "The Blue Roof Club", category: "commercial", logo: { src: "/images/clients/the-blue-roof-club.webp", width: 203, height: 140 } },
   { name: "New Horizon School", category: "education", logo: { src: "/images/clients/new-horizon-school.webp", width: 142, height: 140 } },
+  // Logo source URLs for the four clients below were supplied by the site
+  // owner (26-09-2026); see docs/image-sources.md. The Systematic logo is
+  // white, so it sits on a navy tile. "Ehta" in the company profile is a
+  // typo for Ekta.
+  { name: "Systematic Group of Companies", category: "commercial", logo: { src: "/images/clients/systematic-group.webp", width: 236, height: 78 } },
+  { name: "Woodstock School", category: "education", logo: { src: "/images/clients/woodstock-school.webp", width: 141, height: 141 } },
+  { name: "LA Homes Estates", category: "real-estate", logo: { src: "/images/clients/la-homes-estates.webp", width: 426, height: 141 } },
+  { name: "Ekta Realtors Builders & Developers", category: "real-estate", logo: { src: "/images/clients/ekta-world.webp", width: 412, height: 133 } },
   // No official website/logo file could be found for the clients below, so
   // their logos are taken from the OSSF company profile's client-showcase
   // page (cleaned up and enlarged 2x). They are lower resolution than the
@@ -79,11 +87,7 @@ export const clients: Client[] = [
   // No official logo file could be verified for the clients below, so they
   // appear as name cards. Add `logo` once OSSF obtains the original files.
   { name: "Waldorf", category: "commercial" },
-  { name: "Systematic Group of Companies", category: "commercial" },
   { name: "Vee Gee & Associates", category: "commercial" },
-  { name: "Woodstock School", category: "education" },
-  { name: "LA Homes Estates", category: "real-estate" },
-  { name: "Ehta Realtors Builders & Developers", category: "real-estate" },
   { name: "Venus Nirvana", category: "real-estate" },
 ];
 

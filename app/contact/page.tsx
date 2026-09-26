@@ -4,7 +4,6 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { siteConfig, telHref } from "@/lib/utils/site-config";
-import { PendingConfirmation } from "@/components/ui/PendingConfirmation";
 import { buildMetadata } from "@/lib/utils/seo";
 
 const fullAddress = `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
@@ -93,7 +92,7 @@ export default function ContactPage() {
                   Security operations: {siteConfig.businessHours.operations}
                   <br />
                   Office enquiries:{" "}
-                  {siteConfig.businessHours.officeEnquiries ?? <PendingConfirmation />}
+                  {siteConfig.businessHours.officeEnquiries}
                 </p>
               </div>
             </div>

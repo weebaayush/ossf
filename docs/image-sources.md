@@ -71,6 +71,10 @@ the table).
 | Sudhir | `sudhir.webp` | https://www.sudhirpower.com (Sudhir Power Ltd site logo, 346×76). The company profile shows an older "sudhir — Powering the Nation" logo; the current official logo reads "Powering The Future". OSSF should confirm this is the same client. |
 | The Blue Roof Club | `the-blue-roof-club.webp` | The Blue Roof Club official website (site logo, 203×140). No logo for this client in the company profile — **CLIENT CONFIRMATION REQUIRED** that it is the same organisation. |
 | New Horizon School | `new-horizon-school.webp` | New Horizon Group of Schools official website (Thane; site logo, 142×140). No logo for this client in the company profile — **CLIENT CONFIRMATION REQUIRED** that it is the same school/branch. |
+| Systematic Group of Companies | `systematic-group.webp` | https://systematicltd.com/wp-content/uploads/2025/08/systematic-logo-new.png (URL supplied by the site owner). The logo is white-on-transparent, so it was placed on a navy (`#101B2D`) tile with 14px padding, 236×78. |
+| Woodstock School | `woodstock-school.webp` | https://www.woodstockschool.in/wp-content/uploads/2017/05/logo_250-150x150.png (URL supplied by the site owner; trimmed, flattened onto white, 141×141) |
+| LA Homes Estates | `la-homes-estates.webp` | https://lahomesrealty.in/wp-content/uploads/2022/05/La-Homes-Logo-Horizontol.png (URL supplied by the site owner; resized to 426×141, flattened onto white) |
+| Ekta Realtors Builders & Developers | `ekta-world.webp` | https://www.ektaworld.com/images/new-logo-png.png (URL supplied by the site owner; resized to 412×133, flattened onto white). The company profile spells the name "Ehta"; the site owner confirmed it is Ekta. |
 
 **Logos taken from the company profile** (no official website or logo file
 could be found): Sharma Realty (`sharma-realty.webp`), Sairaj Builders And
@@ -84,11 +88,7 @@ than the official logos. **CLIENT CONFIRMATION REQUIRED:** replace each with
 the client's original logo file when OSSF obtains it.
 
 **Shown as name cards:** Waldorf (the company profile shows a photo of the
-storefront, not a logo), Systematic Group of Companies, Vee Gee & Associates,
-Woodstock School, LA Homes Estates, Ehta Realtors Builders & Developers, Venus
-Nirvana. (systematicltd.com was checked but not used: its logo is
-white-on-transparent for a dark header, and nothing links that company to
-OSSF's client.) To add a logo, ask OSSF for the client's original logo file
+storefront, not a logo), Vee Gee & Associates, Venus Nirvana. To add a logo, ask OSSF for the client's original logo file
 (SVG or high-resolution PNG), put it in `public/images/clients/` and add a
 `logo` field in `lib/data/clients.ts`.
 

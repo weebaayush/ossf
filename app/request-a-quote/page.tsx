@@ -4,7 +4,6 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/ui/Section";
 import { RequestQuoteForm } from "@/components/forms/RequestQuoteForm";
 import { siteConfig, telHref } from "@/lib/utils/site-config";
-import { PendingConfirmation } from "@/components/ui/PendingConfirmation";
 import { buildMetadata } from "@/lib/utils/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -57,7 +56,7 @@ export default function RequestQuotePage() {
                     Security operations: {siteConfig.businessHours.operations}
                     <br />
                     Office enquiries:{" "}
-                    {siteConfig.businessHours.officeEnquiries ?? <PendingConfirmation />}
+                    {siteConfig.businessHours.officeEnquiries}
                   </span>
                 </li>
               </ul>

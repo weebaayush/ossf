@@ -25,13 +25,12 @@ export const siteConfig = {
   phoneSecondary: "7977314691",
   email: "info@omshivsecurityforce.in",
 
-  // Company profile confirms 24x365 security operations; a separate office
-  // enquiry/reception window was not specified. `officeEnquiries` stays null
-  // until the client confirms it — the UI then shows a visible pending marker
-  // (see components/ui/PendingConfirmation.tsx) instead of guessing.
+  // Security operations run 24x365 (company profile). Office enquiry hours
+  // confirmed by the client 26-09-2026 as 10am–6pm, 6 days a week; the days
+  // were not named, so Monday–Saturday is assumed — correct here if different.
   businessHours: {
     operations: "24 Hours × 365 Days",
-    officeEnquiries: null as string | null,
+    officeEnquiries: "10:00 AM – 6:00 PM, Monday to Saturday",
   },
 
   // Confirmed by client (20-09-2026): established 2017. The "Trusted Since 2002" /
