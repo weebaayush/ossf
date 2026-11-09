@@ -64,7 +64,7 @@ the table).
 
 | Client | File (`public/images/clients/`) | Official source |
 | --- | --- | --- |
-| Lodha | `lodha.svg` | https://www.lodhagroup.com (site header). Lodha's current wordmark — the company profile shows an older Lodha logo. |
+| Lodha | `lodha.webp` | Supplied by OSSF (09-11-2026): Lodha's current logo, grey stripes with gold wordmark. Trimmed and converted to WebP. |
 | Kalpataru | `kalpataru.svg` | https://www.kalpataru.com (inline header SVG) |
 | KIMS Hospitals | `kims-hospitals.webp` | https://www.kimshospitals.com (site header logo, resized to 280×120) |
 | Runwal Realty | `runwal-realty.svg` | https://runwalrealty.com (`logo.svg`, coordinates rounded to 1 decimal) |

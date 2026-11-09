@@ -59,7 +59,7 @@ export const clients: Client[] = [
   {
     name: "Lodha",
     category: "real-estate",
-    logo: { src: "/images/clients/lodha.svg", width: 299, height: 47 },
+    logo: { src: "/images/clients/lodha.webp", width: 548, height: 80 },
   },
   {
     name: "Kalpataru",
