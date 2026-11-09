@@ -296,7 +296,8 @@ export const logoClients = clients.filter((client): client is Client & { logo: C
  * "Co-operative Housing Society" is dropped from each (the section heading
  * says it). CLIENT CONFIRMATION REQUIRED: check spellings such as
  * "Woodstok", "Princenton", "Willocrest" and "Velly Tower". "Waldraff" in
- * the presentation is Waldorf (confirmed 10-11-2026).
+ * the presentation is Waldorf and "Gangid Galaxy" is Jangid Galaxy
+ * (confirmed 10-11-2026).
  */
 export const residentialSocieties: string[] = [
   "Athena",
@@ -337,7 +338,7 @@ export const residentialSocieties: string[] = [
   "Marathon Nextown",
   "Eagleridge",
   "Queensgate",
-  "Gangid Galaxy",
+  "Jangid Galaxy",
   "Om Residency",
   "Balaji Shivam",
   "Velly Tower",
