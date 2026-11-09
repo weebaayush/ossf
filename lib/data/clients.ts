@@ -294,10 +294,11 @@ export const logoClients = clients.filter((client): client is Client & { logo: C
  * Residential co-operative housing societies OSSF serves, as listed in the
  * OSSF presentation (slides 18-19), in its order. Names are as spelt there;
  * "Co-operative Housing Society" is dropped from each (the section heading
- * says it). CLIENT CONFIRMATION REQUIRED: check spellings such as
- * "Woodstok", "Princenton", "Willocrest" and "Velly Tower". "Waldraff" in
- * the presentation is Waldorf and "Gangid Galaxy" is Jangid Galaxy
- * (confirmed 10-11-2026).
+ * says it). Corrected with OSSF (10-11-2026): Waldraff -> Waldorf,
+ * Gangid Galaxy -> Jangid Galaxy, Vinus Sky City -> Venus Sky City,
+ * Velly Tower -> Valley Tower; Hawara City, Tulsi Rai Vihar, Spen and
+ * Edenwood Fed confirmed as written. Not yet confirmed: "Woodstok",
+ * "Princenton", "Willocrest", "Natasa Enclave".
  */
 export const residentialSocieties: string[] = [
   "Athena",
@@ -328,7 +329,7 @@ export const residentialSocieties: string[] = [
   "Phoenix",
   "Neelkanth Green Iris",
   "Tiara",
-  "Vinus Sky City",
+  "Venus Sky City",
   "Natasa Enclave",
   "Solitaire",
   "Cosmos Hawaiian",
@@ -341,7 +342,7 @@ export const residentialSocieties: string[] = [
   "Jangid Galaxy",
   "Om Residency",
   "Balaji Shivam",
-  "Velly Tower",
+  "Valley Tower",
   "Devi Darshan",
   "Titanium Tower",
   "Vijay Vatika",
