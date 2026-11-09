@@ -46,9 +46,6 @@ export type ImageSlot = {
   credit?: ImageCredit;
 };
 
-const UNSPLASH_LICENSE =
-  "Unsplash License (free commercial use, no attribution required) — https://unsplash.com/license";
-
 export const imageSlots = {
   // Full-bleed background behind the homepage headline — decorative.
   homeHero: {
@@ -120,14 +117,8 @@ export const serviceImages: Record<string, ImageSlot> = {
   },
   "surveillance-and-risk-assessment": {
     label: "CCTV photograph",
-    src: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1200&q=80&fm=jpg",
-    alt: "Rows of CCTV security cameras mounted on a wall",
-    credit: {
-      source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/assorted-color-security-cameras-LfaN1gswV5c",
-      photographer: "Lianhao Qu",
-      photographerUrl: "https://unsplash.com/@lianhao",
-      license: UNSPLASH_LICENSE,
-    },
+    src: "/images/services/surveillance-control-room.webp",
+    alt: "Two security guards monitoring CCTV camera feeds in a security control room",
+    objectPosition: "45% 50%",
   },
 };
