@@ -1,8 +1,11 @@
 // Single registry of every photography slot on the site.
+// Photos refreshed 06-10-2026 to brighter, daytime images at the client's request.
 //
 // IMPORTANT — what these photos are:
-// No OSSF photography has been supplied yet. The slots below use licensed
-// stock photographs from Unsplash purely as background/atmosphere. They do NOT
+// No real OSSF photography has been supplied yet. Slots with a local
+// /images/gallery/ path use AI-generated images of Indian staff (see
+// lib/data/gallery.ts); the rest use licensed Unsplash stock photographs purely
+// as background/atmosphere. None of them
 // show OSSF employees, guards, offices, clients, sites or projects, so:
 //   • never caption them as "our team", "our guards", "our facility", etc.;
 //   • keep alt text neutral (describe what is literally in the photo).
@@ -50,81 +53,88 @@ export const imageSlots = {
   // Full-bleed background behind the homepage headline — decorative.
   homeHero: {
     label: "Hero photograph",
-    src: "https://images.unsplash.com/photo-1778598781431-292f23cd7e79?rect=0,560,4926,2724&w=2400&q=80&fm=jpg",
+    src: "https://images.unsplash.com/photo-1501324682324-0d8d7c4b9706?w=2400&q=80&fm=jpg",
     alt: "",
+    objectPosition: "50% 40%",
     credit: {
       source: "Unsplash",
-      pageUrl:
-        "https://unsplash.com/photos/modern-dark-office-building-with-many-windows-JUdN1-BssnY",
-      photographer: "Mariia Filonenko",
-      photographerUrl: "https://unsplash.com/@fsmari",
+      pageUrl: "https://unsplash.com/photos/low-angle-photo-of-curtain-wall-building-hN3t9Wj-bNs",
+      photographer: "JESHOOTS.COM",
+      photographerUrl: "https://unsplash.com/@jeshoots",
       license: UNSPLASH_LICENSE,
     },
   },
   homeAbout: {
-    label: "Interior photograph",
-    src: "https://images.unsplash.com/photo-1764539780901-0a13bf4f4182?w=1600&q=80&fm=jpg",
-    alt: "Dimly lit modern office corridor with a polished floor and glass doors",
-    credit: {
-      source: "Unsplash",
-      pageUrl:
-        "https://unsplash.com/photos/dark-modern-hallway-with-reflective-floor-and-windows-G8EdTmFZ138",
-      photographer: "Igor Saikin",
-      photographerUrl: "https://unsplash.com/@alteredpoint",
-      license: UNSPLASH_LICENSE,
-    },
+    label: "Training photograph",
+    src: "/images/gallery/21-fire-drill-training.webp",
+    alt: "Security team watching a guard put out a training fire with an extinguisher",
   },
   homeFlagshipService: {
     label: "Security services photograph",
-    src: "https://images.unsplash.com/photo-1680714246510-94d1055e4a8b?w=1600&q=80&fm=jpg",
-    alt: "Person in a reflective uniform jacket standing watch outside a building at night",
-    // Keeps the figure's head and shoulders in frame in the short, wide card crop.
-    objectPosition: "50% 30%",
-    credit: {
-      source: "Unsplash",
-      pageUrl:
-        "https://unsplash.com/photos/a-man-standing-on-a-sidewalk-in-front-of-a-building-wQ4Ae4uxfvM",
-      photographer: "Ben Wicks",
-      photographerUrl: "https://unsplash.com/@profwicks",
-      license: UNSPLASH_LICENSE,
-    },
+    src: "/images/gallery/19-hospital-security.webp",
+    alt: "Security guard greeting an elderly patient and his family in a hospital lobby",
+    objectPosition: "50% 35%",
   },
   aboutHero: {
-    label: "Industrial site photograph",
-    // Right edge cropped out to exclude a vehicle with third-party lettering.
-    src: "https://images.unsplash.com/photo-1730651626256-7d1ef80ea1e6?rect=0,0,3800,2832&w=1600&q=80&fm=jpg",
-    alt: "Fenced industrial facility and entrance gate lit by a street lamp at night",
-    credit: {
-      source: "Unsplash",
-      pageUrl:
-        "https://unsplash.com/photos/a-street-at-night-with-a-fence-and-a-building-in-the-background-nhxNv2xfatw",
-      photographer: "Patrick von der Wehd",
-      photographerUrl: "https://unsplash.com/@patrick_von_der_wehd",
-      license: UNSPLASH_LICENSE,
-    },
+    label: "Team photograph",
+    src: "/images/gallery/16-security-team.webp",
+    alt: "A team of uniformed security guards with their supervisor outside a corporate building",
+    objectPosition: "50% 60%",
   },
   aboutOperations: {
-    label: "Surveillance photograph",
-    src: "https://images.unsplash.com/photo-1481597262637-0545b18186ea?w=1600&q=80&fm=jpg",
-    alt: "Ceiling-mounted surveillance camera beside a strip light",
-    credit: {
-      source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/white-security-camera-B0--kMa8BgU",
-      photographer: "Alex Knight",
-      photographerUrl: "https://unsplash.com/@agk42",
-      license: UNSPLASH_LICENSE,
-    },
+    label: "Training photograph",
+    src: "/images/gallery/01-security-guard-training.webp",
+    alt: "Security guards in uniform attending a classroom training session",
   },
   servicesHero: {
+    label: "Office building photograph",
+    src: "/images/services/services-hero-building.webp",
+    alt: "Modern office building entrance with a security cabin and landscaped driveway",
+  },
+} satisfies Record<string, ImageSlot>;
+
+/**
+ * One photo per service, keyed by the service `slug` in lib/data/services.ts.
+ * Shown on the /services page. A service without an entry shows no photo.
+ */
+export const serviceImages: Record<string, ImageSlot> = {
+  "security-services": {
+    label: "Security guard photograph",
+    src: "/images/gallery/20-campus-patrol.webp",
+    alt: "Two security guards patrolling an IT park campus",
+  },
+  "event-and-exhibition-security": {
+    label: "Crowd security photograph",
+    src: "/images/gallery/26-mall-entrance-security.webp",
+    alt: "Security guard with a walkie-talkie standing at the glass entrance of a busy shopping mall",
+    objectPosition: "40% 40%",
+  },
+  "housekeeping-and-soft-services": {
+    label: "Housekeeping photograph",
+    src: "/images/gallery/07-housekeeping-deep-cleaning.webp",
+    alt: "Housekeeping staff deep-cleaning a corridor floor with a scrubbing machine",
+  },
+  "valet-driver-services": {
+    label: "Valet photograph",
+    src: "/images/gallery/17-executive-arrival.webp",
+    alt: "Staff in suits opening a car door for a guest at a hotel entrance",
+    objectPosition: "60% 50%",
+  },
+  "technical-and-non-technical-manpower": {
+    label: "Manpower photograph",
+    src: "/images/gallery/12-electrician.webp",
+    alt: "Electrician in a helmet and gloves working on an electrical panel",
+  },
+  "surveillance-and-risk-assessment": {
     label: "CCTV photograph",
-    src: "https://images.unsplash.com/photo-1563920443079-783e5c786b83?w=1600&q=80&fm=jpg",
-    alt: "Two CCTV cameras mounted on a dark ribbed building facade",
+    src: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1200&q=80&fm=jpg",
+    alt: "Rows of CCTV security cameras mounted on a wall",
     credit: {
       source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/two-grey-cctv-cameras-BW0d0IllW8E",
-      photographer: "Miłosz Klinowski",
-      photographerUrl: "https://unsplash.com/@speedoshots",
+      pageUrl: "https://unsplash.com/photos/assorted-color-security-cameras-LfaN1gswV5c",
+      photographer: "Lianhao Qu",
+      photographerUrl: "https://unsplash.com/@lianhao",
       license: UNSPLASH_LICENSE,
     },
   },
-} satisfies Record<string, ImageSlot>;
+};

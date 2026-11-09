@@ -8,8 +8,8 @@ export function HowWeWork() {
     <Section tone="subtle">
       <SectionHeading
         eyebrow="How We Work"
-        title="A structured five-step operating process"
-        description="From understanding your site to continuous improvement — the same process behind every OSSF deployment."
+        title="From first call to a fully staffed site"
+        description="A clear five-step process, so you know exactly what happens and who is responsible at each stage."
       />
 
       <div className="relative mt-16">

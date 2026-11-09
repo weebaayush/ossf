@@ -9,6 +9,7 @@ const routes = [
   "/industries",
   "/why-ossf",
   "/clients",
+  "/gallery",
   "/compliance",
   "/contact",
   "/request-a-quote",

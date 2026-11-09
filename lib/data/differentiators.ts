@@ -2,17 +2,17 @@ import type { LucideIcon } from "lucide-react";
 import {
   BadgeCheck,
   GraduationCap,
-  UserCheck,
-  HeartPulse,
-  Brain,
-  Shirt,
+  Medal,
+  RefreshCw,
+  Moon,
+  ClipboardList,
+  FileCheck2,
   Clock,
+  HeartPulse,
+  Shirt,
   HandHeart,
   Siren,
-  ClipboardCheck,
-  ShieldCheck,
   Settings2,
-  Medal,
 } from "lucide-react";
 
 export type Differentiator = {
@@ -21,71 +21,77 @@ export type Differentiator = {
   description: string;
 };
 
-// Verified operational differentiators, drawn directly from the company profile.
+// Operational commitments, drawn from the company profile. Order matters: the
+// homepage shows the first 8 and the About page the first 6, so the points
+// clients weigh most when choosing an agency come first.
 export const differentiators: Differentiator[] = [
   {
     icon: BadgeCheck,
     title: "Police Verified",
-    description: "All deployed personnel undergo police verification.",
+    description: "Every person we deploy is police verified before reaching your site.",
   },
   {
     icon: GraduationCap,
-    title: "Professionally Trained",
-    description: "Personnel are trained for the operational demands of each site.",
+    title: "Trained Before Deployment",
+    description:
+      "Duties, discipline, emergency response and fire safety basics, plus a briefing on your site.",
   },
   {
     icon: Medal,
-    title: "Ex-Servicemen Personnel",
-    description: "Our workforce includes personnel from the retired defence services.",
+    title: "Ex-Servicemen on the Team",
+    description: "Retired defence personnel bring discipline and leadership to our guarding teams.",
   },
   {
-    icon: UserCheck,
-    title: "Disciplined & Well Groomed",
-    description: "Discipline and presentation are maintained as a standard, not an exception.",
+    icon: RefreshCw,
+    title: "Immediate Replacement",
+    description: "If someone is absent or not the right fit, a replacement is sent without delay.",
   },
   {
-    icon: HeartPulse,
-    title: "Physically Fit & Medically Sound",
-    description: "Personnel are assessed for physical fitness and medical soundness.",
+    icon: Moon,
+    title: "Supervised Day and Night",
+    description: "Supervisors make regular visits, surprise checks and night audits.",
   },
   {
-    icon: Brain,
-    title: "Mentally Alert",
-    description: "Alertness is treated as a core requirement of the role, not an add-on.",
+    icon: ClipboardList,
+    title: "Daily Reporting",
+    description: "Occurrence registers and shift handovers keep you informed about your site.",
   },
   {
-    icon: Shirt,
-    title: "Properly Uniformed",
-    description: "Consistent, professional uniform standards across every deployment.",
+    icon: FileCheck2,
+    title: "Fully Compliant",
+    description:
+      "PSARA licensed, with PF, ESIC and every statutory registration in place, so you are never exposed.",
   },
   {
     icon: Clock,
-    title: "Punctual & Dependable",
-    description: "Shift discipline and dependability are core to how OSSF operates.",
+    title: "24×365 Operations",
+    description: "Round-the-clock cover, including Sundays, festivals and public holidays.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Fit and Alert",
+    description: "Personnel are assessed for physical fitness, medical soundness and alertness.",
+  },
+  {
+    icon: Shirt,
+    title: "Uniformed and Well Groomed",
+    description: "Complete, clean uniforms and a professional bearing on every shift.",
   },
   {
     icon: HandHeart,
-    title: "Honest & Dedicated",
-    description: "Personnel are selected and managed for integrity and dedication.",
+    title: "Honest and Punctual",
+    description: "Selected for integrity and managed for punctuality, shift after shift.",
   },
   {
     icon: Siren,
-    title: "Capable of Handling Emergencies",
-    description: "Personnel are prepared to respond appropriately in emergency situations.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Committed to Client Instructions",
-    description: "Deployment follows client instructions and OSSF company policy alike.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "24×365 Operational Capability",
-    description: "Security and facility support operate around the clock, every day of the year.",
+    title: "Ready for Emergencies",
+    description:
+      "Trained to act on fire, medical and security incidents and alert the right authorities.",
   },
   {
     icon: Settings2,
-    title: "Customized Security Solutions",
-    description: "Deployment plans are tailored to each site rather than applied generically.",
+    title: "Planned Around Your Site",
+    description:
+      "Headcount, shifts and post orders designed for your premises, not copied from a template.",
   },
 ];

@@ -7,7 +7,7 @@ type Tone = "light" | "subtle" | "navy";
 const toneClasses: Record<Tone, string> = {
   light: "bg-surface",
   subtle: "bg-surface-subtle",
-  navy: "bg-navy-950 text-white",
+  navy: "surface-dark bg-navy-950 text-white",
 };
 
 export function Section({

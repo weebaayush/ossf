@@ -10,6 +10,7 @@ export const primaryNav: NavLink[] = [
   { label: "Industries", href: "/industries" },
   { label: "Why OSSF", href: "/why-ossf" },
   { label: "Clients", href: "/clients" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 

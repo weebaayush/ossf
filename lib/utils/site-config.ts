@@ -6,9 +6,9 @@
 export const siteConfig = {
   name: "Om Shiv Security Force",
   shortName: "OSSF",
-  tagline: "Professional Security & Facility Management",
+  tagline: "Security & Facility Management in Thane & Mumbai",
   description:
-    "Om Shiv Security Force (OSSF) is a professionally managed security services organization established in 2017, providing security and facility management services to industrial units, corporate offices, residential complexes, hotels, hospitals, warehouses and institutions across Maharashtra, Mumbai, Thane, Goa, Gujarat, Daman and surrounding regions.",
+    "PSARA-licensed security and facility management company in Thane since 2002. Police-verified security guards, event security, housekeeping, valet drivers and technical manpower for societies, offices, factories and hospitals across Mumbai, Maharashtra, Goa, Gujarat and Daman.",
   url: "https://omshivsecurityforce.in",
 
   address: {
@@ -33,9 +33,12 @@ export const siteConfig = {
     officeEnquiries: "10:00 AM – 6:00 PM, Monday to Saturday",
   },
 
-  // Confirmed by client (20-09-2026): established 2017. The "Trusted Since 2002" /
-  // "10 Years" phrasing elsewhere in the source material was a typo and is not used.
-  foundingYear: 2017,
+  // Confirmed by client (03-10-2026): established 2002. (An earlier confirmation
+  // on 20-09-2026 said 2017; the client has since corrected it to 2002.)
+  foundingYear: 2002,
+
+  // Client count shown in stats and copy (client-confirmed 06-10-2026).
+  clientCount: "200+",
 
   serviceAreas: ["Thane", "Mumbai", "Navi Mumbai", "Maharashtra", "Goa", "Gujarat", "Daman"],
 } as const;

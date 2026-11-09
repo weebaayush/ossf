@@ -32,5 +32,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Claude desktop app working folder (not part of the site)
-/Claude outputs/
+# Local working folders (not part of the site)
+/* outputs/
+
+# Raw image downloads waiting to be processed
+/canva-downloads/

@@ -18,25 +18,29 @@ All photos below are from [Unsplash](https://unsplash.com) under the
 - Not allowed: selling unaltered copies, or compiling photos to build a competing
   image service.
 
-Each photo was checked when selected (September 2026) to be:
-
-- a standard Unsplash License photo (not Unsplash+ / premium);
-- a real camera photograph (camera EXIF recorded by Unsplash), not AI-generated;
-- free of visible third-party company logos and watermarks in the frame as cropped.
-
-Before launch, re-open each page link below to confirm the photo is still
-available under the same licence.
+Photos were replaced on 06-10-2026 with brighter, daytime images at the client's
+request. Each was checked when selected to be a standard Unsplash License photo
+(not Unsplash+ / premium) with no visible third-party company logos in frame.
+Slots are in `lib/data/images.ts` (`imageSlots`, and `serviceImages` keyed by
+service slug). Before launch, re-open each page link below to confirm the photo
+is still available under the same licence.
 
 ## Photos in use
 
-| Slot (`lib/data/images.ts`) | Used on | Photo | Photographer | Crop applied |
-| --- | --- | --- | --- | --- |
-| `homeHero` | Home — hero background (decorative, `alt=""`) | [Modern dark office building (Berlin, blue hour)](https://unsplash.com/photos/modern-dark-office-building-with-many-windows-JUdN1-BssnY) | [Mariia Filonenko](https://unsplash.com/@fsmari) | Top cropped (`rect=0,560,4926,2724`) to remove rooftop flags |
-| `homeAbout` | Home — About section | [Dark modern hallway with reflective floor](https://unsplash.com/photos/dark-modern-hallway-with-reflective-floor-and-windows-G8EdTmFZ138) | [Igor Saikin](https://unsplash.com/@alteredpoint) | — |
-| `homeFlagshipService` | Home — featured "Security Services" card | [Person in reflective jacket outside a building at night](https://unsplash.com/photos/a-man-standing-on-a-sidewalk-in-front-of-a-building-wQ4Ae4uxfvM) | [Ben Wicks](https://unsplash.com/@profwicks) | — |
-| `aboutHero` | About — page header (desktop) | [Fenced industrial facility at night](https://unsplash.com/photos/a-street-at-night-with-a-fence-and-a-building-in-the-background-nhxNv2xfatw) | [Patrick von der Wehd](https://unsplash.com/@patrick_von_der_wehd) | Right edge cropped (`rect=0,0,3800,2832`) to exclude a vehicle with third-party lettering |
-| `aboutOperations` | About — "Who We Are" section | [Ceiling surveillance camera](https://unsplash.com/photos/white-security-camera-B0--kMa8BgU) | [Alex Knight](https://unsplash.com/@agk42) | — |
-| `servicesHero` | Services — page header (desktop) | [Two grey CCTV cameras](https://unsplash.com/photos/two-grey-cctv-cameras-BW0d0IllW8E) | [Miłosz Klinowski](https://unsplash.com/@speedoshots) | — |
+| Slot (`lib/data/images.ts`) | Used on | Photo | Photographer |
+| --- | --- | --- | --- |
+| `homeHero` | Home — hero background (decorative, `alt=""`) | [Low-angle glass office building, blue sky](https://unsplash.com/photos/low-angle-photo-of-curtain-wall-building-hN3t9Wj-bNs) | [JESHOOTS.COM](https://unsplash.com/@jeshoots) |
+| `homeAbout` | Home — About section | [Two professionals shaking hands](https://unsplash.com/photos/two-men-facing-each-other-while-shake-hands-and-smiling-NbtIDoFKGO8) | [Sebastian Herrmann](https://unsplash.com/@officestock) |
+| `homeFlagshipService` | Home — "Security Services" card | [Security guard in hi-vis SECURITY vest, daytime](https://unsplash.com/photos/man-in-green-and-blue-jacket-walking-on-street-during-daytime-XDBRGiRYE-I) | [Obi](https://unsplash.com/@obionyeador) |
+| `aboutHero` | About — page header | [White residential high-rise](https://unsplash.com/photos/white-high-rise-building-during-daytime-0_e-H1eGf_A) | [Dylan Mullins](https://unsplash.com/@dylanmullins) |
+| `aboutOperations` | About — "Who We Are" | [Bright office lobby with reception desk](https://unsplash.com/photos/modern-lobby-with-reception-desk-and-seating-area-Ypv0MH4izf8) | [Aalo Lens](https://unsplash.com/@aalolens) |
+| `event-and-exhibition-security` | Services — Event Security | [Security guard at an outdoor event](https://unsplash.com/photos/security-guard-watches-over-a-gathering-under-a-tent-YQ9aFeawqeo) | [Avesta](https://unsplash.com/@avesta1) |
+| `servicesHero` | Services — page header | [Office tower behind green trees](https://unsplash.com/photos/a-tall-building-with-trees-in-front-of-it-He5EjaA71zQ) | [Patrick Robert Doyle](https://unsplash.com/@teapowered) |
+| `security-services` | Services — Security Services | [Uniformed guard beside a guard booth](https://unsplash.com/photos/guard-in-uniform-stands-by-a-small-booth-sAuFAr8BBZo) | [Alhasan Husni](https://unsplash.com/@hsnshutr) |
+| `housekeeping-and-soft-services` | Services — Housekeeping | [Staff mopping a bright corridor](https://unsplash.com/photos/person-mopping-clinical-hallway-floor-0FTI9ceTUOc) | [Toon Lambrechts](https://unsplash.com/@mycellhub) |
+| `valet-driver-services` | Services — Valet Drivers | [Car key being handed over](https://unsplash.com/photos/hands-exchanging-a-car-key-against-a-light-background-iDSsOlqFa8w) | [yahdi yasya](https://unsplash.com/@yayi1077) |
+| `technical-and-non-technical-manpower` | Services — Manpower | [Workers in hard hats and safety vests](https://unsplash.com/photos/man-in-orange-vest-wearing-yellow-hard-hat-7TR0TGS7zqg) | [Mufid Majnun](https://unsplash.com/@mufidpwt) |
+| `surveillance-and-risk-assessment` | Services — Surveillance | [Rows of CCTV cameras on a wall](https://unsplash.com/photos/assorted-color-security-cameras-LfaN1gswV5c) | [Lianhao Qu](https://unsplash.com/@lianhao) |
 
 ## Hosting note
 
@@ -97,3 +101,18 @@ respective owners and are shown only to identify organisations OSSF provides
 services to. Before launch, OSSF should confirm each client is comfortable with
 its logo appearing on the OSSF website. To remove a logo, delete the `logo`
 field for that client in `lib/data/clients.ts` (it then shows as a name card).
+
+## AI-generated photos (added 02-11-2026)
+
+All files in `public/images/gallery/` are AI-generated and illustrative; they do not show real OSSF
+staff, clients or sites. The gallery page says so (`galleryIsIllustrative` in `lib/data/gallery.ts`).
+
+| Files | Source |
+| --- | --- |
+| `01`, `07`, `08`, `12` | Generated with Gamma (prompts in `docs/gallery-prompts.md` style) |
+| `02`–`06` | Generated with Canva; download pending (slots hidden until added) |
+| `16`–`21` | Client-supplied set, `OSSF-AI-Generated-Photos.pdf`; Gemini watermark cropped from `18`–`20` |
+| `26` | Generated with Canva (09-11-2026) |
+| `23`–`25`, `public/images/services/services-hero-building.webp` | Cropped from client-supplied AI poster images (WhatsApp, 09-11-2026). Crops leave out the posters' made-up shield logo, banners and the unverified "20 guards deployed" claim |
+
+Several of these are also used on the homepage, About and Services pages via `lib/data/images.ts`.

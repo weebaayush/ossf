@@ -15,8 +15,8 @@ export function IndustriesGrid() {
     <Section tone="navy" className="bg-navy-radial">
       <SectionHeading
         eyebrow="Sectors We Serve"
-        title="Industries relying on OSSF"
-        description="Deployment approaches adapted to the operating realities of each sector."
+        title="Trusted across the sectors that keep the city running"
+        description="A hospital, a factory and a housing society need very different things from their guards. We plan every deployment around how your site actually works."
         tone="light"
       />
 

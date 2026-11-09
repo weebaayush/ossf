@@ -1,5 +1,11 @@
 import type { LucideIcon } from "lucide-react";
-import { ShieldCheck, Radio, ClipboardList, Building2, Users, FileSearch } from "lucide-react";
+import { ShieldCheck, Ticket, SprayCan, CarFront, Wrench, Cctv } from "lucide-react";
+
+// Service lineup from the client's updated company profile (03-10-2026), with
+// the surveillance and supervision scope from the original OSSF profile.
+// Copy rewritten 02-11-2026 to lead with the client's problem and the outcome,
+// using only facts from the profiles. The first service is shown as the
+// "Core Offering" card on the homepage.
 
 export type Service = {
   slug: string;
@@ -16,84 +22,103 @@ export const services: Service[] = [
     icon: ShieldCheck,
     title: "Security Services",
     shortDescription:
-      "Trained, police-verified personnel deployed for guarding, patrolling and access control.",
+      "Police-verified guards and supervisors who control access, patrol on schedule and report every shift.",
     description:
-      "Uniformed security personnel deployed to protect people, premises and operations — covering guarding, patrolling, access control and day-to-day site discipline under documented reporting.",
+      "A guard at your gate is both your first impression and your first line of defence. Ours are selected, verified and trained before they reach your site, then briefed on its specific post orders. Supervisors check on them by day and by night, so the standard you see in the first week is the standard you get in the first year.",
     capabilities: [
-      "Protection of life and property",
-      "Prevention of theft, fire, vandalism and trespassing",
-      "Visitor entry and exit management",
-      "Employee and vehicle access control",
-      "Regular patrolling of premises",
-      "Emergency response and coordination with Police, Fire Brigade and emergency services",
-      "Crowd management during events",
-      "Daily occurrence and shift handover reporting",
+      "Armed and unarmed security guards",
+      "Security supervisors for on-site command",
+      "Gate control with visitor, vehicle and material registers",
+      "Scheduled patrolling of the entire premises",
+      "CCTV monitoring from the security cabin",
+      "Fire and safety first response",
+      "Coordination with Police and Fire Brigade in an emergency",
+      "Daily occurrence reports and documented shift handovers",
     ],
   },
   {
-    slug: "electronic-surveillance-consultation",
-    icon: Radio,
-    title: "Electronic Surveillance Consultation",
+    slug: "event-and-exhibition-security",
+    icon: Ticket,
+    title: "Event & Exhibition Security",
     shortDescription:
-      "Consultation on CCTV and alarm monitoring to complement on-ground personnel.",
+      "Bouncers, guards and supervisors who keep entry smooth and crowds calm at events and exhibitions.",
     description:
-      "Advisory support on electronic surveillance — including CCTV and alarm monitoring — so technology and trained personnel work together as one coordinated security layer.",
+      "An event gets one chance to go right. We plan entry points, guest flow and staff positions with you in advance, then deploy a team that keeps queues moving, restricted areas closed and guests at ease from the moment gates open until the last vehicle leaves.",
     capabilities: [
+      "Bouncers for entry and VIP areas",
+      "Armed and unarmed guards",
+      "Event security supervisors",
+      "Entry, ticket and pass checks",
+      "Crowd and queue management",
       "CCTV monitoring",
-      "Alarm system monitoring",
-      "Visitor register maintenance",
-      "Security register maintenance",
-      "Checking doors, windows and electrical systems",
-      "Monitoring fire safety equipment",
-      "Surveillance planning consultation",
+      "Fire and safety support",
     ],
   },
   {
-    slug: "security-consulting",
-    icon: FileSearch,
-    title: "Security Consulting & Risk Assessment",
-    shortDescription: "Site-specific risk assessment and security planning for your operations.",
+    slug: "housekeeping-and-soft-services",
+    icon: SprayCan,
+    title: "Housekeeping & Soft Services",
+    shortDescription:
+      "Trained housekeeping teams that keep offices, factories and societies clean on a fixed, checked schedule.",
     description:
-      "Consultation and risk assessment services to help organizations understand exposure and design a security approach appropriate to their site, sector and operating hours.",
-    capabilities: ["Risk assessment services", "Security consulting", "Site-specific planning"],
-  },
-  {
-    slug: "facility-support-services",
-    icon: Building2,
-    title: "Facility Support Services",
-    shortDescription: "Facility-related support that keeps day-to-day operations running smoothly.",
-    description:
-      "Facility support services designed to work alongside security operations, helping client premises run smoothly under a single point of accountability.",
+      "Clean premises tell visitors, staff and residents that a place is well run. Our housekeeping staff follow an agreed cleaning schedule and supervisors check the work, so washrooms, corridors, pantries and shop floors stay presentable every day, not just before an inspection.",
     capabilities: [
-      "Facility support services",
-      "Material inward and outward movement control",
-      "Reporting suspicious activities",
+      "Corporate office housekeeping",
+      "Industrial and shop-floor housekeeping",
+      "Periodic deep cleaning",
+      "Pantry and tea services",
+      "Waste collection and segregation",
     ],
   },
   {
-    slug: "office-management-support",
-    icon: ClipboardList,
-    title: "Office Management Support",
+    slug: "valet-driver-services",
+    icon: CarFront,
+    title: "Valet Driver Services",
     shortDescription:
-      "Operational support that keeps front-of-house and facility functions organized.",
+      "Courteous, experienced valet drivers who handle guest vehicles with care at hotels, restaurants and events.",
     description:
-      "Support functions that help maintain an organized, professional environment at client offices and facilities, coordinated with the on-site security team.",
-    capabilities: ["Office management support", "Operational coordination"],
+      "Valet staff are often the first and last people your guests meet. Ours are well presented, polite and careful behind the wheel. They park and return vehicles safely and keep your driveway clear during the busiest hours.",
+    capabilities: [
+      "Hotels and banquet halls",
+      "Restaurants",
+      "Corporate events",
+      "Residential complexes",
+      "Commercial establishments",
+    ],
   },
   {
-    slug: "supervision-and-inspections",
-    icon: Users,
-    title: "Supervision & Inspections",
+    slug: "technical-and-non-technical-manpower",
+    icon: Wrench,
+    title: "Technical & Non-Technical Manpower",
     shortDescription:
-      "Regular supervision, surprise inspections and night audits across deployed sites.",
+      "Skilled and semi-skilled staff, from electricians and technicians to helpers, loaders and office support.",
     description:
-      "Ongoing oversight of deployed personnel through regular supervision, surprise inspections, vigilance checks and night audits — with immediate manpower replacement when needed.",
+      "When maintenance or daily operations are short of hands, work stops. We supply skilled technicians and dependable support staff on contract, take care of their payroll and statutory compliance, and replace anyone who does not meet your standard.",
     capabilities: [
-      "Regular supervision and inspections",
-      "Surprise inspections",
-      "Night audits",
-      "Vigilance inspections",
-      "Immediate manpower replacement",
+      "Electricians",
+      "Plumbers",
+      "HVAC technicians",
+      "Machine operators",
+      "Maintenance technicians",
+      "Helpers and office assistants",
+      "Loaders and packers",
+      "Facility support staff",
+    ],
+  },
+  {
+    slug: "surveillance-and-risk-assessment",
+    icon: Cctv,
+    title: "Surveillance & Risk Assessment",
+    shortDescription:
+      "CCTV and alarm monitoring support, plus a site risk assessment that shows where you are exposed.",
+    description:
+      "Cameras only help if someone is watching and the guards on the ground know how to respond. We walk your site to find its weak points, advise on camera and alarm coverage, and plan guard posts around them, so technology and people work as one system.",
+    capabilities: [
+      "CCTV and alarm monitoring",
+      "Site risk assessment",
+      "Security planning and consulting",
+      "Checks on doors, windows, electrical points and fire equipment",
+      "Surprise inspections and night audits",
     ],
   },
 ];

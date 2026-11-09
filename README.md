@@ -1,7 +1,7 @@
 # OSSF — Om Shiv Security Force Website
 
 Corporate website for Om Shiv Security Force (OSSF), a PSARA-licensed security and facility management
-company in Thane (est. 2017). Built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
+company in Thane (est. 2002). Built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
 
 - **Live site:** https://omshivsecurityforce.in
 - **Hosting:** Netlify (free plan), deployed automatically from this GitHub repo
@@ -17,6 +17,7 @@ company in Thane (est. 2017). Built with Next.js 14 (App Router), TypeScript and
 | `/industries` | Sectors served |
 | `/why-ossf` | Why choose OSSF |
 | `/clients` | Filterable client logo grid |
+| `/gallery` | Filterable photo gallery (15 slots) |
 | `/compliance` | Licences and registrations |
 | `/contact` | Address, phones, email, hours, map |
 | `/request-a-quote` | Quote request form |
@@ -63,6 +64,7 @@ docs/                 Image and logo sources and licences
 | Licence and registration numbers | `lib/data/compliance.ts` |
 | Add or remove a client | `lib/data/clients.ts` (logo file goes in `public/images/clients/`; record its source in `docs/image-sources.md`) |
 | A photo | `lib/data/images.ts` (see `public/images/README.md`) |
+| Gallery photos | `lib/data/gallery.ts` (files in `public/images/gallery/`; prompts in `docs/gallery-prompts.md`) |
 | Header / footer logo | `components/ui/Logo.tsx` + files in `public/brand/` |
 
 ## Deployment
@@ -90,14 +92,17 @@ Logins are held by the OSSF owner — never commit passwords or keys to this rep
 All business content comes from the client's Company Profile (confirmed 20-09-2026) or was
 confirmed by the client since. Company facts live in `lib/utils/site-config.ts`:
 
-- **Founding year** 2017 (the "Trusted Since 2002" / "10 years" phrasing in the source material was
-  a typo, per the client).
+- **Founding year** 2002 (confirmed by the client on 03-10-2026, replacing the earlier 2017).
 - **Office address, phones, email** (`info@omshivsecurityforce.in`) and **domain**
   (`https://omshivsecurityforce.in`, which drives canonical URLs, the sitemap and Open Graph URLs).
 - **Hours**: security operations 24×365; office enquiries 10:00 AM – 6:00 PM, Monday to Saturday
   (confirmed 26-09-2026 as "6 days a week"; the days are assumed).
-- **Compliance registrations** (PSARA, GSTIN, UDYAM, PF/EPF, ESIC, etc.) on `/compliance`, from
-  `lib/data/compliance.ts`.
+- **Services and industries** follow the client's updated company profile (03-10-2026): security,
+  event & exhibition security, housekeeping & soft services, valet drivers, technical & non-technical
+  manpower, and surveillance & risk assessment — `lib/data/services.ts` and `lib/data/industries.ts`.
+- **Compliance registrations** (PSARA, GST, UDYAM, EPFO, ESIC, etc.) on `/compliance`, from
+  `lib/data/compliance.ts`. **Registration numbers are deliberately not published** (client
+  instruction, 03-10-2026) — only the names of the registrations; numbers are shared on request.
 - **Clients** on `/clients` and the homepage teaser, from `lib/data/clients.ts`. Logo sources are in
   `docs/image-sources.md`. The profile's list of 100+ individual residential societies is deliberately
   **not** published (it would disclose which buildings use which security vendor); the site says

@@ -2,16 +2,21 @@ import type { LucideIcon } from "lucide-react";
 import {
   Factory,
   Building2,
+  Laptop,
   Home,
-  Store,
-  Hotel,
-  HardHat,
-  GraduationCap,
   HeartPulse,
-  Warehouse,
+  GraduationCap,
+  Hotel,
   ShoppingBag,
+  Warehouse,
+  HardHat,
   Landmark,
 } from "lucide-react";
+
+// Descriptions rewritten 02-11-2026 around each sector's main concern.
+// Sectors revised 03-10-2026 from the client's updated company profile, plus
+// Government Organizations from the original OSSF profile. Order matters for
+// the homepage bento grid: index 0 is the large tile, indices 3 and 7 are wide.
 
 export type Industry = {
   slug: string;
@@ -22,78 +27,80 @@ export type Industry = {
 
 export const industries: Industry[] = [
   {
-    slug: "industrial-units",
+    slug: "manufacturing-industries",
     icon: Factory,
-    title: "Industrial Units",
+    title: "Manufacturing Industries",
     description:
-      "Perimeter security, access control and shift-based deployment for manufacturing and industrial sites.",
+      "Gate and material movement control, perimeter patrols, industrial housekeeping and skilled hands for the plant, so production is never held up by security or staffing gaps.",
   },
   {
     slug: "corporate-offices",
     icon: Building2,
     title: "Corporate Offices",
     description:
-      "Front-desk-appropriate, professionally presented personnel for corporate premises and business parks.",
+      "Well-presented guards at reception, controlled visitor access, spotless workspaces and reliable pantry and office support that reflect well on your business.",
+  },
+  {
+    slug: "it-parks",
+    icon: Laptop,
+    title: "IT Parks",
+    description:
+      "Access control, visitor management and round-the-clock cover for campuses where hundreds of people and vehicles move in and out every hour.",
   },
   {
     slug: "residential-complexes",
     icon: Home,
     title: "Residential Complexes",
     description:
-      "Gate management, visitor control and patrolling for housing societies and gated communities.",
-  },
-  {
-    slug: "commercial-establishments",
-    icon: Store,
-    title: "Commercial Establishments",
-    description:
-      "Deployment tailored to retail and commercial premises operating hours and footfall patterns.",
-  },
-  {
-    slug: "hotels",
-    icon: Hotel,
-    title: "Hotels",
-    description:
-      "Guest-facing discipline and professional presentation combined with access control for hospitality properties.",
-  },
-  {
-    slug: "construction-sites",
-    icon: HardHat,
-    title: "Construction Sites",
-    description: "Site security and access control across active construction and project sites.",
-  },
-  {
-    slug: "educational-institutions",
-    icon: GraduationCap,
-    title: "Educational Institutions",
-    description:
-      "Campus access control and visitor management appropriate for schools and educational campuses.",
+      "Courteous gate staff, proper visitor and delivery registers, night patrols and housekeeping that give residents peace of mind and committees one less worry.",
   },
   {
     slug: "hospitals",
     icon: HeartPulse,
     title: "Hospitals",
     description:
-      "Disciplined, calm deployment suited to healthcare facility access points and patient-sensitive areas.",
+      "Calm, disciplined guards who manage visitors and emergencies with sensitivity, and housekeeping teams that understand hygiene matters most here.",
   },
   {
-    slug: "warehouses",
-    icon: Warehouse,
-    title: "Warehouses",
-    description: "Access control and patrolling for warehousing and logistics facilities.",
-  },
-  {
-    slug: "shopping-complexes",
-    icon: ShoppingBag,
-    title: "Shopping Complexes",
+    slug: "educational-institutions",
+    icon: GraduationCap,
+    title: "Educational Institutions",
     description:
-      "Crowd management and access control for shopping complexes and high-footfall commercial spaces.",
+      "Campus access control, visitor checks and safe drop-off and pick-up, so parents can trust that students are protected through the day.",
+  },
+  {
+    slug: "hotels-and-hospitality",
+    icon: Hotel,
+    title: "Hotels & Hospitality",
+    description:
+      "Discreet, guest-friendly security, courteous valet drivers and housekeeping support that protect your guests without spoiling their experience.",
+  },
+  {
+    slug: "retail-and-shopping-malls",
+    icon: ShoppingBag,
+    title: "Retail & Shopping Malls",
+    description:
+      "Crowd management, entry checks and loss prevention for showrooms and malls, with housekeeping that keeps high-footfall spaces presentable.",
+  },
+  {
+    slug: "warehousing-and-logistics",
+    icon: Warehouse,
+    title: "Warehousing & Logistics",
+    description:
+      "Inward and outward checks, vehicle and seal verification, patrols and dependable loaders and packers to keep stock safe and moving.",
+  },
+  {
+    slug: "construction-sites",
+    icon: HardHat,
+    title: "Construction Sites",
+    description:
+      "Site security against theft of material and equipment, controlled entry for workers and vehicles, and manpower support as the project grows.",
   },
   {
     slug: "government-organizations",
     icon: Landmark,
     title: "Government Organizations",
     description:
-      "Deployment aligned to statutory compliance requirements for government establishments.",
+      "Disciplined, fully documented deployment that meets the compliance and reporting requirements of government establishments.",
   },
 ];

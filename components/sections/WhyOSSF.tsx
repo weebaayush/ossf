@@ -14,8 +14,8 @@ export function WhyOSSF({ showAll = false }: { showAll?: boolean }) {
       <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
         <SectionHeading
           eyebrow="Why OSSF"
-          title="The standards behind every deployment"
-          description="What clients can expect from OSSF personnel and supervision on every site, drawn from our company profile."
+          title="What you can hold us to"
+          description="Choosing a security agency comes down to trust. These are the commitments behind every OSSF deployment, on every site and every shift."
         />
         {!showAll ? (
           <Button href="/why-ossf" variant="ghost" className="hidden shrink-0 sm:inline-flex">

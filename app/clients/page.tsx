@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/utils/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Clients",
   description:
-    "OSSF supports 100+ client relationships across industrial, corporate, residential, hospitality and institutional sectors, including Lodha, Runwal Realty, KIMS Hospitals and more.",
+    "OSSF serves 200+ clients across industrial, corporate, residential, hospitality and institutional sectors, including Lodha, Runwal Realty, KIMS Hospitals and more.",
   path: "/clients",
 });
 
@@ -19,8 +19,8 @@ export default function ClientsPage() {
     <>
       <PageHero
         eyebrow="Clients"
-        title="A growing base of client relationships"
-        description="A selection of the organizations OSSF works with, drawn from our company profile."
+        title="The organizations that trust us with their premises"
+        description="From leading real estate developers to hospitals and schools, a selection of the clients OSSF serves."
       />
 
       <Section tone="light">
