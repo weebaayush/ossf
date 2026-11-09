@@ -104,9 +104,8 @@ confirmed by the client since. Company facts live in `lib/utils/site-config.ts`:
   `lib/data/compliance.ts`. **Registration numbers are deliberately not published** (client
   instruction, 03-10-2026) — only the names of the registrations; numbers are shared on request.
 - **Clients** on `/clients` and the homepage teaser, from `lib/data/clients.ts`. Logo sources are in
-  `docs/image-sources.md`. The profile's list of 100+ individual residential societies is deliberately
-  **not** published (it would disclose which buildings use which security vendor); the site says
-  references are available on request instead.
+  `docs/image-sources.md`. At OSSF's request (09-11-2026) the page also lists the 52 residential
+  societies named in the OSSF presentation (`residentialSocieties`), by name only, no addresses.
 
 Awaiting OSSF approval before launch:
 

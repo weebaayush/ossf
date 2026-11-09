@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { Building2 } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { clientShowcaseNote } from "@/lib/data/clients";
+import { clientShowcaseNote, residentialSocieties } from "@/lib/data/clients";
 import { ClientDirectory } from "@/components/sections/ClientDirectory";
 import { buildMetadata } from "@/lib/utils/seo";
 
@@ -39,6 +40,25 @@ export default function ClientsPage() {
         <p className="mx-auto mt-12 max-w-xl text-center text-sm leading-relaxed text-ink-muted">
           {clientShowcaseNote}
         </p>
+      </Section>
+
+      <Section tone="subtle">
+        <SectionHeading
+          eyebrow="Residential Clients"
+          title="Housing societies we protect"
+          description={`${residentialSocieties.length} co-operative housing societies across Thane and Mumbai trust OSSF with their gates, patrols and upkeep.`}
+          align="center"
+          className="mx-auto"
+        />
+
+        <ul className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+          {residentialSocieties.map((society) => (
+            <li key={society} className="flex items-start gap-2.5 text-sm text-ink-muted">
+              <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
+              {society}
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <FinalCTA secondary={{ href: "/services", label: "Explore our services" }} />

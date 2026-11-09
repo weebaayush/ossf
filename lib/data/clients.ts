@@ -9,13 +9,11 @@
 // comes from the company profile itself; where neither exists, the client
 // appears as a name card.
 //
-// The company profile separately lists 100+ individual residential
-// societies/buildings under service (with full addresses). That granular list
-// is not published here — it reads as security-sensitive for those
-// societies (which building uses which security vendor) and wasn't presented
-// as public-facing collateral the way this logo-wall tier was. The note below
-// points visitors to ask directly, matching the company profile's own line:
-// "Client references and appreciation letters are available upon request."
+// Further logos and the list of residential societies come from the OSSF
+// presentation (Om_Shiv_Security_Force_Presentation.pptx, 09-11-2026), which
+// OSSF asked to have shown in full. Only society names are published (no
+// addresses). Where a client appears in both sources, the higher-quality
+// logo already on the site is kept, so no client is listed twice.
 //
 // CLIENT CONFIRMATION REQUIRED:
 //  • OSSF should confirm each client is comfortable with its logo appearing on
@@ -27,11 +25,7 @@
 //    profile are under "Commercial & Others".
 
 export type ClientCategory =
-  | "real-estate"
-  | "healthcare"
-  | "education"
-  | "industrial"
-  | "commercial";
+  "real-estate" | "healthcare" | "education" | "industrial" | "commercial";
 
 export const clientCategories: { id: ClientCategory; label: string }[] = [
   { id: "real-estate", label: "Real Estate & Builders" },
@@ -173,11 +167,122 @@ export const clients: Client[] = [
     category: "real-estate",
     logo: { src: "/images/clients/gaurav-promoters.webp", width: 342, height: 344 },
   },
-  // No official logo file could be verified for the clients below, so they
-  // appear as name cards. Add `logo` once OSSF obtains the original files.
-  { name: "Waldorf", category: "commercial" },
-  { name: "Vee Gee & Associates", category: "commercial" },
-  { name: "Venus Nirvana", category: "real-estate" },
+  // Logos below are taken from the OSSF presentation's client slides
+  // (09-11-2026), trimmed and converted to WebP. CLIENT CONFIRMATION REQUIRED:
+  // several were evidently sourced by web image search and may belong to a
+  // different company with the same name (see docs/image-sources.md).
+  // Waldorf and Clayton are housing societies (confirmed 10-11-2026), so they
+  // appear only in `residentialSocieties`, not here.
+  {
+    name: "Venus Nirvana",
+    category: "real-estate",
+    logo: { src: "/images/clients/venus-nirvana.webp", width: 238, height: 275 },
+  },
+  {
+    name: "Vee Gee & Associates",
+    category: "commercial",
+    logo: { src: "/images/clients/vee-gee-associates.webp", width: 268, height: 268 },
+  },
+  {
+    name: "House of Hiranandani",
+    category: "real-estate",
+    logo: { src: "/images/clients/house-of-hiranandani.webp", width: 338, height: 198 },
+  },
+  {
+    name: "Insignia",
+    category: "real-estate",
+    logo: { src: "/images/clients/insignia.webp", width: 600, height: 184 },
+  },
+  {
+    name: "Agile Commercial Real Estate",
+    category: "real-estate",
+    logo: { src: "/images/clients/agile-commercial-real-estate.webp", width: 243, height: 176 },
+  },
+  {
+    name: "Squarefeet Group",
+    category: "real-estate",
+    logo: { src: "/images/clients/squarefeet-group.webp", width: 140, height: 104 },
+  },
+  {
+    name: "Kalpataru Immensa, Kolshet",
+    category: "real-estate",
+    logo: { src: "/images/clients/kalpataru-immensa.webp", width: 572, height: 222 },
+  },
+  {
+    name: "Omkareshwar Properties",
+    category: "real-estate",
+    logo: { src: "/images/clients/omkareshwar-properties.webp", width: 225, height: 225 },
+  },
+  {
+    name: "Magnum Group",
+    category: "real-estate",
+    logo: { src: "/images/clients/magnum-group.webp", width: 534, height: 300 },
+  },
+  {
+    name: "Charms Group & RRC",
+    category: "real-estate",
+    logo: { src: "/images/clients/charms-group-rrc.webp", width: 441, height: 168 },
+  },
+  {
+    name: "Anant Square",
+    category: "real-estate",
+    logo: { src: "/images/clients/anant-square.webp", width: 218, height: 35 },
+  },
+  {
+    name: "Laukik Lifestyles",
+    category: "real-estate",
+    logo: { src: "/images/clients/laukik-lifestyles.webp", width: 226, height: 40 },
+  },
+  {
+    name: "SBSL",
+    category: "real-estate",
+    logo: { src: "/images/clients/sbsl.webp", width: 247, height: 154 },
+  },
+  {
+    name: "Sai Tapaswi Builders",
+    category: "real-estate",
+    logo: { src: "/images/clients/sai-tapaswi-builders.webp", width: 371, height: 151 },
+  },
+  {
+    name: "Luxora Realty",
+    category: "real-estate",
+    logo: { src: "/images/clients/luxora-realty.webp", width: 338, height: 300 },
+  },
+  {
+    name: "Eternia Residences",
+    category: "real-estate",
+    logo: { src: "/images/clients/eternia-residences.webp", width: 600, height: 258 },
+  },
+  {
+    name: "Skycon",
+    category: "real-estate",
+    logo: { src: "/images/clients/skycon.webp", width: 324, height: 106 },
+  },
+  {
+    name: "Balaji Annex",
+    category: "real-estate",
+    logo: { src: "/images/clients/balaji-annex.webp", width: 591, height: 138 },
+  },
+  {
+    name: "Siddhivinayak Builders & Developers",
+    category: "real-estate",
+    logo: { src: "/images/clients/siddhivinayak-builders.webp", width: 300, height: 300 },
+  },
+  {
+    name: "Balaji Builders & Developers",
+    category: "real-estate",
+    logo: { src: "/images/clients/balaji-builders.webp", width: 295, height: 300 },
+  },
+  {
+    name: "GLEG",
+    category: "commercial",
+    logo: { src: "/images/clients/gleg.webp", width: 196, height: 196 },
+  },
+  {
+    name: "Petrox",
+    category: "industrial",
+    logo: { src: "/images/clients/petrox.webp", width: 206, height: 62 },
+  },
 ];
 
 /** Clients that have a logo, in display order (used by the homepage teaser). */
@@ -185,5 +290,70 @@ export const logoClients = clients.filter((client): client is Client & { logo: C
   Boolean(client.logo)
 );
 
+/**
+ * Residential co-operative housing societies OSSF serves, as listed in the
+ * OSSF presentation (slides 18-19), in its order. Names are as spelt there;
+ * "Co-operative Housing Society" is dropped from each (the section heading
+ * says it). Corrected with OSSF (10-11-2026): Waldraff -> Waldorf,
+ * Gangid Galaxy -> Jangid Galaxy, Vinus Sky City -> Venus Sky City,
+ * Velly Tower -> Valley Tower; Hawara City, Tulsi Rai Vihar, Spen and
+ * Edenwood Fed confirmed as written. Not yet confirmed: "Woodstok",
+ * "Princenton", "Willocrest", "Natasa Enclave".
+ */
+export const residentialSocieties: string[] = [
+  "Athena",
+  "Astra",
+  "Brentford",
+  "Crown",
+  "Spenta",
+  "Carlton",
+  "Carrara",
+  "Ashwini",
+  "Clayton",
+  "Green Wood",
+  "Paramount",
+  "Hillspring",
+  "Sarita",
+  "Villa Grand",
+  "Woodstok",
+  "Ashar Enclave",
+  "Willocrest",
+  "Hawara City",
+  "Rosa Gardenia",
+  "Rosa Bella",
+  "Princenton",
+  "Kenora",
+  "Spen",
+  "Ritu Tower",
+  "Cassia",
+  "Phoenix",
+  "Neelkanth Green Iris",
+  "Tiara",
+  "Venus Sky City",
+  "Natasa Enclave",
+  "Solitaire",
+  "Cosmos Hawaiian",
+  "Tulsi Rai Vihar",
+  "Lodha Tiara",
+  "Waldorf",
+  "Marathon Nextown",
+  "Eagleridge",
+  "Queensgate",
+  "Jangid Galaxy",
+  "Om Residency",
+  "Balaji Shivam",
+  "Valley Tower",
+  "Devi Darshan",
+  "Titanium Tower",
+  "Vijay Vatika",
+  "Sonal Laxmi Apartment",
+  "La Homes",
+  "Tokyo Bay",
+  "Anthurium Everest",
+  "Shree Saket",
+  "Vishant",
+  "Edenwood Fed",
+];
+
 export const clientShowcaseNote =
-  "OSSF serves 200+ clients, including many residential societies and commercial premises across Thane, Mumbai, Navi Mumbai and surrounding regions. Client references and appreciation letters are available on request.";
+  "OSSF serves 200+ clients across Thane, Mumbai, Navi Mumbai and surrounding regions, including the residential societies listed below. Client references and appreciation letters are available on request.";

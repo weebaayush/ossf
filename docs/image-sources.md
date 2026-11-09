@@ -91,8 +91,7 @@ and lightly sharpened — not redrawn or recoloured. They are lower resolution
 than the official logos. **CLIENT CONFIRMATION REQUIRED:** replace each with
 the client's original logo file when OSSF obtains it.
 
-**Shown as name cards:** Waldorf (the company profile shows a photo of the
-storefront, not a logo), Vee Gee & Associates, Venus Nirvana. To add a logo, ask OSSF for the client's original logo file
+**Name cards:** none at present. To add a logo for a client without one, ask OSSF for the client's original logo file
 (SVG or high-resolution PNG), put it in `public/images/clients/` and add a
 `logo` field in `lib/data/clients.ts`.
 
@@ -101,6 +100,24 @@ respective owners and are shown only to identify organisations OSSF provides
 services to. Before launch, OSSF should confirm each client is comfortable with
 its logo appearing on the OSSF website. To remove a logo, delete the `logo`
 field for that client in `lib/data/clients.ts` (it then shows as a name card).
+
+## Client logos from the OSSF presentation (added 09-11-2026)
+
+22 logos were taken from the client slides (13–17) of `Om_Shiv_Security_Force_Presentation.pptx`,
+supplied by OSSF, then trimmed and converted to WebP: Venus Nirvana, Vee Gee & Associates,
+House of Hiranandani, Insignia, Agile Commercial
+Real Estate, Squarefeet Group, Kalpataru Immensa, Omkareshwar Properties, Magnum Group, Charms Group
+& RRC, Anant Square, Laukik Lifestyles, SBSL, Sai Tapaswi Builders, Luxora Realty, Eternia
+Residences, Skycon, Balaji Annex, Siddhivinayak Builders & Developers, Balaji Builders
+& Developers, GLEG and Petrox.
+
+The presentation's image captions show several were found by web image search and may belong to an
+unrelated company with the same name (for example Petrox Oy, Finland; Skycon, Pasig). OSSF should
+confirm each one, or supply the client's real logo.
+
+Not used: the presentation's "Waldorf Designs" (a Kozhikode shop) and "Clayton Homes" (Denver, US)
+images. OSSF confirmed (10-11-2026) these clients are Waldorf and Clayton Co-operative Housing
+Societies, which are listed in the society list instead.
 
 ## AI-generated photos (added 02-11-2026)
 
