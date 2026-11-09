@@ -53,16 +53,9 @@ export const imageSlots = {
   // Full-bleed background behind the homepage headline — decorative.
   homeHero: {
     label: "Hero photograph",
-    src: "https://images.unsplash.com/photo-1501324682324-0d8d7c4b9706?w=2400&q=80&fm=jpg",
+    src: "/images/hero/home-hero-building.webp",
     alt: "",
-    objectPosition: "50% 40%",
-    credit: {
-      source: "Unsplash",
-      pageUrl: "https://unsplash.com/photos/low-angle-photo-of-curtain-wall-building-hN3t9Wj-bNs",
-      photographer: "JESHOOTS.COM",
-      photographerUrl: "https://unsplash.com/@jeshoots",
-      license: UNSPLASH_LICENSE,
-    },
+    objectPosition: "65% 50%",
   },
   homeAbout: {
     label: "Training photograph",
