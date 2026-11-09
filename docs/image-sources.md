@@ -102,6 +102,20 @@ services to. Before launch, OSSF should confirm each client is comfortable with
 its logo appearing on the OSSF website. To remove a logo, delete the `logo`
 field for that client in `lib/data/clients.ts` (it then shows as a name card).
 
+## Client logos from the OSSF presentation (added 09-11-2026)
+
+24 logos were taken from the client slides (13–17) of `Om_Shiv_Security_Force_Presentation.pptx`,
+supplied by OSSF, then trimmed and converted to WebP: Venus Nirvana, Vee Gee & Associates,
+Waldorf Designs (cropped from a storefront photo), House of Hiranandani, Insignia, Agile Commercial
+Real Estate, Squarefeet Group, Kalpataru Immensa, Omkareshwar Properties, Magnum Group, Charms Group
+& RRC, Anant Square, Laukik Lifestyles, SBSL, Sai Tapaswi Builders, Luxora Realty, Eternia
+Residences, Skycon, Clayton Homes, Balaji Annex, Siddhivinayak Builders & Developers, Balaji Builders
+& Developers, GLEG and Petrox.
+
+The presentation's image captions show several were found by web image search and may belong to an
+unrelated company with the same name (for example Clayton Homes, Denver; Petrox Oy, Finland; Skycon,
+Pasig; Waldorf Designs, Kozhikode). OSSF should confirm each one, or supply the client's real logo.
+
 ## AI-generated photos (added 02-11-2026)
 
 All files in `public/images/gallery/` are AI-generated and illustrative; they do not show real OSSF
