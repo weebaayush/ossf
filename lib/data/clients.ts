@@ -171,6 +171,8 @@ export const clients: Client[] = [
   // (09-11-2026), trimmed and converted to WebP. CLIENT CONFIRMATION REQUIRED:
   // several were evidently sourced by web image search and may belong to a
   // different company with the same name (see docs/image-sources.md).
+  // Waldorf and Clayton are housing societies (confirmed 10-11-2026), so they
+  // appear only in `residentialSocieties`, not here.
   {
     name: "Venus Nirvana",
     category: "real-estate",
@@ -180,11 +182,6 @@ export const clients: Client[] = [
     name: "Vee Gee & Associates",
     category: "commercial",
     logo: { src: "/images/clients/vee-gee-associates.webp", width: 268, height: 268 },
-  },
-  {
-    name: "Waldorf Designs",
-    category: "commercial",
-    logo: { src: "/images/clients/waldorf.webp", width: 312, height: 128 },
   },
   {
     name: "House of Hiranandani",
@@ -262,11 +259,6 @@ export const clients: Client[] = [
     logo: { src: "/images/clients/skycon.webp", width: 324, height: 106 },
   },
   {
-    name: "Clayton Homes",
-    category: "real-estate",
-    logo: { src: "/images/clients/clayton-homes.webp", width: 300, height: 300 },
-  },
-  {
     name: "Balaji Annex",
     category: "real-estate",
     logo: { src: "/images/clients/balaji-annex.webp", width: 591, height: 138 },
@@ -303,7 +295,8 @@ export const logoClients = clients.filter((client): client is Client & { logo: C
  * OSSF presentation (slides 18-19), in its order. Names are as spelt there;
  * "Co-operative Housing Society" is dropped from each (the section heading
  * says it). CLIENT CONFIRMATION REQUIRED: check spellings such as
- * "Woodstok", "Princenton", "Willocrest" and "Velly Tower".
+ * "Woodstok", "Princenton", "Willocrest" and "Velly Tower". "Waldraff" in
+ * the presentation is Waldorf (confirmed 10-11-2026).
  */
 export const residentialSocieties: string[] = [
   "Athena",
@@ -340,7 +333,7 @@ export const residentialSocieties: string[] = [
   "Cosmos Hawaiian",
   "Tulsi Rai Vihar",
   "Lodha Tiara",
-  "Waldraff",
+  "Waldorf",
   "Marathon Nextown",
   "Eagleridge",
   "Queensgate",
