@@ -18,8 +18,8 @@ export default function RequestQuotePage() {
     <>
       <PageHero
         eyebrow="Request a Quote"
-        title="Tell us about your requirement"
-        description="Share a few details about your site and we'll come back with a tailored proposal."
+        title="Get a free, no-obligation quote"
+        description="Share a few details about your site. We'll plan the right staffing and send you a clear proposal."
       />
 
       <Section tone="light">

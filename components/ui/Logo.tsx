@@ -15,10 +15,17 @@ import { siteConfig } from "@/lib/utils/site-config";
  * For a sharper header on high-density screens, re-export these from the
  * design file at 2–3× size (or as SVG) with a transparent background and
  * update the width/height values below.
+ *
+ * Light theme: on light backgrounds the white lettering is swapped for the
+ * navy copies (ossf-wordmark-dark.png, ossf-logo-stacked-dark.png — same
+ * artwork, only the white text recoloured navy). Both are rendered; CSS in
+ * app/globals.css shows the right one (.logo-on-dark / .logo-on-light).
  */
 const MARK = { src: "/brand/ossf-mark.png", width: 90, height: 89 };
 const WORDMARK = { src: "/brand/ossf-wordmark.png", width: 306, height: 61 };
 const STACKED = { src: "/brand/ossf-logo-stacked.png", width: 306, height: 212 };
+const WORDMARK_DARK = "/brand/ossf-wordmark-dark.png";
+const STACKED_DARK = "/brand/ossf-logo-stacked-dark.png";
 
 export function Logo({
   variant = "nav",
@@ -30,13 +37,22 @@ export function Logo({
 }) {
   if (variant === "footer") {
     return (
-      <Image
-        src={STACKED.src}
-        width={STACKED.width}
-        height={STACKED.height}
-        alt={siteConfig.name}
-        className={cn("h-auto w-40", className)}
-      />
+      <span className={cn("block w-40", className)}>
+        <Image
+          src={STACKED.src}
+          width={STACKED.width}
+          height={STACKED.height}
+          alt={siteConfig.name}
+          className="logo-on-dark h-auto w-full"
+        />
+        <Image
+          src={STACKED_DARK}
+          width={STACKED.width}
+          height={STACKED.height}
+          alt={siteConfig.name}
+          className="logo-on-light h-auto w-full"
+        />
+      </span>
     );
   }
 
@@ -56,7 +72,14 @@ export function Logo({
         height={WORDMARK.height}
         alt={siteConfig.name}
         priority
-        className="h-7 w-auto"
+        className="logo-on-dark h-7 w-auto"
+      />
+      <Image
+        src={WORDMARK_DARK}
+        width={WORDMARK.width}
+        height={WORDMARK.height}
+        alt={siteConfig.name}
+        className="logo-on-light h-7 w-auto"
       />
     </span>
   );

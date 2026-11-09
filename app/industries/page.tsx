@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/utils/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Industries We Serve",
   description:
-    "Industrial, corporate, residential and institutional security from OSSF — serving industrial units, corporate offices, residential complexes, hotels, hospitals, warehouses, schools, shopping complexes and government organizations.",
+    "OSSF serves manufacturing industries, corporate offices, IT parks, residential complexes, hospitals, educational institutions, hotels, shopping malls, warehouses, construction sites and government organizations.",
   path: "/industries",
 });
 
@@ -18,8 +18,8 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Sector-specific security & facility support"
-        description="Every sector operates differently. OSSF adapts deployment, shift structure and supervision to how each site actually runs."
+        title="Security planned for how your sector works"
+        description="A factory gate, a hospital lobby and a society entrance each carry different risks. We staff and brief every site for the risks it actually faces."
       />
 
       <Section tone="light">

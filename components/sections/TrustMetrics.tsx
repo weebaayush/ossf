@@ -1,28 +1,31 @@
-import { Users, Clock, LayoutGrid, ShieldCheck } from "lucide-react";
+import { Users, Clock, LayoutGrid, Award } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/utils/site-config";
 import { industries } from "@/lib/data/industries";
 
+// Years of experience counts up automatically from the founding year.
+const yearsOfExperience = new Date().getFullYear() - siteConfig.foundingYear;
+
 const metrics = [
-  { icon: Users, value: "100+", label: "Client Relationships" },
-  { icon: Clock, value: "24×365", label: "Security Operations" },
+  { icon: Award, value: `${yearsOfExperience}+`, label: "Years of Experience" },
+  { icon: Users, value: siteConfig.clientCount, label: "Satisfied Clients" },
   { icon: LayoutGrid, value: String(industries.length), label: "Sectors Served" },
-  { icon: ShieldCheck, value: "PSARA", label: "Licensed Agency" },
+  { icon: Clock, value: "24×365", label: "Operations" },
 ];
 
 export function TrustMetrics() {
   return (
     <section className="relative z-10 -mt-16 sm:-mt-20">
       <Container>
-        <div className="overflow-hidden rounded-2xl border border-navy-800 bg-navy-950 shadow-lifted">
+        <div className="surface-dark surface-card overflow-hidden rounded-2xl border border-navy-800 bg-navy-950 shadow-lifted">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1px_1fr]">
             <div className="flex flex-col justify-center gap-2 px-7 py-8">
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-400">
                 Track Record
               </span>
               <p className="text-sm leading-relaxed text-white/60">
-                Operating since {siteConfig.foundingYear} from Thane, serving sites across
-                Maharashtra, Goa, Gujarat and Daman.
+                Protecting homes, workplaces and industrial sites since {siteConfig.foundingYear},
+                from our base in Thane to clients across Maharashtra, Goa, Gujarat and Daman.
               </p>
             </div>
             <div className="hidden bg-navy-800 lg:block" aria-hidden="true" />

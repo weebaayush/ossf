@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { primaryNav } from "@/lib/data/nav";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils/cn";
 
 export function Navbar() {
@@ -43,12 +44,17 @@ export function Navbar() {
   }, [open]);
 
   const solid = scrolled || open;
+  // Only the homepage hero has a photo behind the header. Everywhere else (and
+  // once scrolled) the header counts as a dark surface, so the light theme can
+  // turn it white with dark text.
+  const overPhoto = pathname === "/" && !solid;
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        !overPhoto && "surface-dark surface-header",
         solid
           ? "bg-navy-950/95 shadow-lifted backdrop-blur-sm"
           : "bg-gradient-to-b from-navy-950/70 to-transparent"
@@ -63,7 +69,7 @@ export function Navbar() {
           <Logo variant="nav" />
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-8" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-5 xl:flex 2xl:gap-7" aria-label="Primary navigation">
           {primaryNav.map((link) => {
             const active = isActive(link.href);
             return (
@@ -82,33 +88,38 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 xl:flex">
+          <ThemeToggle />
           <Button href="/request-a-quote" size="md" className="whitespace-nowrap">
             Request a Quote
           </Button>
         </div>
 
-        <button
-          ref={toggleRef}
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-controls="mobile-menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? (
-            <X className="h-6 w-6" aria-hidden="true" />
-          ) : (
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          )}
-        </button>
+        <div className="flex items-center gap-2 xl:hidden">
+          <ThemeToggle />
+
+          <button
+            ref={toggleRef}
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-controls="mobile-menu"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white xl:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? (
+              <X className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            )}
+          </button>
+        </div>
       </div>
 
       {open ? (
         <div
           id="mobile-menu"
-          className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-white/10 bg-navy-950 px-5 pb-6 pt-2 sm:px-8 lg:hidden"
+          className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-white/10 bg-navy-950 px-5 pb-6 pt-2 sm:px-8 xl:hidden"
         >
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             {primaryNav.map((link) => {

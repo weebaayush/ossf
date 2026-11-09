@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { HowWeWork } from "@/components/sections/HowWeWork";
+import { MissionVision } from "@/components/sections/MissionVision";
 import { ComplianceSection } from "@/components/sections/ComplianceSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { differentiators } from "@/lib/data/differentiators";
@@ -15,7 +15,7 @@ import { imageSlots } from "@/lib/data/images";
 export const metadata: Metadata = buildMetadata({
   title: "About OSSF",
   description:
-    "Established in 2017 in Thane, Om Shiv Security Force (OSSF) provides security and facility management services built on trained personnel, structured supervision and statutory compliance.",
+    "Established in 2002 in Thane, Om Shiv Security Force (OSSF) is a professionally managed security and facility management company providing trained, disciplined manpower across industries.",
   path: "/about",
 });
 
@@ -26,8 +26,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow={`About Us · Established ${siteConfig.foundingYear}`}
-        title="A security and facility management partner built on discipline"
-        description="Om Shiv Security Force (OSSF) supports organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat and Daman with trained personnel, structured supervision and accountable service delivery."
+        title="Two decades of keeping Mumbai's sites safe, clean and running"
+        description="Om Shiv Security Force (OSSF) is a Thane-based, PSARA-licensed company supplying trained security, housekeeping, valet and technical staff across Maharashtra, Goa, Gujarat and Daman."
         image={imageSlots.aboutHero}
       />
 
@@ -36,15 +36,24 @@ export default function AboutPage() {
           <RevealOnScroll>
             <SectionHeading
               eyebrow="Who We Are"
-              title="Security and facility management, delivered with discipline"
-              description="Established in 2017, OSSF is a professionally managed security services organization providing security and facility management services to industrial units, corporate offices, residential complexes, commercial establishments, hotels, construction sites, educational institutions, hospitals, warehouses, shopping complexes and government organizations across Maharashtra, Mumbai, Thane, Goa, Gujarat, Daman and surrounding regions."
+              title="Built on one simple promise: people you can depend on"
+              description="Om Shiv Security Force began in 2002 with a straightforward idea: a security agency is only as good as the person standing at the gate at 3 a.m. Everything we do, from how we hire to how we supervise, is built around making sure that person is verified, trained, alert and accountable."
             />
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">
-              Our strength lies in our experienced workforce, including personnel from the retired
-              defence services alongside highly trained security professionals. Every team member is
-              carefully selected, professionally trained, and committed to maintaining the highest
-              standards of discipline, integrity and professionalism.
+              Today we serve housing societies, corporate offices, factories, hospitals, schools,
+              hotels and commercial sites with security guards, housekeeping teams, valet drivers
+              and technical staff. Our workforce includes retired defence personnel alongside
+              trained security and facility professionals, and every one of them answers to an OSSF
+              supervisor.
             </p>
+            <div className="mt-6 rounded-xl border border-surface-border bg-surface-subtle p-5">
+              <h3 className="text-sm font-semibold text-navy-950">Our Commitment</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                No missed shifts left uncovered. No guard left unsupervised. No statutory shortcuts.
+                We plan every deployment around the client&apos;s site and stay accountable for it,
+                from the first day to the last.
+              </p>
+            </div>
           </RevealOnScroll>
           <RevealOnScroll delay={100}>
             <PlaceholderImage {...imageSlots.aboutOperations} ratio="aspect-[5/4]" />
@@ -52,61 +61,67 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section tone="subtle">
+      <MissionVision />
+
+      <Section tone="light">
         <SectionHeading
-          eyebrow="Capabilities"
-          title="What we bring to every deployment"
-          description="A capability set spanning security operations, consulting and facility support."
+          eyebrow="One Partner"
+          title="Four services, one point of contact"
+          description="Combine security, upkeep and manpower under one contract instead of managing a separate vendor for each."
           align="center"
           className="mx-auto"
         />
         <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
           <RevealOnScroll>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">Security Operations</h3>
+              <h3 className="text-sm font-semibold text-navy-950">Security & Event Protection</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Personnel deployment, patrolling, access control, crowd management and emergency
-                response — backed by daily occurrence and shift handover reporting.
+                Armed and unarmed guards, supervisors, bouncers, gate control and CCTV monitoring
+                for sites, events and exhibitions, backed by daily reporting.
               </p>
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={60}>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">Consulting & Assessment</h3>
+              <h3 className="text-sm font-semibold text-navy-950">Housekeeping & Soft Services</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Security consulting, electronic surveillance consultation and risk assessment
-                services to shape the right deployment plan.
+                Office and industrial housekeeping, deep cleaning, pantry services and waste
+                management on a fixed, supervised schedule.
               </p>
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={120}>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">Facility Support</h3>
+              <h3 className="text-sm font-semibold text-navy-950">
+                Valet & Front-of-House Support
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Facility support services and office management support that work alongside on-site
-                security teams.
+                Courteous, experienced valet drivers for hotels, restaurants, corporate events,
+                residential complexes and commercial establishments.
               </p>
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={180}>
             <div className="rounded-xl border border-surface-border bg-white p-6">
-              <h3 className="text-sm font-semibold text-navy-950">Supervision & Quality Control</h3>
+              <h3 className="text-sm font-semibold text-navy-950">
+                Technical & Non-Technical Manpower
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Regular supervision, surprise inspections, night audits and vigilance checks, with
-                immediate manpower replacement when required.
+                Electricians, plumbers, HVAC and maintenance technicians, machine operators,
+                helpers, office assistants, loaders, packers and facility support staff.
               </p>
             </div>
           </RevealOnScroll>
         </div>
       </Section>
 
-      <Section tone="light">
+      <Section tone="subtle">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-2">
           <RevealOnScroll>
             <SectionHeading
-              eyebrow="Workforce Philosophy"
-              title="People are the foundation of every deployment"
-              description="All OSSF personnel are held to the same operational standard, regardless of site or sector."
+              eyebrow="Our People"
+              title="The standard every OSSF employee is held to"
+              description="Whether they guard a factory gate or a hospital lobby, every OSSF employee meets the same bar."
             />
           </RevealOnScroll>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -130,7 +145,6 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <HowWeWork />
       <ComplianceSection />
       <FinalCTA secondary={{ href: "/services", label: "Explore our services" }} />
     </>

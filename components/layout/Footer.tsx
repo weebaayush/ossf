@@ -10,7 +10,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-navy-800 bg-navy-950 text-white/70">
+    <footer className="surface-dark border-t border-navy-800 bg-navy-950 text-white/70">
       <Container className="py-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -22,8 +22,8 @@ export function Footer() {
               <Logo variant="footer" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
-              {siteConfig.name} — PSARA-licensed security and facility management services,
-              established {siteConfig.foundingYear} in Thane.
+              PSARA-licensed security, housekeeping and manpower services. Keeping sites safe and
+              running from Thane since {siteConfig.foundingYear}.
             </p>
           </div>
 

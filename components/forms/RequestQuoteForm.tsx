@@ -277,7 +277,7 @@ export function RequestQuoteForm() {
           tabIndex={-1}
           className="text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         >
-          Your request is ready — just press Send
+          Your request is ready. Just press Send.
         </h2>
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-muted">
           We&apos;ve opened your email app with your request addressed to {siteConfig.email}. Press{" "}
@@ -450,7 +450,7 @@ export function RequestQuoteForm() {
         <Field
           id="message"
           label="Requirement details"
-          hint="Number of personnel, shift pattern, site type, start date — anything that helps us scope the proposal."
+          hint="Number of staff, shift pattern, site type, start date: anything that helps us prepare an accurate proposal."
         >
           <textarea
             {...fieldProps("message", true)}

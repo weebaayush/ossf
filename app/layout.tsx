@@ -46,6 +46,10 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before first paint so a saved light-theme choice never flashes dark.
+// Default (no saved choice) is the original dark theme.
+const themeScript = `try{if(localStorage.getItem("ossf-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
+
 export const viewport: Viewport = {
   themeColor: "#05090F",
 };
@@ -73,7 +77,16 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${inter.variable} ${manrope.variable}`}
+      // The theme script may change data-theme before React hydrates.
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-screen flex-col font-sans">
         <script
           type="application/ld+json"

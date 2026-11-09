@@ -7,10 +7,10 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { imageSlots } from "@/lib/data/images";
 
 const points = [
-  "Police-verified, professionally trained personnel",
-  "24×365 operational support",
-  "Regular supervision, inspections and night audits",
-  "Customized deployment for each client site",
+  "Police-verified, trained personnel, including ex-servicemen",
+  "Immediate replacement whenever a staff member is absent or unsuitable",
+  "Surprise inspections and night audits by our own supervisors",
+  "PSARA licensed, with PF, ESIC and all statutory compliance handled by us",
 ];
 
 export function AboutIntro() {
@@ -22,9 +22,9 @@ export function AboutIntro() {
         </RevealOnScroll>
         <RevealOnScroll delay={100}>
           <SectionHeading
-            eyebrow="About OSSF"
-            title="A disciplined, accountable approach to security and facility management"
-            description="Om Shiv Security Force provides security and facility management services across industrial, corporate, residential, institutional and commercial sectors — built around trained personnel, structured supervision and dependable reporting."
+            eyebrow="Who We Are"
+            title="One accountable partner for security, upkeep and manpower"
+            description="Most sites juggle a security agency, a housekeeping contractor and a manpower supplier, then chase all three when something slips. OSSF brings these services under one contract, one point of contact and one standard of discipline, and has done so for over two decades."
           />
           <ul className="mt-7 space-y-3">
             {points.map((point) => (

@@ -15,9 +15,9 @@ export function ServicesGrid() {
     <Section tone="subtle">
       <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
         <SectionHeading
-          eyebrow="What We Do"
-          title="Security & facility management services"
-          description="Core service categories drawn from OSSF's operational scope — each tailored to the site it's deployed on."
+          eyebrow="Our Services"
+          title="Everything your premises need, from the main gate to the plant room"
+          description="Take one service or combine several under a single contract. Each is staffed by trained people and backed by OSSF supervision."
         />
         <Button href="/services" variant="ghost" className="hidden shrink-0 sm:inline-flex">
           View all services

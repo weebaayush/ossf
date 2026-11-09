@@ -31,7 +31,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-navy-950",
+        "surface-dark relative overflow-hidden bg-navy-950",
         image ? "pt-36 sm:pt-44" : "pb-16 pt-36 sm:pb-20 sm:pt-44"
       )}
     >

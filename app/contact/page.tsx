@@ -22,8 +22,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Talk to OSSF"
-        description="Reach out for enquiries, existing-client support, or to request a tailored proposal."
+        title="Let's talk about your site"
+        description="Call, email or visit our Thane office. Whether you need a quote or support on an existing site, you will speak to someone who can help."
       />
 
       <Section tone="light">

@@ -12,7 +12,7 @@ import { Info } from "lucide-react";
 export const metadata: Metadata = buildMetadata({
   title: "Compliance & Licensing",
   description:
-    "OSSF operates under statutory compliance frameworks including PSARA licensing, GST, UDYAM, PF/EPF, ESIC, Professional Tax and Shops & Establishment registration.",
+    "OSSF is a PSARA-licensed security agency registered under the Government of Maharashtra, with EPFO, ESIC, Labour Welfare, Professional Tax, GST, UDYAM and Shops & Establishment registrations.",
   path: "/compliance",
 });
 
@@ -21,15 +21,15 @@ export default function CompliancePage() {
     <>
       <PageHero
         eyebrow="Compliance"
-        title="Statutory compliance & licensing"
-        description="The registrations and licences OSSF holds to operate as a private security agency in India, as listed in our company registration documentation."
+        title="Fully licensed. Fully compliant. Audit-ready."
+        description="When your agency cuts corners on licences, PF or ESIC, the liability can land on you. OSSF holds every licence and registration required, and shares the records on request."
       />
 
       <Section tone="light">
         <SectionHeading
           eyebrow="Framework"
-          title="Registrations & licences"
-          description="Registration numbers below are as filed with the respective authorities. Full certificate copies are available to clients on request."
+          title="Registrations under the Government of Maharashtra"
+          description="The licence and statutory registrations OSSF holds. Registration numbers and certificate copies are shared with clients on request."
         />
 
         <div className="mt-12 divide-y divide-surface-border border-y border-surface-border">
@@ -43,8 +43,8 @@ export default function CompliancePage() {
                   <h3 className="text-sm font-semibold text-navy-950">{item.title}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-ink-muted">{item.description}</p>
                 </div>
-                <span className="inline-block w-fit shrink-0 rounded-md bg-surface-subtle px-3 py-1.5 font-mono text-xs tracking-tight text-navy-700">
-                  {item.value}
+                <span className="inline-block w-fit shrink-0 rounded-md bg-surface-subtle px-3 py-1.5 text-xs font-medium text-navy-700">
+                  Registered
                 </span>
               </div>
             </RevealOnScroll>
@@ -54,8 +54,9 @@ export default function CompliancePage() {
         <div className="mt-10 flex items-start gap-3 rounded-xl border border-accent-100 bg-accent-50 p-5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" aria-hidden="true" />
           <p className="text-sm leading-relaxed text-accent-800">
-            Scanned certificate copies are not published on the website but are available to
-            prospective and existing clients on request — contact us via the details on our{" "}
+            Registration numbers and certificate copies are not published on the website. They are
+            shared with prospective and existing clients on request. Contact us through the details
+            on our{" "}
             <Link href="/contact" className="font-semibold underline">
               Contact page
             </Link>

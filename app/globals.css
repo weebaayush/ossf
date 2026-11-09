@@ -64,3 +64,150 @@
     animation: none !important;
   }
 }
+
+/* ------------------------------------------------------------------------
+   Light theme (toggle in the header; see components/ui/ThemeToggle.tsx).
+
+   The default site is the original dark design. With data-theme="light" on
+   <html>, every element marked .surface-dark (navy sections, page headers,
+   stats card, call-to-action, footer, header off the homepage photo) turns
+   light, and the white/translucent utilities inside it are remapped to
+   readable dark equivalents below. The homepage hero photo and the gallery
+   photo viewer stay dark in both themes. Red (accent) buttons keep white text.
+   ------------------------------------------------------------------------ */
+
+/* The surfaces themselves */
+html[data-theme="light"] .surface-dark {
+  background-color: #f3f5f8;
+  color: #475467;
+}
+html[data-theme="light"] .surface-dark.surface-card {
+  background-color: #ffffff;
+  box-shadow:
+    0 2px 8px -2px rgba(10, 18, 32, 0.1),
+    0 4px 16px -4px rgba(10, 18, 32, 0.08);
+}
+html[data-theme="light"] .surface-dark.surface-strong {
+  background-color: #e5e9f0;
+}
+html[data-theme="light"] .surface-dark.surface-header {
+  background-color: rgba(255, 255, 255, 0.96);
+  background-image: none;
+  border-bottom: 1px solid #e3e7ed;
+}
+html[data-theme="light"] .surface-dark.border-t {
+  border-top-color: #e3e7ed;
+}
+
+/* Dividers inside surfaces (e.g. stats card) */
+html[data-theme="light"] .surface-dark .divide-navy-800 > :not([hidden]) ~ :not([hidden]),
+html[data-theme="light"] .surface-dark .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e3e7ed;
+}
+
+html[data-theme="light"] .surface-dark .text-white,
+html[data-theme="light"] .surface-dark.text-white {
+  color: #05090f;
+}
+html[data-theme="light"] .surface-dark .text-white\/80,
+html[data-theme="light"] .surface-dark.text-white\/80,
+html[data-theme="light"] .surface-dark .text-white\/75,
+html[data-theme="light"] .surface-dark.text-white\/75 {
+  color: #344054;
+}
+html[data-theme="light"] .surface-dark .text-white\/70,
+html[data-theme="light"] .surface-dark.text-white\/70,
+html[data-theme="light"] .surface-dark .text-white\/65,
+html[data-theme="light"] .surface-dark.text-white\/65,
+html[data-theme="light"] .surface-dark .text-white\/60,
+html[data-theme="light"] .surface-dark.text-white\/60 {
+  color: #475467;
+}
+html[data-theme="light"] .surface-dark .text-white\/55,
+html[data-theme="light"] .surface-dark.text-white\/55,
+html[data-theme="light"] .surface-dark .text-white\/50,
+html[data-theme="light"] .surface-dark.text-white\/50,
+html[data-theme="light"] .surface-dark .text-white\/40,
+html[data-theme="light"] .surface-dark.text-white\/40 {
+  color: #667085;
+}
+html[data-theme="light"] .surface-dark .hover\:text-white:hover,
+html[data-theme="light"] .surface-dark.hover\:text-white:hover {
+  color: #05090f;
+}
+html[data-theme="light"] .surface-dark .text-accent-400,
+html[data-theme="light"] .surface-dark.text-accent-400 {
+  color: #ad0d27;
+}
+html[data-theme="light"] .surface-dark .border-white\/10,
+html[data-theme="light"] .surface-dark.border-white\/10,
+html[data-theme="light"] .surface-dark .border-white\/15,
+html[data-theme="light"] .surface-dark.border-white\/15,
+html[data-theme="light"] .surface-dark .border-white\/20,
+html[data-theme="light"] .surface-dark.border-white\/20,
+html[data-theme="light"] .surface-dark .border-navy-800,
+html[data-theme="light"] .surface-dark.border-navy-800,
+html[data-theme="light"] .surface-dark .border-navy-700,
+html[data-theme="light"] .surface-dark.border-navy-700 {
+  border-color: #e3e7ed;
+}
+html[data-theme="light"] .surface-dark .border-white\/30,
+html[data-theme="light"] .surface-dark.border-white\/30 {
+  border-color: #cbd3e1;
+}
+html[data-theme="light"] .surface-dark .hover\:border-white\/60:hover,
+html[data-theme="light"] .surface-dark.hover\:border-white\/60:hover {
+  border-color: #5a7299;
+}
+html[data-theme="light"] .surface-dark .bg-white\/\[0\.03\],
+html[data-theme="light"] .surface-dark.bg-white\/\[0\.03\],
+html[data-theme="light"] .surface-dark .bg-white\/\[0\.04\],
+html[data-theme="light"] .surface-dark.bg-white\/\[0\.04\] {
+  background-color: #ffffff;
+}
+html[data-theme="light"] .surface-dark .hover\:bg-white\/\[0\.06\]:hover,
+html[data-theme="light"] .surface-dark.hover\:bg-white\/\[0\.06\]:hover,
+html[data-theme="light"] .surface-dark .hover\:bg-white\/5:hover,
+html[data-theme="light"] .surface-dark.hover\:bg-white\/5:hover,
+html[data-theme="light"] .surface-dark .hover\:bg-white\/10:hover,
+html[data-theme="light"] .surface-dark.hover\:bg-white\/10:hover {
+  background-color: #e5e9f0;
+}
+html[data-theme="light"] .surface-dark .bg-white\/10,
+html[data-theme="light"] .surface-dark.bg-white\/10,
+html[data-theme="light"] .surface-dark .bg-white\/15,
+html[data-theme="light"] .surface-dark.bg-white\/15 {
+  background-color: #e5e9f0;
+}
+html[data-theme="light"] .surface-dark .bg-navy-800,
+html[data-theme="light"] .surface-dark.bg-navy-800 {
+  background-color: #e3e7ed;
+}
+html[data-theme="light"] .surface-dark .bg-navy-radial,
+html[data-theme="light"] .surface-dark.bg-navy-radial,
+html[data-theme="light"] .surface-dark .bg-gradient-to-b,
+html[data-theme="light"] .surface-dark.bg-gradient-to-b {
+  background-image: none;
+}
+
+/* Keep red buttons and their content white */
+html[data-theme="light"] .surface-dark .bg-accent-500,
+html[data-theme="light"] .surface-dark .bg-accent-500 * {
+  color: #ffffff;
+}
+
+/* Logo: white lettering on dark, navy lettering on light */
+.logo-on-light {
+  display: none;
+}
+html[data-theme="light"] .surface-dark .logo-on-dark {
+  display: none;
+}
+html[data-theme="light"] .surface-dark .logo-on-light {
+  display: block;
+}
+
+/* Solid navy panels inside a surface (e.g. the mobile menu) */
+html[data-theme="light"] .surface-dark .bg-navy-950 {
+  background-color: #ffffff;
+}

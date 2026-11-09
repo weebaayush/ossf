@@ -59,7 +59,7 @@ export const clients: Client[] = [
   {
     name: "Lodha",
     category: "real-estate",
-    logo: { src: "/images/clients/lodha.svg", width: 299, height: 47 },
+    logo: { src: "/images/clients/lodha.webp", width: 548, height: 80 },
   },
   {
     name: "Kalpataru",
@@ -186,4 +186,4 @@ export const logoClients = clients.filter((client): client is Client & { logo: C
 );
 
 export const clientShowcaseNote =
-  "OSSF also secures 100+ residential societies and commercial premises across Thane, Mumbai, Navi Mumbai and surrounding regions. Client references and appreciation letters are available on request.";
+  "OSSF serves 200+ clients, including many residential societies and commercial premises across Thane, Mumbai, Navi Mumbai and surrounding regions. Client references and appreciation letters are available on request.";
