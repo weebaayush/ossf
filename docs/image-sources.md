@@ -130,6 +130,7 @@ staff, clients or sites. The gallery page says so (`galleryIsIllustrative` in `l
 | `02`–`06` | Generated with Canva; download pending (slots hidden until added) |
 | `16`–`21` | Client-supplied set, `OSSF-AI-Generated-Photos.pdf`; Gemini watermark cropped from `18`–`20` |
 | `26` | Generated with Canva (09-11-2026) |
+| `public/images/services/surveillance-control-room.webp` | Client-supplied AI image (09-11-2026), CCTV control room; bottom strip trimmed to remove the Gemini watermark |
 | `public/images/hero/home-hero-building.webp` | Client-supplied AI image (09-11-2026), building signage removed by OSSF; bottom strip trimmed to remove the Gemini watermark |
 | `23`–`25`, `public/images/services/services-hero-building.webp` | Cropped from client-supplied AI poster images (WhatsApp, 09-11-2026). Crops leave out the posters' made-up shield logo, banners and the unverified "20 guards deployed" claim |
 
