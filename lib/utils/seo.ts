@@ -11,13 +11,11 @@ export const ogImage = {
 };
 
 /**
- * Routes whose content is still awaiting client approval. The Terms and
- * Privacy pages now contain a basic drafted policy, but OSSF has not yet
- * approved the wording, so they stay `noindex` and out of the sitemap. They
- * remain reachable from the footer and are linked from the site. Remove a
- * route from this list once OSSF approves its content.
+ * Routes kept out of search results and the sitemap (`noindex`). Add a route
+ * here while its content is awaiting client approval. Empty since OSSF
+ * approved the Privacy Policy and Terms on 21-11-2026.
  */
-export const noIndexRoutes = ["/privacy-policy", "/terms-of-service"];
+export const noIndexRoutes: string[] = [];
 
 type BuildMetadataArgs = {
   title: string;

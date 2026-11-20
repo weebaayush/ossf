@@ -4,9 +4,8 @@
 // Each sector has a one-line summary (shown on the closed card), a short
 // account of OSSF's role there, the work typically provided and the services
 // it draws on. The detail is assembled from the service scope in the company
-// profile (see lib/data/services.ts); it does not add new claims. OSSF should
-// check each entry and correct anything that does not match what it actually
-// provides in that sector.
+// profile (see lib/data/services.ts); it does not add new claims. Approved by
+// OSSF on 21-11-2026.
 
 export type Industry = {
   slug: string;
