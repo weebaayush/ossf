@@ -49,7 +49,13 @@ export type SubmitQuoteResult =
   { ok: true; delivered: boolean } | { ok: false; error: string };
 
 export async function submitQuote(payload: QuoteFormPayload): Promise<SubmitQuoteResult> {
-  const body = new URLSearchParams({ "form-name": FORM_NAME, ...payload });
+  const body = new URLSearchParams({
+    "form-name": FORM_NAME,
+    // Subject line of the notification email sent to OSSF, so each enquiry
+    // can be identified in the inbox at a glance.
+    subject: `Quote request: ${payload.serviceRequired} - ${payload.company}`,
+    ...payload,
+  });
 
   try {
     const response = await fetch(FORM_ENDPOINT, {
