@@ -6,13 +6,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import type { ImageSlot } from "@/lib/data/images";
 
-const INTERVAL_MS = 5000;
+const INTERVAL_MS = 6000;
 
 /**
- * Photo slideshow beside the homepage headline. Slides crossfade every few
- * seconds (opacity only, nothing moves) and it pauses while the pointer or
- * keyboard focus is on it. The arrows and dots always work. Slides are
- * configured in lib/data/images.ts.
+ * Full-width photo slideshow behind the homepage headline. Fills its parent
+ * (which must be `relative`). Slides crossfade every few seconds (opacity
+ * only, nothing moves); it pauses while the pointer or keyboard focus is on
+ * the arrows or dots, and after a visitor uses them. Slides are configured in
+ * lib/data/images.ts.
+ *
+ * The photos are decorative behind the text, so they carry empty alt text;
+ * the slide controls are labelled for screen readers.
  */
 export function HeroSlideshow({ slides }: { slides: ImageSlot[] }) {
   const [index, setIndex] = useState(0);
@@ -25,79 +29,80 @@ export function HeroSlideshow({ slides }: { slides: ImageSlot[] }) {
     return () => window.clearInterval(timer);
   }, [paused, count]);
 
-  const go = (step: number) => setIndex((i) => (i + step + count) % count);
+  const go = (step: number) => {
+    setPaused(true);
+    setIndex((i) => (i + step + count) % count);
+  };
 
   return (
-    <div
-      className="group relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-sunken"
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="Photos"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-    >
-      {slides.map((slide, i) => (
-        <Image
-          key={slide.src}
-          src={slide.src ?? ""}
-          alt={slide.alt}
-          fill
-          priority={i === 0}
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          aria-hidden={i !== index}
-          className={cn(
-            "object-cover transition-opacity duration-700 ease-out",
-            i === index ? "opacity-100" : "opacity-0"
-          )}
-          style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
-        />
-      ))}
+    <>
+      <div className="absolute inset-0" aria-hidden="true">
+        {slides.map((slide, i) => (
+          <Image
+            key={slide.src}
+            src={slide.src ?? ""}
+            alt=""
+            fill
+            priority={i === 0}
+            sizes="100vw"
+            className={cn(
+              "object-cover transition-opacity duration-1000 ease-out",
+              i === index ? "opacity-100" : "opacity-0"
+            )}
+            style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+          />
+        ))}
+      </div>
 
       {count > 1 ? (
-        <>
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-night/60 to-transparent px-3 pb-3 pt-10">
-            <div className="flex items-center gap-1.5" role="group" aria-label="Choose photo">
-              {slides.map((slide, i) => (
-                <button
-                  key={slide.src}
-                  type="button"
-                  onClick={() => setIndex(i)}
-                  aria-label={`Photo ${i + 1} of ${count}`}
-                  aria-current={i === index}
-                  className="flex h-6 w-6 items-center justify-center"
-                >
-                  <span
-                    className={cn(
-                      "h-2 w-2 transition-colors",
-                      i === index ? "bg-signal" : "bg-white/70"
-                    )}
-                  />
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-2">
+        <div
+          className="absolute bottom-5 right-5 z-20 flex items-center gap-3 sm:bottom-8 sm:right-8"
+          role="group"
+          aria-roledescription="carousel"
+          aria-label="Background photos"
+          onMouseEnter={() => setPaused(true)}
+          onFocus={() => setPaused(true)}
+        >
+          <div className="hidden items-center gap-1 sm:flex">
+            {slides.map((slide, i) => (
               <button
+                key={slide.src}
                 type="button"
-                onClick={() => go(-1)}
-                aria-label="Previous photo"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/90 text-night hover:bg-white"
+                onClick={() => {
+                  setPaused(true);
+                  setIndex(i);
+                }}
+                aria-label={`Photo ${i + 1} of ${count}`}
+                aria-current={i === index}
+                className="flex h-6 w-6 items-center justify-center"
               >
-                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+                <span
+                  className={cn(
+                    "h-2 w-2 transition-colors",
+                    i === index ? "bg-signal" : "bg-white/70"
+                  )}
+                />
               </button>
-              <button
-                type="button"
-                onClick={() => go(1)}
-                aria-label="Next photo"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/90 text-night hover:bg-white"
-              >
-                <ChevronRight className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </div>
+            ))}
           </div>
-        </>
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Previous photo"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/90 text-night hover:bg-white"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Next photo"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/90 text-night hover:bg-white"
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
       ) : null}
-    </div>
+    </>
   );
 }
