@@ -1,113 +1,77 @@
-import type { LucideIcon } from "lucide-react";
-import {
-  Target,
-  Eye,
-  Scale,
-  ShieldCheck,
-  Award,
-  Handshake,
-  ClipboardCheck,
-  HeartHandshake,
-  UserSearch,
-  BadgeCheck,
-  HeartPulse,
-  GraduationCap,
-  MapPin,
-  RefreshCw,
-} from "lucide-react";
 import { siteConfig } from "@/lib/utils/site-config";
 
 // Company-level content: mission, vision, values, recruitment & training, FAQs.
-// Written 06-10-2026 and rewritten 02-11-2026 after reviewing comparable Indian
-// security & facility management companies, using only facts from the OSSF company profiles (police
-// verification, training, ex-servicemen, supervision, 24×365, PSARA, service
-// areas). Do not add figures (headcount, guards deployed, certifications)
-// unless the client confirms them.
+// Uses only facts from the OSSF company profiles (police verification,
+// training, ex-servicemen, supervision, 24x365, PSARA, service areas). Do not
+// add figures (headcount, guards deployed, certifications) unless the client
+// confirms them. Keep the wording plain: say what OSSF does, not how it feels.
 
-export const mission = {
-  icon: Target,
-  title: "Our Mission",
-  text: "To keep people, property and premises safe with trained, disciplined and closely supervised staff, and to be the vendor our clients never have to chase.",
-};
+export const mission =
+  "To keep people, property and premises safe with trained, disciplined and closely supervised staff.";
 
-export const vision = {
-  icon: Eye,
-  title: "Our Vision",
-  text: "To be the security and facility management partner that organizations across Maharashtra and beyond recommend first, because our people turn up, stay alert and do the job right.",
-};
+export const vision =
+  "To be the security and facility management company that clients recommend to each other.";
 
-export type Value = { icon: LucideIcon; title: string; description: string };
+export type Value = { title: string; description: string };
 
 export const coreValues: Value[] = [
   {
-    icon: Scale,
     title: "Integrity",
-    description: "Straight answers, honest billing and full statutory compliance.",
+    description: "Honest billing and full statutory compliance.",
   },
   {
-    icon: ShieldCheck,
     title: "Discipline",
-    description: "Punctual, well-groomed and alert on every shift, not only on inspection day.",
+    description: "Punctual, properly turned out and alert on every shift.",
   },
   {
-    icon: Award,
     title: "Professionalism",
-    description: "People who know their duties and carry them out without being reminded.",
+    description: "Staff who know their duties and carry them out without reminders.",
   },
   {
-    icon: ClipboardCheck,
     title: "Accountability",
-    description: "One point of contact who owns every issue until it is resolved.",
+    description: "One point of contact who stays with an issue until it is closed.",
   },
   {
-    icon: Handshake,
-    title: "Client First",
-    description: "Service shaped around your site, your instructions and your feedback.",
+    title: "Client first",
+    description: "Service planned around your site, your instructions and your feedback.",
   },
   {
-    icon: HeartHandshake,
-    title: "Safety First",
-    description: "Protecting people and property comes before everything else.",
+    title: "Safety first",
+    description: "The safety of people and property comes before everything else.",
   },
 ];
 
-export type ProcessStepWithIcon = { icon: LucideIcon; title: string; description: string };
+export type RecruitmentStep = { title: string; description: string };
 
 /** How OSSF selects, trains and manages personnel before and after deployment. */
-export const recruitmentSteps: ProcessStepWithIcon[] = [
+export const recruitmentSteps: RecruitmentStep[] = [
   {
-    icon: UserSearch,
-    title: "Careful Selection",
+    title: "Selection",
     description:
-      "Candidates are screened for attitude, background and suitability. For security posts we also recruit ex-servicemen.",
+      "Candidates are screened for background, attitude and suitability for the post. For security duties we also recruit ex-servicemen.",
   },
   {
-    icon: BadgeCheck,
-    title: "Police Verification",
-    description: "No one joins a site until their police verification is complete.",
+    title: "Police verification",
+    description: "Nobody is sent to a site until their police verification is complete.",
   },
   {
-    icon: HeartPulse,
-    title: "Fitness Check",
-    description: "Personnel must be physically fit, medically sound and mentally alert.",
+    title: "Fitness check",
+    description: "Personnel must be physically fit, medically sound and alert.",
   },
   {
-    icon: GraduationCap,
     title: "Training",
     description:
-      "Duties, discipline, emergency response and fire safety basics, followed by a briefing on your site's instructions.",
+      "Duties, discipline, emergency response and fire safety basics, followed by a briefing on the instructions for your site.",
   },
   {
-    icon: MapPin,
-    title: "Deployment & Supervision",
+    title: "Deployment and supervision",
     description:
-      "Staff report in full uniform and are checked through regular visits, surprise inspections and night audits.",
+      "Staff report in full uniform. Supervisors check on them through regular visits, surprise inspections and night audits.",
   },
   {
-    icon: RefreshCw,
-    title: "Ongoing Support",
+    title: "Review and replacement",
     description:
-      "Performance is reviewed regularly, and anyone absent or unsuitable is replaced immediately.",
+      "Performance is reviewed regularly. Anyone who is absent or unsuitable is replaced immediately.",
   },
 ];
 
@@ -117,7 +81,7 @@ export const faqs: Faq[] = [
   {
     question: "Is Om Shiv Security Force a licensed security agency?",
     answer:
-      "Yes. OSSF is licensed under the Private Security Agencies (Regulation) Act (PSARA) and holds every statutory registration a security agency needs, including EPFO, ESIC, Professional Tax, GST and Shops & Establishment. Copies are shared with clients on request.",
+      "Yes. OSSF is licensed under the Private Security Agencies (Regulation) Act (PSARA) and holds the statutory registrations a security agency needs, including EPFO, ESIC, Professional Tax, GST and Shops & Establishment. Copies are shared with clients on request.",
   },
   {
     question: "Are your guards police verified and trained?",
@@ -127,30 +91,45 @@ export const faqs: Faq[] = [
   {
     question: "Who is responsible for PF, ESIC and wages?",
     answer:
-      "We are. OSSF employs the staff, pays their wages and handles PF, ESIC and other statutory contributions. Records are available for your audits, so your organization is not left exposed as the principal employer.",
+      "We are. OSSF employs the staff, pays their wages and makes the PF, ESIC and other statutory contributions. The records are available for your audits as principal employer.",
   },
   {
     question: "What happens if a guard is absent or not performing?",
     answer:
-      "We send a replacement immediately. If someone is not the right fit for your site, tell your OSSF point of contact and we will change the staff member, no lengthy process needed.",
+      "We send a replacement immediately. If someone is not suited to your site, tell your OSSF contact and we will change the staff member.",
   },
   {
     question: "How do you make sure guards stay alert, especially at night?",
     answer:
-      "Our supervisors make regular site visits, surprise inspections and night audits. Guards maintain occurrence registers and shift handovers, so lapses are caught and corrected quickly.",
+      "Our supervisors make regular site visits, surprise inspections and night audits. Guards maintain an occurrence register and hand over in writing at each shift change, so lapses are noticed and corrected.",
   },
   {
     question: "Can we hire more than one service from you?",
     answer:
-      "Yes, and many clients do. Security, housekeeping, valet drivers and technical or support manpower can be combined under one contract, with one invoice and one point of contact.",
+      "Yes, and many clients do. Security, housekeeping, valet drivers and technical or support manpower can be taken under one contract, with one invoice and one point of contact.",
+  },
+  {
+    question: "What types of premises do you work at?",
+    answer:
+      "Housing societies and residential complexes, corporate offices, IT parks, factories, warehouses, hospitals, schools and colleges, hotels, malls, construction sites and government establishments.",
+  },
+  {
+    question: "Can guards be arranged for different shifts?",
+    answer:
+      "Yes. Shifts are planned for each site after a visit, including night shifts and round-the-clock cover on all days of the year.",
+  },
+  {
+    question: "How does a housing society hire security from OSSF?",
+    answer:
+      "The managing committee contacts us with the society's location, the number of gates and towers and the cover it wants. We visit, propose the number of guards and shifts and send a quotation for the committee to consider.",
   },
   {
     question: "Which areas do you serve?",
-    answer: `We are based in ${siteConfig.address.locality} and serve clients across ${siteConfig.serviceAreas.join(", ")}.`,
+    answer: `We currently work for clients in ${siteConfig.coverage}. If your site is elsewhere, contact us and we will tell you whether we can staff it.`,
   },
   {
     question: "How do I get a quotation?",
     answer:
-      "Fill in the Request a Quote form or call us. Tell us your site location, the services you need and the number of staff or shifts, and we will visit if needed and send a proposal tailored to your site.",
+      "Fill in the quote request form or call us. Tell us the site location, the services you need and the number of staff or shifts. We visit the site if needed and send a proposal for it.",
   },
 ];

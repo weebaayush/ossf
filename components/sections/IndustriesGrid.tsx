@@ -1,70 +1,29 @@
+import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { cn } from "@/lib/utils/cn";
 import { industries } from "@/lib/data/industries";
 
-// Index-based spans create a bento layout: one large feature tile, two wide
-// tiles, and the rest as compact tiles — deliberately different from the
-// uniform card grid on the dedicated /industries page.
-const featureIndex = 0;
-const wideIndices = new Set([3, 7]);
-
+/** Homepage index of sectors; each links to its entry on /industries. */
 export function IndustriesGrid() {
   return (
-    <Section tone="navy" className="bg-navy-radial">
-      <SectionHeading
-        eyebrow="Sectors We Serve"
-        title="Trusted across the sectors that keep the city running"
-        description="A hospital, a factory and a housing society need very different things from their guards. We plan every deployment around how your site actually works."
-        tone="light"
-      />
-
-      <div className="mt-12 grid grid-cols-2 gap-4 [grid-auto-flow:dense] lg:grid-cols-4 lg:auto-rows-[minmax(136px,auto)]">
-        {industries.map((industry, index) => {
-          const isFeature = index === featureIndex;
-          const isWide = wideIndices.has(index);
-
-          return (
-            <RevealOnScroll
-              key={industry.slug}
-              delay={index * 40}
-              className={cn(isFeature && "lg:col-span-2 lg:row-span-2", isWide && "col-span-2")}
-            >
-              <div
-                className={cn(
-                  "group flex h-full flex-col justify-between rounded-xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-accent-500/40 hover:bg-white/[0.06]",
-                  isWide && "sm:flex-row sm:items-center sm:gap-5"
-                )}
+    <Section tone="light">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+        <SectionHeading
+          title="Sectors we work in"
+          description="A factory gate, a hospital lobby and a society entrance need different things from their staff. Deployments are planned for the kind of site."
+        />
+        <ul className="marker-list grid grid-cols-1 gap-x-10 gap-y-3.5 self-start sm:grid-cols-2">
+          {industries.map((industry) => (
+            <li key={industry.slug}>
+              <Link
+                href={`/industries#${industry.slug}`}
+                className="link-underline text-base font-semibold text-ink hover:text-brand"
               >
-                <div className={cn(isWide && "sm:flex sm:items-center sm:gap-4")}>
-                  <industry.icon
-                    className={cn("text-accent-500", isFeature ? "h-7 w-7" : "h-5 w-5")}
-                    aria-hidden="true"
-                  />
-                  <h3
-                    className={cn(
-                      "font-semibold text-white",
-                      isFeature ? "mt-4 text-lg" : "mt-4 text-sm",
-                      isWide && "mt-0 sm:mt-0"
-                    )}
-                  >
-                    {industry.title}
-                  </h3>
-                </div>
-                <p
-                  className={cn(
-                    "leading-relaxed text-white/55",
-                    isFeature ? "mt-3 max-w-sm text-sm" : "mt-1.5 text-xs",
-                    isWide && "mt-1.5 sm:mt-0 sm:max-w-xs"
-                  )}
-                >
-                  {industry.description}
-                </p>
-              </div>
-            </RevealOnScroll>
-          );
-        })}
+                {industry.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </Section>
   );

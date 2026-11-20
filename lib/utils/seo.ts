@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { siteConfig } from "./site-config";
 
 /** Social share image (1200×630 PNG, official logo on the brand blue). To change it,
- *  replace the file — no code change needed. */
+ *  replace the file - no code change needed. */
 export const ogImage = {
   url: "/images/og-image.png",
   width: 1200,
   height: 630,
-  alt: `${siteConfig.name} — ${siteConfig.tagline}`,
+  alt: `${siteConfig.name} | ${siteConfig.tagline}`,
 };
 
 /**

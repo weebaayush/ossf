@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/utils/site-config";
 import { noIndexRoutes } from "@/lib/utils/seo";
+import { services } from "@/lib/data/services";
 
 const routes = [
   "",
   "/about",
   "/services",
+  ...services.map((service) => `/services/${service.slug}`),
   "/industries",
   "/why-ossf",
   "/clients",

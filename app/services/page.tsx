@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
-import { Section } from "@/components/ui/Section";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { Container } from "@/components/ui/Container";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { services } from "@/lib/data/services";
 import { buildMetadata } from "@/lib/utils/seo";
@@ -12,7 +12,7 @@ import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 export const metadata: Metadata = buildMetadata({
   title: "Security & Facility Management Services",
   description:
-    "Security guards, event and exhibition security, housekeeping and soft services, valet drivers, technical and non-technical manpower, and surveillance support — from OSSF across Thane, Mumbai and Maharashtra.",
+    "OSSF services: security guards, event and exhibition security, housekeeping and soft services, valet drivers, technical and non-technical manpower, and surveillance support.",
   path: "/services",
 });
 
@@ -20,65 +20,54 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Services"
-        title="Security, housekeeping and manpower, under one roof"
-        description="Trained, verified and supervised staff for every need on your premises. Take one service or combine several under a single contract."
+        title="Security, housekeeping and manpower from one agency"
+        description="Verified, trained and supervised staff for your premises. Take one service or combine several under a single contract."
         image={imageSlots.servicesHero}
       />
 
-      {services.map((service, index) => (
-        <Section
-          key={service.slug}
-          id={service.slug}
-          tone={index % 2 === 0 ? "light" : "subtle"}
-          className="scroll-mt-24"
-        >
-          <RevealOnScroll>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
-              <div>
-                {serviceImages[service.slug] ? (
+      <div className="bg-page">
+        <Container>
+          {services.map((service) => {
+            const image = serviceImages[service.slug];
+            return (
+              <section
+                key={service.slug}
+                id={service.slug}
+                className="grid scroll-mt-24 grid-cols-1 gap-8 border-b border-line py-14 last:border-b-0 md:py-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14"
+              >
+                {image ? (
                   <PlaceholderImage
-                    {...serviceImages[service.slug]}
-                    ratio="aspect-[16/10]"
-                    className="mb-6"
-                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    {...image}
+                    ratio="aspect-[4/3]"
+                    sizes="(min-width: 1024px) 36vw, 100vw"
                   />
                 ) : null}
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-navy-950">
-                    <service.icon className="h-6 w-6 text-accent-500" aria-hidden="true" />
-                  </div>
-                  <h2 className="text-2xl font-semibold text-navy-950 sm:text-3xl">
-                    {service.title}
-                  </h2>
+                <div>
+                  <h2 className="text-2xl font-bold sm:text-3xl">{service.title}</h2>
+                  <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-ink-muted">
+                    {service.description}
+                  </p>
+                  <h3 className="mt-7 text-sm font-bold text-ink">What is included</h3>
+                  <ul className="marker-list mt-3 grid grid-cols-1 gap-x-8 gap-y-2.5 text-[0.9375rem] text-ink-muted sm:grid-cols-2">
+                    {service.capabilities.map((capability) => (
+                      <li key={capability}>{capability}</li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="link-underline mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand"
+                  >
+                    Full details: how we deliver {service.title.toLowerCase()}
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-ink-muted">{service.description}</p>
-              </div>
-              <div className="rounded-xl border border-surface-border bg-white p-6">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
-                  What you get
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {service.capabilities.map((capability) => (
-                    <li
-                      key={capability}
-                      className="flex items-start gap-2.5 text-sm text-ink-muted"
-                    >
-                      <CheckCircle2
-                        className="mt-0.5 h-4 w-4 shrink-0 text-accent-500"
-                        aria-hidden="true"
-                      />
-                      {capability}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </Section>
-      ))}
+              </section>
+            );
+          })}
+        </Container>
+      </div>
 
-      <FinalCTA secondary={{ href: "/industries", label: "See the industries we serve" }} />
+      <FinalCTA secondary={{ href: "/industries", label: "Sectors we work in" }} />
     </>
   );
 }

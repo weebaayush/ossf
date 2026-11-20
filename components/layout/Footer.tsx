@@ -1,29 +1,24 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { footerNav } from "@/lib/data/nav";
 import { services } from "@/lib/data/services";
-import { siteConfig, telHref } from "@/lib/utils/site-config";
+import { formatPhone, siteConfig, telHref } from "@/lib/utils/site-config";
 import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="surface-dark border-t border-navy-800 bg-navy-950 text-white/70">
-      <Container className="py-16">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-band-deep text-white/75">
+      <Container className="py-14">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.1fr_1.3fr]">
           <div>
-            <Link
-              href="/"
-              className="flex w-fit items-center gap-2.5 text-white"
-              aria-label="OSSF — Om Shiv Security Force home"
-            >
+            <Link href="/" className="block w-fit" aria-label={`${siteConfig.name} home`}>
               <Logo variant="footer" />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed">
-              PSARA-licensed security, housekeeping and manpower services. Keeping sites safe and
-              running from Thane since {siteConfig.foundingYear}.
+            <p className="mt-5 max-w-xs text-sm leading-relaxed">
+              PSARA-licensed security and integrated facility management company, established in{" "}
+              {siteConfig.foundingYear}.
             </p>
           </div>
 
@@ -46,7 +41,7 @@ export function Footer() {
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link
-                    href={`/services#${service.slug}`}
+                    href={`/services/${service.slug}`}
                     className="link-underline hover:text-white"
                   >
                     {service.title}
@@ -57,46 +52,39 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold text-white">Contact</h2>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li className="flex gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-                <span>
-                  {siteConfig.address.line1}, {siteConfig.address.line2}
-                  <br />
-                  {siteConfig.address.locality}, {siteConfig.address.region}{" "}
-                  {siteConfig.address.postalCode}
-                </span>
-              </li>
-              <li className="flex gap-2.5">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-                <span>
-                  <a href={telHref(siteConfig.phone)} className="hover:text-white">
-                    {siteConfig.phone}
-                  </a>
-                  {" / "}
-                  <a href={telHref(siteConfig.phoneSecondary)} className="hover:text-white">
-                    {siteConfig.phoneSecondary}
-                  </a>
-                </span>
-              </li>
-              <li className="flex gap-2.5">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-white">
+            <h2 className="text-sm font-semibold text-white">Office</h2>
+            <address className="mt-4 space-y-3 text-sm not-italic leading-relaxed">
+              <p>
+                {siteConfig.address.line1}
+                <br />
+                {siteConfig.address.line2}
+                <br />
+                {siteConfig.address.locality}, {siteConfig.address.region}{" "}
+                {siteConfig.address.postalCode}
+              </p>
+              <p>
+                <a href={telHref(siteConfig.phone)} className="text-white hover:underline">
+                  {formatPhone(siteConfig.phone)}
+                </a>
+                <br />
+                <a href={telHref(siteConfig.phoneSecondary)} className="text-white hover:underline">
+                  {formatPhone(siteConfig.phoneSecondary)}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="break-all text-white hover:underline"
+                >
                   {siteConfig.email}
                 </a>
-              </li>
-            </ul>
-            <Link
-              href="/request-a-quote"
-              className="link-underline mt-5 inline-block text-sm font-semibold text-white"
-            >
-              Request a Quote <span aria-hidden="true">→</span>
-            </Link>
+              </p>
+              <p>Office hours: {siteConfig.businessHours.officeEnquiries}</p>
+            </address>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/15 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {siteConfig.name}. All rights reserved.
           </p>

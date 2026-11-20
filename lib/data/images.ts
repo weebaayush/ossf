@@ -1,7 +1,7 @@
 // Single registry of every photography slot on the site.
 // Photos refreshed 06-10-2026 to brighter, daytime images at the client's request.
 //
-// IMPORTANT — what these photos are:
+// IMPORTANT - what these photos are:
 // No real OSSF photography has been supplied yet. Slots with a local
 // /images/gallery/ path use AI-generated images of Indian staff (see
 // lib/data/gallery.ts); the rest use licensed Unsplash stock photographs purely
@@ -14,7 +14,7 @@
 // Swapping in client-approved OSSF photography later:
 //   1. Put the file in /public/images/<folder>/ (see public/images/README.md).
 //   2. Replace that slot's `src`, `alt` and `credit` below.
-// Layout, aspect ratio and cropping stay the same — no component changes.
+// Layout, aspect ratio and cropping stay the same - no component changes.
 // Removing `src` falls back to the labelled placeholder panel.
 //
 // Remote Unsplash URLs are served through next/image (see `images.remotePatterns`
@@ -47,34 +47,20 @@ export type ImageSlot = {
 };
 
 export const imageSlots = {
-  // Full-bleed background behind the homepage headline — decorative.
-  homeHero: {
-    label: "Hero photograph",
-    src: "/images/hero/home-hero-building.webp",
-    alt: "",
-    objectPosition: "65% 50%",
-  },
   homeAbout: {
     label: "Training photograph",
     src: "/images/gallery/21-fire-drill-training.webp",
     alt: "Security team watching a guard put out a training fire with an extinguisher",
   },
-  homeFlagshipService: {
-    label: "Security services photograph",
-    src: "/images/gallery/19-hospital-security.webp",
-    alt: "Security guard greeting an elderly patient and his family in a hospital lobby",
-    objectPosition: "50% 35%",
-  },
   aboutHero: {
-    label: "Team photograph",
-    src: "/images/gallery/16-security-team.webp",
-    alt: "A team of uniformed security guards with their supervisor outside a corporate building",
-    objectPosition: "50% 60%",
-  },
-  aboutOperations: {
     label: "Training photograph",
     src: "/images/gallery/01-security-guard-training.webp",
     alt: "Security guards in uniform attending a classroom training session",
+  },
+  aboutOperations: {
+    label: "Briefing photograph",
+    src: "/images/gallery/25-duty-briefing.webp",
+    alt: "A supervisor briefing security guards beside a board listing training modules",
   },
   servicesHero: {
     label: "Office building photograph",
@@ -82,6 +68,41 @@ export const imageSlots = {
     alt: "Modern office building entrance with a security cabin and landscaped driveway",
   },
 } satisfies Record<string, ImageSlot>;
+
+/**
+ * Slideshow beside the homepage headline, in display order. The building
+ * photo comes first; keep the list short (about five).
+ */
+export const homeHeroSlides: ImageSlot[] = [
+  {
+    label: "Building photograph",
+    src: "/images/hero/home-hero-building.webp",
+    alt: "Modern glass office building with a landscaped entrance",
+    objectPosition: "65% 50%",
+  },
+  {
+    label: "Team photograph",
+    src: "/images/gallery/16-security-team.webp",
+    alt: "A team of uniformed security guards with their supervisor outside a corporate building",
+    objectPosition: "50% 55%",
+  },
+  {
+    label: "Hospital security photograph",
+    src: "/images/gallery/19-hospital-security.webp",
+    alt: "Security guard greeting an elderly patient and his family in a hospital lobby",
+    objectPosition: "50% 35%",
+  },
+  {
+    label: "Mall security photograph",
+    src: "/images/gallery/18-mall-security.webp",
+    alt: "Woman security guard with a walkie-talkie on duty in a busy shopping mall",
+  },
+  {
+    label: "Garden maintenance photograph",
+    src: "/images/gallery/08-gardener-landscaping.webp",
+    alt: "Gardener trimming hedges in a residential society garden with apartment towers behind",
+  },
+];
 
 /**
  * One photo per service, keyed by the service `slug` in lib/data/services.ts.

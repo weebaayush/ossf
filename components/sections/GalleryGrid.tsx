@@ -50,11 +50,7 @@ export function GalleryGrid() {
 
   return (
     <div>
-      <div
-        className="flex flex-wrap justify-center gap-2"
-        role="group"
-        aria-label="Filter gallery by category"
-      >
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter gallery by category">
         {tabs.map((tab) => {
           const active = tab.id === filter;
           return (
@@ -65,18 +61,15 @@ export function GalleryGrid() {
               aria-pressed={active}
               aria-controls="gallery-grid"
               className={cn(
-                "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+                "inline-flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm font-medium transition-colors",
                 active
-                  ? "border-navy-950 bg-navy-950 text-white"
-                  : "border-surface-border bg-white text-ink-muted hover:border-navy-400 hover:text-navy-950"
+                  ? "border-ink bg-ink text-page"
+                  : "border-line bg-panel text-ink-muted hover:border-ink-soft hover:text-ink"
               )}
             >
               {tab.label}
               <span
-                className={cn(
-                  "rounded-full px-1.5 text-xs tabular-nums",
-                  active ? "bg-white/15 text-white" : "bg-surface-muted text-ink-soft"
-                )}
+                className={cn("text-xs tabular-nums", active ? "text-page/70" : "text-ink-soft")}
               >
                 {tab.count}
               </span>
@@ -94,7 +87,7 @@ export function GalleryGrid() {
           const viewIndex = viewable.findIndex((v) => v.file === item.file);
           return (
             <li key={item.file}>
-              <figure className="group overflow-hidden rounded-xl border border-surface-border bg-white shadow-soft">
+              <figure className="group overflow-hidden rounded-lg border border-line bg-panel shadow-soft">
                 {item.src ? (
                   <button
                     type="button"
@@ -112,21 +105,19 @@ export function GalleryGrid() {
                   </button>
                 ) : (
                   <div
-                    className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-navy-50 to-navy-100 px-6 text-center text-navy-400"
+                    className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-sunken to-sunken px-6 text-center text-ink-soft"
                     data-gallery-placeholder={item.file}
                   >
                     <ImageOff className="h-7 w-7" aria-hidden="true" />
                     <span className="text-xs font-medium uppercase tracking-wide">
                       Photo coming soon
                     </span>
-                    <span className="font-mono text-[11px] text-navy-300">{item.file}</span>
+                    <span className="font-mono text-[11px] text-ink-soft">{item.file}</span>
                   </div>
                 )}
                 <figcaption className="px-5 py-4">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-600">
-                    {categoryLabel(item.category)}
-                  </span>
-                  <p className="mt-1 text-sm font-semibold text-navy-950">{item.title}</p>
+                  <span className="text-xs text-ink-soft">{categoryLabel(item.category)}</span>
+                  <p className="mt-1 text-sm font-semibold text-ink">{item.title}</p>
                 </figcaption>
               </figure>
             </li>
@@ -144,7 +135,7 @@ export function GalleryGrid() {
           if (e.key === "ArrowRight") step(1);
           if (e.key === "ArrowLeft") step(-1);
         }}
-        className="w-[min(92vw,1100px)] rounded-xl bg-navy-950 p-0 text-white backdrop:bg-navy-950/85"
+        className="w-[min(92vw,1100px)] rounded-lg bg-night p-0 text-white backdrop:bg-night/85"
         aria-label={current ? current.title : "Photo"}
       >
         {current ? (
@@ -160,9 +151,7 @@ export function GalleryGrid() {
             </div>
             <div className="flex items-center justify-between gap-4 px-5 py-4">
               <div>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-400">
-                  {categoryLabel(current.category)}
-                </span>
+                <span className="text-xs text-ink-soft">{categoryLabel(current.category)}</span>
                 <p className="mt-0.5 text-sm font-semibold">{current.title}</p>
               </div>
               <div className="flex items-center gap-2">

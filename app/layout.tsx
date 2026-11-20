@@ -1,22 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Archivo, Hanken_Grotesk } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { siteConfig } from "@/lib/utils/site-config";
 import { ogImage } from "@/lib/utils/seo";
 import "./globals.css";
 
-const inter = Inter({
+const body = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
 });
 
-const manrope = Manrope({
+// Variable font with a width axis; headings are set slightly wide (globals.css).
+const display = Archivo({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-display",
   display: "swap",
-  weight: ["600", "700", "800"],
+  axes: ["wdth"],
 });
 
 export const metadata: Metadata = {
@@ -46,12 +48,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Runs before first paint so a saved light-theme choice never flashes dark.
-// Default (no saved choice) is the original dark theme.
-const themeScript = `try{if(localStorage.getItem("ossf-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
-
 export const viewport: Viewport = {
-  themeColor: "#05090F",
+  themeColor: "#F7F9FB",
 };
 
 const organizationJsonLd = {
@@ -77,16 +75,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      data-theme="dark"
-      className={`${inter.variable} ${manrope.variable}`}
-      // The theme script may change data-theme before React hydrates.
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en" className={`${body.variable} ${display.variable}`}>
       <body className="flex min-h-screen flex-col font-sans">
         <script
           type="application/ld+json"
@@ -99,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-navy-950 focus:shadow-lifted"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-signal focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-signal-ink focus:shadow-lifted"
         >
           Skip to main content
         </a>
@@ -112,6 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

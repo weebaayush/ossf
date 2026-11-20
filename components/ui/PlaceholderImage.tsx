@@ -31,21 +31,21 @@ export function PlaceholderImage({
   priority?: boolean;
   sizes?: string;
   objectPosition?: string;
-  /** Source/licence record — kept with the slot for reference, not rendered. */
+  /** Source/licence record - kept with the slot for reference, not rendered. */
   credit?: ImageCredit;
 }) {
   // `absolute` and `relative` must not both be applied: Tailwind emits
   // `.relative` after `.absolute`, which would collapse a fill frame to 0px.
   const frame = cn(
     "w-full overflow-hidden",
-    rounded && "rounded-xl",
+    rounded && "rounded-lg",
     fill ? "absolute inset-0 h-full" : cn("relative", ratio),
     className
   );
 
   if (src) {
     return (
-      <div className={cn(frame, "bg-navy-900")}>
+      <div className={cn(frame, "bg-sunken")}>
         <Image
           src={src}
           alt={alt}
@@ -61,15 +61,12 @@ export function PlaceholderImage({
 
   return (
     <div
-      className={cn(
-        frame,
-        "flex items-center justify-center border border-navy-700 bg-gradient-to-br from-navy-900 to-navy-800"
-      )}
-      // Purely a layout placeholder — nothing meaningful for assistive tech.
+      className={cn(frame, "flex items-center justify-center border border-line bg-sunken")}
+      // Purely a layout placeholder - nothing meaningful for assistive tech.
       aria-hidden="true"
       data-placeholder-image={label}
     >
-      <div className="flex flex-col items-center gap-2 px-6 text-center text-white/40">
+      <div className="flex flex-col items-center gap-2 px-6 text-center text-ink-soft">
         <ImageOff className="h-6 w-6" />
         <span className="text-xs font-medium uppercase tracking-wide">{label}</span>
       </div>

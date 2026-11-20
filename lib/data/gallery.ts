@@ -172,5 +172,5 @@ export const gallerySlots: GalleryItem[] = [
   },
 ];
 
-/** Slots that have a photo — the only ones shown on the page. */
+/** Slots that have a photo - the only ones shown on the page. */
 export const galleryItems: GalleryItem[] = gallerySlots.filter((item) => Boolean(item.src));

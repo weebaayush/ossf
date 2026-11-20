@@ -19,7 +19,7 @@ export default function TermsOfServicePage() {
 
   return (
     <>
-      <PageHero eyebrow="Legal" title="Terms & Conditions" />
+      <PageHero title="Terms & Conditions" />
       <LegalDocument
         lastUpdated={LAST_UPDATED}
         intro={
@@ -53,8 +53,8 @@ export default function TermsOfServicePage() {
         <h2>3. Quotations and service arrangements</h2>
         <p>
           Nothing on this website is a binding quotation, offer or service contract unless it is
-          separately confirmed by {shortName}. Final service arrangements — including pricing, scope
-          of work, manpower, deployment, shift structure and contractual terms — are agreed
+          separately confirmed by {shortName}. Final service arrangements - including pricing, scope
+          of work, manpower, deployment, shift structure and contractual terms - are agreed
           separately between {shortName} and the client, based on the client&apos;s specific
           requirements.
         </p>
@@ -73,10 +73,7 @@ export default function TermsOfServicePage() {
           share it. Information submitted through the website or otherwise provided to us is subject
           to verification, particularly when we are evaluating or preparing a potential service
           engagement. How we handle that information is described in our{" "}
-          <Link
-            href="/privacy-policy"
-            className="font-medium text-navy-950 underline hover:text-accent-600"
-          >
+          <Link href="/privacy-policy" className="font-medium text-ink underline hover:text-brand">
             Privacy Policy
           </Link>
           .

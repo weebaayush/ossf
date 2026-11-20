@@ -1,28 +1,26 @@
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { ClientLogoWall } from "@/components/sections/ClientLogoWall";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { siteConfig } from "@/lib/utils/site-config";
+import { Container } from "@/components/ui/Container";
+import { ClientLogoWall } from "@/components/sections/ClientLogoWall";
+import { residentialSocieties } from "@/lib/data/clients";
 
+/** Homepage strip of client logos, directly under the hero. */
 export function ClientsTeaser() {
   return (
-    <Section tone="light">
-      <SectionHeading
-        eyebrow="Our Clients"
-        title="Trusted by developers, hospitals, schools and businesses"
-        description={`${siteConfig.clientCount} organizations rely on OSSF, including the names below.`}
-        align="center"
-      />
-
-      <ClientLogoWall limit={8} className="mt-12" />
-
-      <div className="mt-10 flex justify-center">
-        <Button href="/clients" variant="secondary">
-          View Our Clients
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Button>
-      </div>
-    </Section>
+    <section className="border-y border-line bg-sunken py-12 md:py-14">
+      <Container>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="text-xl font-bold sm:text-2xl">Some of the clients we work for</h2>
+          <Link
+            href="/clients"
+            className="link-underline inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-brand"
+          >
+            All clients and {residentialSocieties.length} housing societies
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </Link>
+        </div>
+        <ClientLogoWall limit={12} className="mt-8" />
+      </Container>
+    </section>
   );
 }
