@@ -7,7 +7,7 @@ import { CLIENT_CONFIRM } from "@/lib/utils/site-config";
  *
  * Deliberately rendered (not hidden) so reviewers can see every gap before
  * launch. Once the client supplies the value, replace the usage with the real
- * content — searching the codebase for `PendingConfirmation` or
+ * content - searching the codebase for `PendingConfirmation` or
  * `CLIENT CONFIRMATION REQUIRED` lists every remaining instance.
  */
 export function PendingConfirmation({

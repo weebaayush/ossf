@@ -1,60 +1,71 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { cn } from "@/lib/utils/cn";
+import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { differentiators } from "@/lib/data/differentiators";
-import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "lucide-react";
+import { imageSlots } from "@/lib/data/images";
 
+/**
+ * How OSSF runs a deployment. On the homepage: the first six points beside a
+ * photo. With `showAll` (the Why OSSF page): every point in two columns.
+ */
 export function WhyOSSF({ showAll = false }: { showAll?: boolean }) {
-  const items = showAll ? differentiators : differentiators.slice(0, 8);
+  if (showAll) {
+    return (
+      <Section tone="light">
+        <SectionHeading
+          title="How we run a deployment"
+          description="The same practices apply on every site, whichever service you take."
+        />
+        <dl className="mt-10 grid grid-cols-1 gap-x-12 sm:grid-cols-2">
+          {differentiators.map((item) => (
+            <div key={item.title} className="border-t border-line py-5">
+              <dt className="text-base font-bold text-ink">{item.title}</dt>
+              <dd className="mt-1 text-[0.9375rem] leading-relaxed text-ink-muted">
+                {item.description}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+    );
+  }
 
   return (
-    <Section tone="light">
-      <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-        <SectionHeading
-          eyebrow="Why OSSF"
-          title="What you can hold us to"
-          description="Choosing a security agency comes down to trust. These are the commitments behind every OSSF deployment, on every site and every shift."
-        />
-        {!showAll ? (
-          <Button href="/why-ossf" variant="ghost" className="hidden shrink-0 sm:inline-flex">
-            See full list
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Button>
-        ) : null}
-      </div>
+    <Section tone="subtle">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+        <div>
+          <SectionHeading
+            title="How we run a site"
+            description="Staff on a site are only as good as their verification, training and supervision. These are the practices we follow on every deployment."
+          />
+          <PlaceholderImage {...imageSlots.homeAbout} ratio="aspect-[4/3]" className="mt-8" />
+        </div>
 
-      <div className="mt-12 grid grid-cols-1 border-t border-surface-border sm:grid-cols-2">
-        {items.map((item, index) => (
-          <RevealOnScroll
-            key={item.title}
-            delay={index * 30}
-            className={cn(
-              "border-b border-surface-border py-5",
-              index % 2 === 0 ? "sm:pr-8" : "sm:border-l sm:border-surface-border sm:pl-8"
-            )}
-          >
-            <div className="flex items-start gap-4">
-              <span className="pt-0.5 font-mono text-xs text-navy-200">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
-              <div>
-                <h3 className="text-sm font-semibold text-navy-950">{item.title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-ink-muted">{item.description}</p>
+        <div>
+          <dl>
+            {differentiators.slice(0, 6).map((item) => (
+              <div
+                key={item.title}
+                className="grid grid-cols-1 gap-1 border-t border-line py-5 first:border-t-0 first:pt-0 sm:grid-cols-[13rem_1fr] sm:gap-6"
+              >
+                <dt className="text-base font-bold text-ink">{item.title}</dt>
+                <dd className="text-[0.9375rem] leading-relaxed text-ink-muted">
+                  {item.description}
+                </dd>
               </div>
-            </div>
-          </RevealOnScroll>
-        ))}
+            ))}
+          </dl>
+          <Link
+            href="/why-ossf"
+            className="link-underline mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand"
+          >
+            Recruitment, training and supervision in detail
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
-
-      {!showAll ? (
-        <Button href="/why-ossf" variant="ghost" className="mt-8 sm:hidden">
-          See full list
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Button>
-      ) : null}
     </Section>
   );
 }

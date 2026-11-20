@@ -28,11 +28,7 @@ export function ClientDirectory() {
 
   return (
     <div>
-      <div
-        className="flex flex-wrap justify-center gap-2"
-        role="group"
-        aria-label="Filter clients by sector"
-      >
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter clients by sector">
         {tabs.map((tab) => {
           const active = tab.id === filter;
           return (
@@ -43,18 +39,15 @@ export function ClientDirectory() {
               aria-pressed={active}
               aria-controls="client-grid"
               className={cn(
-                "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+                "inline-flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm font-medium transition-colors",
                 active
-                  ? "border-navy-950 bg-navy-950 text-white"
-                  : "border-surface-border bg-white text-ink-muted hover:border-navy-400 hover:text-navy-950"
+                  ? "border-ink bg-ink text-page"
+                  : "border-line bg-panel text-ink-muted hover:border-ink-soft hover:text-ink"
               )}
             >
               {tab.label}
               <span
-                className={cn(
-                  "rounded-full px-1.5 text-xs tabular-nums",
-                  active ? "bg-white/15 text-white" : "bg-surface-muted text-ink-soft"
-                )}
+                className={cn("text-xs tabular-nums", active ? "text-page/70" : "text-ink-soft")}
               >
                 {tab.count}
               </span>
@@ -75,7 +68,7 @@ export function ClientDirectory() {
         {visible.map((client) => (
           <li
             key={client.name}
-            className="group flex aspect-[3/2] items-center justify-center rounded-lg border border-surface-border bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-card motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-6"
+            className="flex aspect-[3/2] items-center justify-center rounded-lg border border-line bg-white p-5 sm:p-6"
           >
             {client.logo ? (
               <div className="relative h-full w-full">
@@ -88,7 +81,7 @@ export function ClientDirectory() {
                 />
               </div>
             ) : (
-              <span className="text-center font-display text-base font-semibold leading-snug text-navy-950 sm:text-lg">
+              <span className="text-center font-display text-base font-semibold leading-snug text-ink sm:text-lg">
                 {client.name}
               </span>
             )}

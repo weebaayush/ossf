@@ -45,7 +45,7 @@ app/                  One folder per page (App Router), plus sitemap.ts, robots.
 components/
   layout/             Navbar, Footer
   sections/           Page sections (Hero, ServicesGrid, ClientDirectory, ...)
-  ui/                 Small building blocks (Button, Container, Section, Badge, Logo, ...)
+  ui/                 Small building blocks (Button, Container, Section, Logo, ...)
   forms/              Request-a-quote form
 lib/
   data/               Site content: services, industries, nav, compliance, clients, images
@@ -173,3 +173,26 @@ To switch to online submission later (e.g. Formspree, Resend or an API route), i
 - `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`.
 - Icons: `app/icon.svg` (favicon) and `app/apple-icon.png`; share image `public/images/og-image.png`.
 
+## Quote form
+
+The Request a Quote form sends enquiries through Netlify Forms (no extra
+account or key). `public/__forms.html` registers the form with Netlify at
+deploy time and `lib/utils/submit-quote.ts` posts to it. If a submission cannot
+be sent, the form falls back to opening the visitor's email app.
+
+One-time setup in the Netlify dashboard:
+
+1. **Forms** > enable form detection, then trigger a new deploy.
+2. **Forms** > **Form notifications** > add an email notification to
+   `info@omshivsecurityforce.in`.
+3. Submit a test enquiry on the deployed site and check that it appears under
+   **Forms** > `quote-request` and arrives in the mailbox.
+
+Netlify's free plan includes 100 form submissions a month. To switch online
+submission off, set `QUOTE_SUBMISSION_CONNECTED` to `false` in
+`lib/utils/submit-quote.ts`.
+
+## WhatsApp
+
+The WhatsApp button and links use `siteConfig.whatsapp` in
+`lib/utils/site-config.ts`. Change the number there.

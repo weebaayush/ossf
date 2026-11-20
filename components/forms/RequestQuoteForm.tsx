@@ -37,9 +37,9 @@ const fieldOrder: FieldName[] = [
 ];
 
 const inputClasses =
-  "w-full rounded-md border bg-white px-4 py-2.5 text-sm text-ink placeholder:text-ink-soft focus:outline-none focus:ring-1 focus-visible:ring-offset-0";
+  "w-full rounded-md border bg-panel px-4 py-2.5 text-sm text-ink placeholder:text-ink-soft focus:outline-none focus:ring-1 focus-visible:ring-offset-0";
 
-const labelClasses = "mb-1.5 block text-sm font-medium text-navy-950";
+const labelClasses = "mb-1.5 block text-sm font-medium text-ink";
 
 function validate(form: QuoteFormPayload): FieldErrors {
   const errors: FieldErrors = {};
@@ -69,7 +69,7 @@ function validate(form: QuoteFormPayload): FieldErrors {
 }
 
 function buildMailto(payload: QuoteFormPayload): string {
-  const subject = `Quote request — ${payload.serviceRequired} — ${payload.company}`;
+  const subject = `Quote request - ${payload.serviceRequired} - ${payload.company}`;
   const body = [
     `Name: ${payload.name}`,
     `Company: ${payload.company}`,
@@ -79,7 +79,7 @@ function buildMailto(payload: QuoteFormPayload): string {
     `Site location: ${payload.location}`,
     "",
     "Requirement:",
-    payload.message || "—",
+    payload.message || "-",
   ].join("\n");
   return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
@@ -105,7 +105,7 @@ function Field({
         {label}
         {required ? (
           <>
-            <span className="ml-0.5 text-accent-600" aria-hidden="true">
+            <span className="ml-0.5 text-brand" aria-hidden="true">
               *
             </span>
             <span className="sr-only"> (required)</span>
@@ -121,7 +121,7 @@ function Field({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="mt-1.5 flex items-start gap-1.5 text-xs text-accent-600">
+        <p id={`${id}-error`} className="mt-1.5 flex items-start gap-1.5 text-xs text-brand">
           <AlertCircle className="mt-px h-3.5 w-3.5 shrink-0" aria-hidden="true" />
           {error}
         </p>
@@ -175,8 +175,8 @@ export function RequestQuoteForm() {
       className: cn(
         inputClasses,
         errors[key]
-          ? "border-accent-500 focus:border-accent-500 focus:ring-accent-500"
-          : "border-surface-border focus:border-navy-600 focus:ring-navy-600"
+          ? "border-brand focus:border-brand focus:ring-brand"
+          : "border-line focus:border-brand focus:ring-brand"
       ),
     };
   }
@@ -243,25 +243,25 @@ export function RequestQuoteForm() {
   if (status === "sent" && submitted) {
     return (
       <div
-        className="flex flex-col items-center rounded-xl border border-surface-border bg-white p-10 text-center"
+        className="flex flex-col items-center rounded-lg border border-line bg-panel p-10 text-center"
         role="status"
       >
-        <CheckCircle2 className="h-10 w-10 text-accent-500" aria-hidden="true" />
+        <CheckCircle2 className="h-10 w-10 text-brand" aria-hidden="true" />
         <h2
           ref={resultHeadingRef}
           tabIndex={-1}
-          className="mt-4 text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="mt-4 text-lg font-semibold text-ink focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         >
           Request sent
         </h2>
         <p className="mt-2 max-w-sm text-sm text-ink-muted">
-          Thank you, {submitted.name}. Our team will review your requirement and contact you at{" "}
+          Thank you, {submitted.name}. We have received your request and will contact you at{" "}
           {submitted.email} or {submitted.phone}.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded text-sm font-semibold text-accent-600 hover:text-accent-700"
+          className="mt-6 rounded text-sm font-semibold text-brand hover:text-brand"
         >
           Submit another request
         </button>
@@ -271,31 +271,32 @@ export function RequestQuoteForm() {
 
   if (status === "email-ready" && submitted) {
     return (
-      <div className="rounded-xl border border-surface-border bg-white p-6 sm:p-8" role="status">
+      <div className="rounded-lg border border-line bg-panel p-6 sm:p-8" role="status">
         <h2
           ref={resultHeadingRef}
           tabIndex={-1}
-          className="text-lg font-semibold text-navy-950 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="text-lg font-semibold text-ink focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         >
-          Your request is ready. Just press Send.
+          One more step: press Send in your email app
         </h2>
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-muted">
-          We&apos;ve opened your email app with your request addressed to {siteConfig.email}. Press{" "}
-          <strong className="font-semibold text-navy-950">Send</strong> there and our team will get
-          back to you.
+          We could not send your request from this page, so we have opened your email app with the
+          request addressed to {siteConfig.email}. Press{" "}
+          <strong className="font-semibold text-ink">Send</strong> there and we will get back to
+          you.
         </p>
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-muted">
           Email app didn&apos;t open? Use the button below, email us at{" "}
           <a
             href={`mailto:${siteConfig.email}`}
-            className="font-medium text-navy-950 underline hover:text-accent-600"
+            className="font-medium text-ink underline hover:text-brand"
           >
             {siteConfig.email}
           </a>
           , or call us.
         </p>
 
-        <dl className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 rounded-lg bg-surface-subtle p-5 text-sm sm:grid-cols-2">
+        <dl className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 rounded-lg bg-sunken p-5 text-sm sm:grid-cols-2">
           {[
             ["Service", submitted.serviceRequired],
             ["Location", submitted.location],
@@ -304,7 +305,7 @@ export function RequestQuoteForm() {
           ].map(([term, value]) => (
             <div key={term} className="min-w-0">
               <dt className="text-xs font-medium uppercase tracking-wide text-ink-soft">{term}</dt>
-              <dd className="mt-0.5 break-words text-navy-950">{value}</dd>
+              <dd className="mt-0.5 break-words text-ink">{value}</dd>
             </div>
           ))}
         </dl>
@@ -312,14 +313,14 @@ export function RequestQuoteForm() {
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <a
             href={buildMailto(submitted)}
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-600"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-signal px-6 py-3 text-sm font-semibold text-signal-ink transition-colors hover:bg-signal-strong"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             Open email again
           </a>
           <a
             href={telHref(siteConfig.phone)}
-            className="inline-flex items-center justify-center gap-2 rounded-md border border-surface-border px-6 py-3 text-sm font-semibold text-navy-950 transition-colors hover:bg-surface-subtle"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-sunken"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
             Call {siteConfig.phone}
@@ -327,7 +328,7 @@ export function RequestQuoteForm() {
           <button
             type="button"
             onClick={() => setStatus("idle")}
-            className="rounded px-2 py-3 text-sm font-semibold text-ink-muted hover:text-navy-950"
+            className="rounded px-2 py-3 text-sm font-semibold text-ink-muted hover:text-ink"
           >
             Edit details
           </button>
@@ -345,12 +346,12 @@ export function RequestQuoteForm() {
       noValidate
       aria-busy={submitting}
       aria-describedby="quote-form-note"
-      className="rounded-xl border border-surface-border bg-white p-6 sm:p-8"
+      className="rounded-lg border border-line bg-panel p-6 sm:p-8"
     >
       {errorCount > 0 ? (
         <div
           role="alert"
-          className="mb-6 flex items-start gap-2.5 rounded-md border border-accent-100 bg-accent-50 px-4 py-3 text-sm text-accent-700"
+          className="mb-6 flex items-start gap-2.5 rounded-md border border-line bg-sunken px-4 py-3 text-sm text-brand"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           {errorCount === 1
@@ -465,7 +466,7 @@ export function RequestQuoteForm() {
       {status === "error" ? (
         <div
           role="alert"
-          className="mt-5 flex items-start gap-2.5 rounded-md border border-accent-100 bg-accent-50 px-4 py-3 text-sm text-accent-700"
+          className="mt-5 flex items-start gap-2.5 rounded-md border border-line bg-sunken px-4 py-3 text-sm text-brand"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           <span>
@@ -482,7 +483,7 @@ export function RequestQuoteForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-signal px-6 py-3 text-sm font-semibold text-signal-ink transition-colors hover:bg-signal-strong disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
         >
           {submitting ? (
             <>
@@ -493,7 +494,7 @@ export function RequestQuoteForm() {
               Submitting…
             </>
           ) : QUOTE_SUBMISSION_CONNECTED ? (
-            "Submit Request"
+            "Send request"
           ) : (
             <>
               <Mail className="h-4 w-4" aria-hidden="true" />
@@ -502,7 +503,7 @@ export function RequestQuoteForm() {
           )}
         </button>
         <p className="text-xs text-ink-soft sm:text-right">
-          <span className="text-accent-600" aria-hidden="true">
+          <span className="text-brand" aria-hidden="true">
             *
           </span>{" "}
           Required fields
@@ -511,7 +512,7 @@ export function RequestQuoteForm() {
 
       <p
         id="quote-form-note"
-        className="mt-4 border-t border-surface-border pt-4 text-xs leading-relaxed text-ink-soft"
+        className="mt-4 border-t border-line pt-4 text-xs leading-relaxed text-ink-soft"
       >
         {QUOTE_SUBMISSION_CONNECTED
           ? "We use your details only to respond to this enquiry."

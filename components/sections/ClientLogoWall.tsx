@@ -3,16 +3,16 @@ import { cn } from "@/lib/utils/cn";
 import { logoClients } from "@/lib/data/clients";
 
 /**
- * Compact grid of client logos for the homepage teaser (see lib/data/clients.ts;
- * the full filterable directory is ClientDirectory on /clients). Every logo sits in an
- * equal white cell and is scaled to fit, so wide wordmarks, square marks and
- * tile-style logos balance. Logos keep their original colours.
+ * Compact grid of client logos for the homepage (see lib/data/clients.ts; the
+ * full filterable directory is ClientDirectory on /clients). Every logo sits
+ * in an equal white cell and is scaled to fit, so wide wordmarks, square marks
+ * and tile-style logos balance. Logos keep their original colours.
  */
 export function ClientLogoWall({
   limit,
   className,
 }: {
-  /** Show only the first N logos (e.g. on the homepage teaser). */
+  /** Show only the first N logos. */
   limit?: number;
   className?: string;
 }) {
@@ -22,23 +22,20 @@ export function ClientLogoWall({
   return (
     <ul
       className={cn(
-        "mx-auto grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-surface-border bg-surface-border sm:grid-cols-4",
+        "grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4 lg:grid-cols-6",
         className
       )}
-      aria-label="Our clients"
+      aria-label="Client logos"
     >
       {clients.map((client) => (
-        <li
-          key={client.name}
-          className="group flex items-center justify-center bg-white px-5 py-6 sm:px-6 sm:py-8"
-        >
-          <div className="relative h-16 w-full max-w-[170px] sm:h-20">
+        <li key={client.name} className="flex items-center justify-center bg-white px-5 py-5">
+          <div className="relative h-14 w-full max-w-[150px]">
             <Image
               src={client.logo.src}
               alt={client.name}
               fill
-              sizes="170px"
-              className="object-contain transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none"
+              sizes="150px"
+              className="object-contain"
             />
           </div>
         </li>

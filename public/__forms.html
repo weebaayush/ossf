@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Form definitions</title>
+  </head>
+  <body>
+    <!--
+      Netlify reads this file at deploy time to register the forms below.
+      Visitors never see it. The real form is components/forms/RequestQuoteForm.tsx,
+      which posts to this file's address. Field names here must match the names
+      sent by lib/utils/submit-quote.ts.
+    -->
+    <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="quote-request" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="company" />
+      <input name="phone" />
+      <input name="email" />
+      <input name="serviceRequired" />
+      <input name="location" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

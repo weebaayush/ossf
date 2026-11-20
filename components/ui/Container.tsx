@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils/cn";
 
 export function Container({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("mx-auto w-full max-w-8xl px-5 sm:px-8 lg:px-12", className)}>
+    <div className={cn("mx-auto w-full max-w-[78rem] px-5 sm:px-8 lg:px-10", className)}>
       {children}
     </div>
   );

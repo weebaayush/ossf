@@ -7,12 +7,12 @@ import { siteConfig } from "@/lib/utils/site-config";
 
 // Update this date whenever the text below changes.
 //
-// MAINTAINERS: this policy describes the website as currently built — the
-// Request a Quote form works through the visitor's own email app and is not
-// connected to any backend or third-party provider (see lib/utils/submit-quote.ts). When a real form/email provider, analytics
-// or any other data-processing service is added, review and update this policy
-// to name that provider and describe how the data is handled.
-const LAST_UPDATED = "26 September 2026";
+// MAINTAINERS: this policy describes the website as currently built - the
+// Request a Quote form is submitted through Netlify Forms, with the visitor's
+// email app as a fallback (see lib/utils/submit-quote.ts), and every page has
+// a WhatsApp link. When any other form, analytics or data-processing service
+// is added, review and update this policy to name it.
+const LAST_UPDATED = "14 November 2026";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <>
-      <PageHero eyebrow="Legal" title="Privacy Policy" />
+      <PageHero title="Privacy Policy" />
       <LegalDocument
         lastUpdated={LAST_UPDATED}
         intro={
@@ -55,20 +55,20 @@ export default function PrivacyPolicyPage() {
         <h2>2. How the enquiry form works</h2>
         <p>
           Our{" "}
-          <Link
-            href="/request-a-quote"
-            className="font-medium text-navy-950 underline hover:text-accent-600"
-          >
+          <Link href="/request-a-quote" className="font-medium text-ink underline hover:text-brand">
             Request a Quote
           </Link>{" "}
-          form works through your own email app. When you complete it, the website checks your
-          details in your browser and opens an email to {email}, filled in with what you entered,
-          for you to send. The website itself does not store your form details in a database and
-          does not send them to any third-party form, CRM, analytics or marketing service.
+          form sends the details you enter to {shortName} through Netlify, the company that hosts
+          this website. Netlify stores the submission for us and forwards it to our mailbox. The
+          details are not sent to any CRM, analytics or marketing service.
         </p>
         <p>
-          Your information reaches {shortName} only when you send that email, email us directly or
-          call us.
+          If the form cannot be sent from the page, it opens an email to {email} in your own email
+          app, filled in with what you entered, for you to send.
+        </p>
+        <p>
+          If you use the WhatsApp link on this website, your message is sent through WhatsApp and is
+          subject to WhatsApp&apos;s own terms and privacy policy.
         </p>
 
         <h2>3. How we use your information</h2>
@@ -110,10 +110,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <p>
           Our{" "}
-          <Link
-            href="/contact"
-            className="font-medium text-navy-950 underline hover:text-accent-600"
-          >
+          <Link href="/contact" className="font-medium text-ink underline hover:text-brand">
             Contact
           </Link>{" "}
           page shows an embedded Google Map. When that page loads, Google may collect information
@@ -129,10 +126,10 @@ export default function PrivacyPolicyPage() {
 
         <h2>8. Changes to this policy</h2>
         <p>
-          We may update this policy when our website or practices change — for example, if the
-          enquiry form is later connected to an online submission service. When that happens, this
-          page will be updated to identify the service used and how the information is handled, and
-          the &ldquo;Last updated&rdquo; date above will change.
+          We may update this policy when our website or practices change, for example if a different
+          service is used to handle enquiries. When that happens, this page will be updated to
+          identify the service and how the information is handled, and the &ldquo;Last
+          updated&rdquo; date above will change.
         </p>
       </LegalDocument>
     </>

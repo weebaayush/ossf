@@ -1,38 +1,31 @@
 export type ProcessStep = {
-  number: string;
   title: string;
   description: string;
 };
 
 export const processSteps: ProcessStep[] = [
   {
-    number: "01",
-    title: "Understand",
+    title: "You share the requirement",
     description:
-      "We listen first: your site, your operating hours, what has gone wrong before and what you expect from a vendor.",
+      "Site location, working hours, the services you need and any problems you have had with earlier vendors.",
   },
   {
-    number: "02",
-    title: "Survey & Plan",
+    title: "We visit and plan",
     description:
-      "We walk the premises, identify weak points and propose the headcount, shifts and posts that cover them.",
+      "We walk the premises, note the weak points and propose the headcount, shifts and posts.",
   },
   {
-    number: "03",
-    title: "Deploy",
+    title: "Staff are deployed",
     description:
-      "Verified, trained and uniformed staff take charge, briefed on your site's specific instructions.",
+      "Verified, trained and uniformed staff report on the agreed date, briefed on your site instructions.",
   },
   {
-    number: "04",
-    title: "Supervise",
-    description:
-      "Regular visits, surprise checks and night audits make sure standards hold long after day one.",
+    title: "Supervisors check",
+    description: "Regular visits, surprise checks and night audits keep the standard in place.",
   },
   {
-    number: "05",
-    title: "Review",
+    title: "We review with you",
     description:
-      "Daily reports and your feedback shape the plan, so coverage keeps improving as your site changes.",
+      "Daily reports and your feedback are used to adjust the deployment as the site changes.",
   },
 ];

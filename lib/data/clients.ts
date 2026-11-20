@@ -1,10 +1,10 @@
 // Clients shown on the homepage "Trusted By" section and the /clients page.
 //
 // Names and logos come from the "client showcase" pages of the client-supplied
-// OSSF Company Profile (confirmed 20-09-2026) — the corporate/institutional
+// OSSF Company Profile (confirmed 20-09-2026) - the corporate/institutional
 // names OSSF itself presents to prospects as a logo wall. Logo files are the
 // clients' own official logos, taken from each client's official website
-// (identified against the logos in the company profile) — see
+// (identified against the logos in the company profile) - see
 // docs/image-sources.md. Where no official source could be found, the logo
 // comes from the company profile itself; where neither exists, the client
 // appears as a name card.
@@ -20,7 +20,7 @@
 //    OSSF's website. To remove a logo, delete its `logo` field (the client
 //    then shows as a name card) or remove the entry entirely.
 //  • `category` powers the filter on /clients. It was assigned from each
-//    client's name/logo (the profile does not group clients by sector) —
+//    client's name/logo (the profile does not group clients by sector) -
 //    OSSF should check it. Clients whose sector isn't evident from the
 //    profile are under "Commercial & Others".
 
@@ -95,7 +95,7 @@ export const clients: Client[] = [
     category: "industrial",
     logo: { src: "/images/clients/sudhir.webp", width: 346, height: 76 },
   },
-  // Not in the company profile's logo pages — logo taken from the official
+  // Not in the company profile's logo pages - logo taken from the official
   // site of the organisation with this name. CLIENT CONFIRMATION REQUIRED:
   // OSSF to confirm it is the same client.
   {
@@ -278,6 +278,27 @@ export const clients: Client[] = [
     category: "commercial",
     logo: { src: "/images/clients/gleg.webp", width: 196, height: 196 },
   },
+  // Logos supplied by OSSF on 14-11-2026 (cropped to the logo, nothing redrawn).
+  {
+    name: "Auropharm Limited",
+    category: "industrial",
+    logo: { src: "/images/clients/auropharm.webp", width: 250, height: 270 },
+  },
+  {
+    name: "Baidyanath",
+    category: "industrial",
+    logo: { src: "/images/clients/baidyanath.webp", width: 350, height: 160 },
+  },
+  {
+    name: "Blackstone Engineering",
+    category: "industrial",
+    logo: { src: "/images/clients/blackstone-engineering.webp", width: 310, height: 130 },
+  },
+  {
+    name: "Lodha Splendora",
+    category: "real-estate",
+    logo: { src: "/images/clients/lodha-splendora.webp", width: 376, height: 215 },
+  },
   {
     name: "Petrox",
     category: "industrial",
@@ -356,4 +377,4 @@ export const residentialSocieties: string[] = [
 ];
 
 export const clientShowcaseNote =
-  "OSSF serves 200+ clients across Thane, Mumbai, Navi Mumbai and surrounding regions, including the residential societies listed below. Client references and appreciation letters are available on request.";
+  "OSSF serves 200+ clients, including the residential societies listed below. Client references and appreciation letters are available on request.";

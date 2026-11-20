@@ -2,40 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------------
+   Colour tokens. Values are space-separated RGB so Tailwind can apply
+   opacity (see tailwind.config.ts). The site has a single, light theme.
+   ------------------------------------------------------------------------ */
+:root {
+  --page: 247 249 251;
+  --panel: 255 255 255;
+  --sunken: 236 241 246;
+  --ink: 18 32 47;
+  --ink-muted: 67 84 102;
+  --ink-soft: 96 112 130;
+  --line: 211 220 229;
+  --brand: 45 79 114;
+  --signal: 255 198 26;
+  --signal-strong: 242 182 0;
+  --signal-ink: 18 32 47;
+  --band: 55 88 121;
+  --band-deep: 42 69 97;
+  color-scheme: light;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-surface text-ink antialiased;
-    font-feature-settings: "cv11", "ss01";
+    @apply bg-page text-ink antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display tracking-tight text-navy-950;
+    @apply font-display text-ink;
+    font-stretch: 108%;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: rgb(var(--signal));
+    color: rgb(var(--signal-ink));
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-surface;
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-page;
   }
 }
 
 @layer components {
   .link-underline {
-    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-accent-500 after:transition-all after:duration-300 hover:after:w-full;
+    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  /* Square list marker, echoing the squares of the OSSF logo mark. */
+  .marker-list > li {
+    @apply relative pl-5;
+  }
+  .marker-list > li::before {
+    content: "";
+    @apply absolute left-0 top-[0.5em] h-2 w-2 bg-signal;
   }
 
   .reveal {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(10px);
   }
 
   .reveal.is-visible {
-    animation: reveal-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: reveal-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
@@ -45,7 +86,7 @@
 @keyframes reveal-fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -63,151 +104,4 @@
     transform: none !important;
     animation: none !important;
   }
-}
-
-/* ------------------------------------------------------------------------
-   Light theme (toggle in the header; see components/ui/ThemeToggle.tsx).
-
-   The default site is the original dark design. With data-theme="light" on
-   <html>, every element marked .surface-dark (navy sections, page headers,
-   stats card, call-to-action, footer, header off the homepage photo) turns
-   light, and the white/translucent utilities inside it are remapped to
-   readable dark equivalents below. The homepage hero photo and the gallery
-   photo viewer stay dark in both themes. Red (accent) buttons keep white text.
-   ------------------------------------------------------------------------ */
-
-/* The surfaces themselves */
-html[data-theme="light"] .surface-dark {
-  background-color: #f3f5f8;
-  color: #475467;
-}
-html[data-theme="light"] .surface-dark.surface-card {
-  background-color: #ffffff;
-  box-shadow:
-    0 2px 8px -2px rgba(10, 18, 32, 0.1),
-    0 4px 16px -4px rgba(10, 18, 32, 0.08);
-}
-html[data-theme="light"] .surface-dark.surface-strong {
-  background-color: #e5e9f0;
-}
-html[data-theme="light"] .surface-dark.surface-header {
-  background-color: rgba(255, 255, 255, 0.96);
-  background-image: none;
-  border-bottom: 1px solid #e3e7ed;
-}
-html[data-theme="light"] .surface-dark.border-t {
-  border-top-color: #e3e7ed;
-}
-
-/* Dividers inside surfaces (e.g. stats card) */
-html[data-theme="light"] .surface-dark .divide-navy-800 > :not([hidden]) ~ :not([hidden]),
-html[data-theme="light"] .surface-dark .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
-  border-color: #e3e7ed;
-}
-
-html[data-theme="light"] .surface-dark .text-white,
-html[data-theme="light"] .surface-dark.text-white {
-  color: #05090f;
-}
-html[data-theme="light"] .surface-dark .text-white\/80,
-html[data-theme="light"] .surface-dark.text-white\/80,
-html[data-theme="light"] .surface-dark .text-white\/75,
-html[data-theme="light"] .surface-dark.text-white\/75 {
-  color: #344054;
-}
-html[data-theme="light"] .surface-dark .text-white\/70,
-html[data-theme="light"] .surface-dark.text-white\/70,
-html[data-theme="light"] .surface-dark .text-white\/65,
-html[data-theme="light"] .surface-dark.text-white\/65,
-html[data-theme="light"] .surface-dark .text-white\/60,
-html[data-theme="light"] .surface-dark.text-white\/60 {
-  color: #475467;
-}
-html[data-theme="light"] .surface-dark .text-white\/55,
-html[data-theme="light"] .surface-dark.text-white\/55,
-html[data-theme="light"] .surface-dark .text-white\/50,
-html[data-theme="light"] .surface-dark.text-white\/50,
-html[data-theme="light"] .surface-dark .text-white\/40,
-html[data-theme="light"] .surface-dark.text-white\/40 {
-  color: #667085;
-}
-html[data-theme="light"] .surface-dark .hover\:text-white:hover,
-html[data-theme="light"] .surface-dark.hover\:text-white:hover {
-  color: #05090f;
-}
-html[data-theme="light"] .surface-dark .text-accent-400,
-html[data-theme="light"] .surface-dark.text-accent-400 {
-  color: #ad0d27;
-}
-html[data-theme="light"] .surface-dark .border-white\/10,
-html[data-theme="light"] .surface-dark.border-white\/10,
-html[data-theme="light"] .surface-dark .border-white\/15,
-html[data-theme="light"] .surface-dark.border-white\/15,
-html[data-theme="light"] .surface-dark .border-white\/20,
-html[data-theme="light"] .surface-dark.border-white\/20,
-html[data-theme="light"] .surface-dark .border-navy-800,
-html[data-theme="light"] .surface-dark.border-navy-800,
-html[data-theme="light"] .surface-dark .border-navy-700,
-html[data-theme="light"] .surface-dark.border-navy-700 {
-  border-color: #e3e7ed;
-}
-html[data-theme="light"] .surface-dark .border-white\/30,
-html[data-theme="light"] .surface-dark.border-white\/30 {
-  border-color: #cbd3e1;
-}
-html[data-theme="light"] .surface-dark .hover\:border-white\/60:hover,
-html[data-theme="light"] .surface-dark.hover\:border-white\/60:hover {
-  border-color: #5a7299;
-}
-html[data-theme="light"] .surface-dark .bg-white\/\[0\.03\],
-html[data-theme="light"] .surface-dark.bg-white\/\[0\.03\],
-html[data-theme="light"] .surface-dark .bg-white\/\[0\.04\],
-html[data-theme="light"] .surface-dark.bg-white\/\[0\.04\] {
-  background-color: #ffffff;
-}
-html[data-theme="light"] .surface-dark .hover\:bg-white\/\[0\.06\]:hover,
-html[data-theme="light"] .surface-dark.hover\:bg-white\/\[0\.06\]:hover,
-html[data-theme="light"] .surface-dark .hover\:bg-white\/5:hover,
-html[data-theme="light"] .surface-dark.hover\:bg-white\/5:hover,
-html[data-theme="light"] .surface-dark .hover\:bg-white\/10:hover,
-html[data-theme="light"] .surface-dark.hover\:bg-white\/10:hover {
-  background-color: #e5e9f0;
-}
-html[data-theme="light"] .surface-dark .bg-white\/10,
-html[data-theme="light"] .surface-dark.bg-white\/10,
-html[data-theme="light"] .surface-dark .bg-white\/15,
-html[data-theme="light"] .surface-dark.bg-white\/15 {
-  background-color: #e5e9f0;
-}
-html[data-theme="light"] .surface-dark .bg-navy-800,
-html[data-theme="light"] .surface-dark.bg-navy-800 {
-  background-color: #e3e7ed;
-}
-html[data-theme="light"] .surface-dark .bg-navy-radial,
-html[data-theme="light"] .surface-dark.bg-navy-radial,
-html[data-theme="light"] .surface-dark .bg-gradient-to-b,
-html[data-theme="light"] .surface-dark.bg-gradient-to-b {
-  background-image: none;
-}
-
-/* Keep red buttons and their content white */
-html[data-theme="light"] .surface-dark .bg-accent-500,
-html[data-theme="light"] .surface-dark .bg-accent-500 * {
-  color: #ffffff;
-}
-
-/* Logo: white lettering on dark, navy lettering on light */
-.logo-on-light {
-  display: none;
-}
-html[data-theme="light"] .surface-dark .logo-on-dark {
-  display: none;
-}
-html[data-theme="light"] .surface-dark .logo-on-light {
-  display: block;
-}
-
-/* Solid navy panels inside a surface (e.g. the mobile menu) */
-html[data-theme="light"] .surface-dark .bg-navy-950 {
-  background-color: #ffffff;
 }
