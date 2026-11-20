@@ -70,8 +70,10 @@ export const imageSlots = {
 } satisfies Record<string, ImageSlot>;
 
 /**
- * Slideshow beside the homepage headline, in display order. The building
- * photo comes first; keep the list short (about five).
+ * Full-width slideshow behind the homepage headline, in display order. The
+ * building photo comes first; keep the list short (about five). The headline
+ * sits over the left part of each photo, so `objectPosition` keeps the
+ * subject towards the right. Use landscape photos at least 2000px wide.
  */
 export const homeHeroSlides: ImageSlot[] = [
   {

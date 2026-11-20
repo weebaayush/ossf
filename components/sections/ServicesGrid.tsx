@@ -24,12 +24,16 @@ export function ServicesGrid() {
                 className="group flex items-start gap-5 py-6"
               >
                 {image ? (
-                  <PlaceholderImage
-                    {...image}
-                    ratio="aspect-[4/3]"
-                    className="w-28 shrink-0 rounded-md sm:w-36"
-                    sizes="144px"
-                  />
+                  // Fixed-width wrapper: PlaceholderImage is w-full, so the
+                  // thumbnail width must be set on the parent.
+                  <div className="w-28 shrink-0 overflow-hidden rounded-md sm:w-36">
+                    <PlaceholderImage
+                      {...image}
+                      ratio="aspect-[4/3]"
+                      rounded={false}
+                      sizes="144px"
+                    />
+                  </div>
                 ) : null}
                 <div className="min-w-0">
                   <h3 className="text-lg font-bold group-hover:text-brand">{service.title}</h3>
