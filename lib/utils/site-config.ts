@@ -1,7 +1,8 @@
 // Central place for company facts used across metadata, footer, contact page and
 // structured data. Sourced from the client-supplied OSSF Company Profile
-// (confirmed 20-09-2026). Values still marked CLIENT CONFIRMATION REQUIRED are
-// the few remaining gaps - replace once the client confirms them.
+// (confirmed 20-09-2026). The facts and claims used on the site (founding
+// year, PSARA licence, client count, coverage) were confirmed by OSSF on
+// 21-11-2026.
 
 export const siteConfig = {
   name: "Om Shiv Security Force",
@@ -25,8 +26,8 @@ export const siteConfig = {
   phoneSecondary: "7977314691",
   email: "info@omshivsecurityforce.in",
 
-  // Number used for the WhatsApp links (10 digits). Set to the primary mobile
-  // number; OSSF to confirm that this number is on WhatsApp, or supply another.
+  // Number used for the WhatsApp links (10 digits); the primary mobile number,
+  // tested on WhatsApp 21-11-2026.
   whatsapp: "9768104769",
 
   // Security operations run 24x365 (company profile). Office enquiry hours

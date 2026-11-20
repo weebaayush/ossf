@@ -6,7 +6,7 @@
 // Each service also has its own page at /services/<slug>. The extra fields
 // below (`need`, `delivery`, `faqs`) feed that page. They restate the profile:
 // verification, training, supervision, replacement, reporting and statutory
-// compliance. OSSF should confirm the wording before launch; do not add
+// compliance. Wording approved by OSSF on 21-11-2026; do not add
 // figures, response times or equipment that the client has not confirmed.
 
 export type ServiceFaq = { question: string; answer: string };

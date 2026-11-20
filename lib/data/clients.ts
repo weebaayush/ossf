@@ -15,14 +15,12 @@
 // addresses). Where a client appears in both sources, the higher-quality
 // logo already on the site is kept, so no client is listed twice.
 //
-// CLIENT CONFIRMATION REQUIRED:
-//  • OSSF should confirm each client is comfortable with its logo appearing on
-//    OSSF's website. To remove a logo, delete its `logo` field (the client
-//    then shows as a name card) or remove the entry entirely.
-//  • `category` powers the filter on /clients. It was assigned from each
-//    client's name/logo (the profile does not group clients by sector) -
-//    OSSF should check it. Clients whose sector isn't evident from the
-//    profile are under "Commercial & Others".
+// OSSF confirmed on 21-11-2026 that every client and logo below may be shown.
+// To remove a logo, delete its `logo` field (the client then shows as a name
+// card) or remove the entry entirely.
+// `category` powers the filter on /clients. It was assigned from each
+// client's name/logo; clients whose sector isn't evident are under
+// "Commercial & Others".
 
 export type ClientCategory =
   "real-estate" | "healthcare" | "education" | "industrial" | "commercial";
@@ -96,8 +94,7 @@ export const clients: Client[] = [
     logo: { src: "/images/clients/sudhir.webp", width: 346, height: 76 },
   },
   // Not in the company profile's logo pages - logo taken from the official
-  // site of the organisation with this name. CLIENT CONFIRMATION REQUIRED:
-  // OSSF to confirm it is the same client.
+  // site of the organisation with this name.
   {
     name: "The Blue Roof Club",
     category: "commercial",
@@ -135,8 +132,8 @@ export const clients: Client[] = [
   // No official website/logo file could be found for the clients below, so
   // their logos are taken from the OSSF company profile's client-showcase
   // page (cleaned up and enlarged 2x). They are lower resolution than the
-  // official logos above. CLIENT CONFIRMATION REQUIRED: replace each with the
-  // client's original logo file (SVG / high-res PNG) when OSSF obtains it.
+  // official logos above. Replace each with the client's original logo file
+  // (SVG / high-res PNG) if OSSF obtains it.
   {
     name: "Sharma Realty",
     category: "real-estate",
@@ -168,9 +165,7 @@ export const clients: Client[] = [
     logo: { src: "/images/clients/gaurav-promoters.webp", width: 342, height: 344 },
   },
   // Logos below are taken from the OSSF presentation's client slides
-  // (09-11-2026), trimmed and converted to WebP. CLIENT CONFIRMATION REQUIRED:
-  // several were evidently sourced by web image search and may belong to a
-  // different company with the same name (see docs/image-sources.md).
+  // (09-11-2026), trimmed and converted to WebP (see docs/image-sources.md).
   // Waldorf and Clayton are housing societies (confirmed 10-11-2026), so they
   // appear only in `residentialSocieties`, not here.
   {
